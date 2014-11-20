@@ -24,3 +24,7 @@ gem 'devise-async'
 # Engine
 
 gem 'thin'
+
+# Configuration Manager
+
+gem "figaro"
