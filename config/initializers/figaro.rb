@@ -1,5 +1,9 @@
-# Mailer Configurations
+# Secret Key Base
+if Rails.env.production?
+  Figaro.require_keys('SECRET_KEY_BASE')
+end
 
+# Mailer Configurations
 Figaro.require_keys(
 "MAILER_HOST",
 'MAILER_METHOD'
