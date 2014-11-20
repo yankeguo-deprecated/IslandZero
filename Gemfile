@@ -11,6 +11,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+# Helpers
+
+gem 'active_link_to'
+
 # Delayed Job
 
 gem 'delayed_job_active_record'
