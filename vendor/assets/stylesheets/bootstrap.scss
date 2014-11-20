@@ -1,4 +1,3 @@
-@import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
 /*!
  * bootswatch v3.3.1+1
  * Homepage: http://bootswatch.com
@@ -6,6 +5,91 @@
  * Licensed under MIT
  * Based on Bootstrap
 */
+
+/*
+Local Lato
+*/
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: font-url(Lato-Hairline.eot);
+  src: local('Lato Hairline'), local('Lato-Hairline'), font-url(Lato-Hairline.eot?#iefix) format('embedded-opentype'), font-url(Lato-Hairline.woff) format('woff'), font-url(Lato-Hairline.ttf) format('truetype'), font-url(Lato-Hairline.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: font-url(Lato-Light.eot);
+  src: local('Lato Light'), local('Lato-Light'), font-url(Lato-Light.eot?#iefix) format('embedded-opentype'), font-url(Lato-Light.woff) format('woff'), font-url(Lato-Light.ttf) format('truetype'), font-url(Lato-Light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url(Lato-Regular.eot);
+  src: local('Lato Regular'), local('Lato-Regular'), font-url(Lato-Regular.svg#Lato) format('svg'), font-url(Lato-Regular.eot?#iefix) format('embedded-opentype'), font-url(Lato-Regular.woff) format('woff'), font-url(Lato-Regular.ttf) format('truetype'), font-url(Lato-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: font-url(Lato-Bold.eot);
+  src: local('Lato Bold'), local('Lato-Bold'), font-url(Lato-Bold.eot?#iefix) format('embedded-opentype'), font-url(Lato-Bold.woff) format('woff'), font-url(Lato-Bold.ttf) format('truetype'), font-url(Lato-Bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: font-url(Lato-Black.eot);
+  src: local('Lato Black'), local('Lato-Black'), font-url(Lato-Black.eot?#iefix) format('embedded-opentype'), font-url(Lato-Black.woff) format('woff'), font-url(Lato-Black.ttf) format('truetype'), font-url(Lato-Black.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 100;
+  src: font-url(Lato-Hairline-Italic.eot);
+  src: local('Lato Hairline Italic'), local('Lato-HairlineItalic'), font-url(Lato-Hairline-Italic.eot?#iefix) format('embedded-opentype'), font-url(Lato-Hairline-Italic.woff) format('woff'), font-url(Lato-Hairline-Italic.ttf) format('truetype'), font-url(Lato-Hairline-Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: font-url(Lato-Light-Italic.eot);
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), font-url(Lato-Light-Italic.eot?#iefix) format('embedded-opentype'), font-url(Lato-Light-Italic.woff) format('woff'), font-url(Lato-Light-Italic.ttf) format('truetype'), font-url(Lato-Light-Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: font-url(Lato-Italic.eot);
+  src: local('Lato Italic'), local('Lato-Italic'), font-url(Lato-Italic.eot?#iefix) format('embedded-opentype'), font-url(Lato-Italic.woff) format('woff'), font-url(Lato-Italic.ttf) format('truetype'), font-url(Lato-Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: font-url(Lato-Bold-Italic.eot);
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), font-url(Lato-Bold-Italic.eot?#iefix) format('embedded-opentype'), font-url(Lato-Bold-Italic.woff) format('woff'), font-url(Lato-Bold-Italic.ttf) format('truetype'), font-url(Lato-Bold-Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 900;
+  src: font-url(Lato-Black-Italic.eot);
+  src: local('Lato Black Italic'), local('Lato-BlackItalic'), font-url(Lato-Black-Italic.eot?#iefix) format('embedded-opentype'), font-url(Lato-Black-Italic.woff) format('woff'), font-url(Lato-Black-Italic.ttf) format('truetype'), font-url(Lato-Black-Italic.woff2) format('woff2');
+}
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -267,8 +351,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: font-url('glyphicons-halflings-regular.eot');
+  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-url('glyphicons-halflings-regular.woff') format('woff'), font-url('glyphicons-halflings-regular.ttf') format('truetype'), font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
