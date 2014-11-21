@@ -1,4 +1,4 @@
-# Secret Key Base
+# Secret Key Base (Production Only)
 if Rails.env.production?
   Figaro.require_keys('SECRET_KEY_BASE')
 end
