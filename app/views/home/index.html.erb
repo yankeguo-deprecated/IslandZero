@@ -1,5 +1,8 @@
 <div class="jumbotron">
-  <h1>Jumbotron</h1>
+  <h1>MAGI::Systems</h1>
   <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+  <p>
+    <%= link_to t(:login), new_user_session_path, class: 'btn btn-primary' %>
+    <%= link_to t(:register), new_user_registration_path, class: 'btn btn-success' %>
+  </p>
 </div>
