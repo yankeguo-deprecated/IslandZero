@@ -1,2 +1,10 @@
 zh-CN:
+  login: '登陆'
+  register: '注册'
   magi_introduction: '这里是 MAGI::Systems 人机交互界面。'
+  remember_me: '记住我'
+  helpers:
+    label:
+      user:
+        email: '邮箱'
+        password: '密码'
