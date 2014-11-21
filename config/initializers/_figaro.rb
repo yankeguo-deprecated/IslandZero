@@ -17,3 +17,6 @@ if ENV['MAILER_METHOD'] == 'smtp'
   "MAILER_SMTP_PASSWORD"
   )
 end
+
+# Timezone
+Figaro.require_keys('TIMEZONE')
