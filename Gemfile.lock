@@ -61,7 +61,10 @@ GEM
     figaro (1.0.0)
       thor (~> 0.14)
     hike (1.2.3)
+    http_accept_language (2.0.2)
     i18n (0.6.11)
+    i18n-debug (1.0.0)
+      i18n (~> 0.0)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -90,6 +93,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.4)
       sprockets-rails (~> 2.0)
+    rails-i18n (4.0.3)
+      i18n (~> 0.6)
+      railties (~> 4.0)
     railties (4.1.4)
       actionpack (= 4.1.4)
       activesupport (= 4.1.4)
@@ -145,9 +151,12 @@ DEPENDENCIES
   devise-async
   devise-i18n
   figaro
+  http_accept_language
+  i18n-debug
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.4)
+  rails-i18n
   sass-rails (~> 4.0.3)
   sqlite3
   thin
