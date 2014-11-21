@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+
+ img.carousel {
+   width: 100%;
+ }
