@@ -5,12 +5,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to "MAGI::Systems", "/", class: "navbar-brand" %>
+    <%= link_to "MAGI::Systems", home_path, class: "navbar-brand" %>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Active</a></li>
-      <li><a href="#">Link</a></li>
+      <%= li_link t(:home), home_path %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
