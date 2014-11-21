@@ -9,19 +9,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
   <% if user_signed_in? %>
   <%= render 'shared/nav' %>
   <% else %>
   <%= render 'shared/nav_not_logined' %>
   <% end %>
 
-  <div class="container-fluid">
+  <%= yield %>
 
-    <%= yield %>
-
-  </div>
-
+  <%= render 'shared/footer' %>
 </body>
 </html>

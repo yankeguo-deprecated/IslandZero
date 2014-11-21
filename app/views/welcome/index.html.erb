@@ -1,46 +1,51 @@
-<div id="carousel-main" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-main" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-main" data-slide-to="1"></li>
-    <li data-target="#carousel-main" data-slide-to="2"></li>
-  </ol>
+<div class="container-fluid">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag 'welcome_index/index_1.png', class: :carousel %>
-      <div class="carousel-caption">
+  <div class="row">
+    <div id="carousel-main" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-main" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-main" data-slide-to="1"></li>
+        <li data-target="#carousel-main" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag 'welcome_index/index_1.png', class: :carousel %>
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag 'welcome_index/index_2.png', class: :carousel %>
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag 'welcome_index/index_3.png', class: :carousel %>
+          <div class="carousel-caption">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="item">
-      <%= image_tag 'welcome_index/index_2.png', class: :carousel %>
-      <div class="carousel-caption">
-      </div>
-    </div>
-    <div class="item">
-      <%= image_tag 'welcome_index/index_3.png', class: :carousel %>
-      <div class="carousel-caption">
-      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-main" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-main" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-main" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-main" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
 
 <div class="jumbotron">
-  <h1>MAGI::Systems</h1>
-  <p><%= t(:magi_introduction) %></p>
-  <p>
-    <%= link_to t(:login), new_user_session_path, class: 'btn btn-primary' %>
-    <%= link_to t(:register), new_user_registration_path, class: 'btn btn-success' %>
-  </p>
+  <div class="container">
+    <h1>MAGI::Systems</h1>
+    <p><%= t(:magi_introduction) %></p>
+    <p>
+      <%= link_to t(:login), new_user_session_path, class: 'btn btn-primary' %>
+      <%= link_to t(:register), new_user_registration_path, class: 'btn btn-success' %>
+    </p>
+  </div>
 </div>
