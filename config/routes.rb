@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root 'welcome#index'
 
-  get '/home' => 'home#home'
+  get '/home' => 'welcome#home'
 
   devise_for :users
 end
