@@ -1,13 +1,11 @@
-require 'sanitize'
-
 class RealtimeChatController < FayeRails::Controller
 
   # Filter clean nickname/content
   channel '/chat/public' do
     filter :in do
       if data?
-        data['content'] = Sanitize.clean(data['content'], Sanitize::Config::RESTRICTED)
-        data['nickname'] = Sanitize.clean(data['nickname'], Sanitize::Config::RESTRICTED)
+        # Method in lib/extensions.rb
+        Sanitize.clean_hash(data, Sanitize::Config::RESTRICTED)
         modify message
       else
         pass
