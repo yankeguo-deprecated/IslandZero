@@ -14,8 +14,6 @@ GEM
       activesupport (= 4.1.4)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    active_link_to (1.0.2)
-      actionpack
     activemodel (4.1.4)
       activesupport (= 4.1.4)
       builder (~> 3.1)
@@ -170,7 +168,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_link_to
   coffee-rails (~> 4.0.0)
   delayed_job_active_record
   devise

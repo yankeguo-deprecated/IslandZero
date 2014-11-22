@@ -14,10 +14,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'http_accept_language'
 gem 'faye-rails'
 
-# Helpers
-
-gem 'active_link_to'
-
 # Delayed Job
 
 gem 'delayed_job_active_record'
