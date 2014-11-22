@@ -11,6 +11,9 @@
       </div>
 
       <ul class="list-group" id="listContent"></ul>
+      <% @public_msgs.each do |msg| %>
+      <li class="list-group-item"><%= msg.nickname %> : <%= msg.content %></li>
+      <% end %>
     </div>
   </div>
 </div>
