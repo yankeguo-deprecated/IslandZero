@@ -12,7 +12,7 @@
 
       <ul class="list-group" id="listContent"></ul>
       <% @public_msgs.each do |msg| %>
-      <li class="list-group-item"><%= msg.nickname %> : <%= msg.content %></li>
+      <li class="list-group-item"><span class="text-chat-nickname"><%= msg.nickname %></span> : <span class="text-chat-content"><%= msg.content %></span></li>
       <% end %>
     </div>
   </div>

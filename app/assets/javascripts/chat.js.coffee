@@ -13,7 +13,7 @@
       @cnannelChat = null
     # Subscribe
     @channelChat = @faye.subscribe '/chat/public', (msg)->
-      list.prepend "<li class=\"list-group-item\">#{msg.nickname} : #{msg.content}</li>"
+      list.prepend "<li class=\"list-group-item\"><span class=\"text-chat-nickname\">#{msg.nickname}</span> : <span class=\"text-chat-content\">#{msg.content}</span></li>"
     # Publish
     form.submit (e)=>
       e.preventDefault()
