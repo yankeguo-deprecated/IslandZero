@@ -4,9 +4,16 @@
 
 @ChatHelper =
   createPublicChatbox: (form, list)=>
+    inputNickname = form.children("#chat-input-nickname")
+    inputContent  = form.children("#chat-input-content")
     # Set Nickname from Cookie
-    nickname = document.cookie.replace /(?:(?:^|.*;\s*)public_chat_nickname\s*\=\s*([^;]*).*$)|^.*$/, "$1"
-    form.children("#chat-input-nickname").val(nickname)
+    nickname = document.cookie.replace(/(?:(?:^|.*;\s*)public_chat_nickname\s*\=\s*([^;]*).*$)|^.*$/, "$1") || ""
+    nickname = unescape(nickname)
+    if nickname.length == 0
+      inputNickname.focus()
+    else
+      inputContent.focus()
+    inputNickname.val(nickname)
     # Rebind channel
     if @channelChat?
       @channelChat.cancel()
@@ -17,15 +24,11 @@
     # Publish
     form.submit (e)=>
       e.preventDefault()
-      # Build Params
-      paramObj = {}
-      $.each form.serializeArray(), (_, kv) ->
-        paramObj[kv.name] = kv.value
       # Remember Nickname
       date = new Date()
       date.setTime date.getTime()+3600*1000*24*100
-      document.cookie = "public_chat_nickname=#{escape paramObj['nickname']}; expires=#{ date.toGMTString() }"
+      document.cookie = "public_chat_nickname=#{inputNickname.val()}; expires=#{ date.toGMTString() }"
       # Send
-      @faye.publish '/chat/public', paramObj
+      @faye.publish '/chat/public', {nickname: inputNickname.val(), content: inputContent.val()}
       # Clear
-      form.children("#chat-input-content").val("").focus()
+      inputContent.val("").focus()

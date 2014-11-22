@@ -14,6 +14,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'http_accept_language'
 gem 'faye-rails'
 
+# Tools
+
+gem 'sanitize', '~> 2.0'
+
 # Delayed Job
 
 gem 'delayed_job_active_record'

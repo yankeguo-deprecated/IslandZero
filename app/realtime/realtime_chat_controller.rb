@@ -1,13 +1,23 @@
+require 'sanitize'
+
 class RealtimeChatController < FayeRails::Controller
+
+  # Filter clean nickname/content
   channel '/chat/public' do
-    monitor :subscribe do
-      puts "Client #{client_id} subscribed to #{channel}."
+    filter :in do
+      if data?
+        data['content'] = Sanitize.clean(data['content'], Sanitize::Config::RESTRICTED)
+        data['nickname'] = Sanitize.clean(data['nickname'], Sanitize::Config::RESTRICTED)
+        modify message
+      else
+        pass
+      end
     end
-    monitor :unsubscribe do
-      puts "Client #{client_id} unsubscribed from #{channel}."
-    end
+  end
+
+  # Create Model
+  channel '/chat/public' do
     monitor :publish do
-      puts "Client #{client_id} published #{data} to #{channel}."
       PublicMsg.create nickname: data['nickname'], content: data['content']
     end
   end
