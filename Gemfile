@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'http_accept_language'
+gem 'faye-rails'
 
 # Helpers
 
