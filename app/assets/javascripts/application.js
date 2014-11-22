@@ -16,3 +16,5 @@
 //= require bootstrap
 //= require_tree ./shared
 //= require_tree .
+
+Turbolinks.enableProgressBar();

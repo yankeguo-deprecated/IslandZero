@@ -9,6 +9,9 @@
       <%= link_to "MAGI::Systems", root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <%= li_link t(:chat), chat_path %>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <%= li_link t('login'), new_user_session_path %>
         <%= li_link t('register'), new_user_registration_path %>
