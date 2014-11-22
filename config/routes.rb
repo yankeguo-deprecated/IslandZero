@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'chat/index'
-
+  # Root
   root 'welcome#index'
 
-  get '/chat' => 'chat#index'
-
+  # Devise
   devise_for :users
+
+  # Chat
+  get 'chat/public'
+
 end

@@ -1,4 +1,4 @@
 class ChatController < ApplicationController
-  def index
+  def public
   end
 end
