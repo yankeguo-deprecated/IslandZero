@@ -1,10 +1,12 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @topics = Topic.all
+    params[:parent_id] = 0 unless params[:parent_id].present?
+    @topics = Topic.where(params.permit(:parent_id))
     respond_with(@topics)
   end
 
