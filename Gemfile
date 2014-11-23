@@ -19,15 +19,14 @@ gem 'faye-rails'
 gem 'sanitize', '~> 2.0'
 gem 'faker'
 
-# Delayed Job
-
-gem 'delayed_job_active_record'
-
 # Redis
 
 gem 'sidekiq'
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
+
+# if you require 'sinatra' you get the DSL extended to Object
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 # Devise
 

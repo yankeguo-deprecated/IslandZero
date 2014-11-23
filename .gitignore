@@ -17,3 +17,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Redis dump file
+*.rdb
