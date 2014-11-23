@@ -66,6 +66,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.2)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faye (1.0.3)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -178,6 +180,7 @@ DEPENDENCIES
   devise
   devise-async
   devise-i18n
+  faker
   faye-rails
   figaro
   http_accept_language

@@ -11,17 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require_tree ./shared
  *= require_tree .
  *= require_self
  */
-
- html.turbolinks-progress-bar::before {
-   background-color: #0ce3ac !important;
-   height: 2px !important;
- }
-
-img.carousel {
-  width: 100%;
-}
-
-body { padding-top: 60px; }

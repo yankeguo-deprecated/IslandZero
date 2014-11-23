@@ -17,6 +17,7 @@ gem 'faye-rails'
 # Tools
 
 gem 'sanitize', '~> 2.0'
+gem 'faker'
 
 # Delayed Job
 

@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
-    @posts = Post.all
+    params[:parent_id] = 0 if params[:parent_id].nil?
+    @posts = Post.where(params.permit(:parent_id, :topic_id))
     respond_with(@posts)
   end
 

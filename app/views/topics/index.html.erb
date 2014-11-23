@@ -1,27 +1,22 @@
-<h1>Listing topics</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default panel-main">
+        <div class="panel-body">
+          <%= link_to 'New Topic', new_topic_path %>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Introduction</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.title %></td>
-        <td><%= topic.introduction %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>
+        <div class="list-group">
+          <% @topics.each do |topic| %>
+          <%= link_to topic, class: 'list-group-item' do %>
+          <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{topic.id}" %></small> <%= topic.title %></h4>
+          <p class="list-group-item-text"><%= topic.introduction %></p>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+</div>
