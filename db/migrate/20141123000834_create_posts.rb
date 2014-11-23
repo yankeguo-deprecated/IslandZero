@@ -1,9 +1,14 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.text :content, null: false
-      t.belongs_to :topic, index: true, null: false, defaul: 0
+      # Associations
+      t.belongs_to  :topic,     null: false, index: true
+      t.integer     :parent_id, null: false, default: 0, index: true
 
+      # Attributes
+      t.text        :content,   null: false
+
+      # Default
       t.timestamps
     end
   end

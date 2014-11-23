@@ -1,9 +1,14 @@
 class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
-      t.text :content, null: false
-      t.belongs_to :topic, index: true, null: false, default: 0
+      # Associations
+      t.references  :chattable, polymorphic: true, index: true
 
+      # Attributes
+      t.text          :content, null: false
+      t.belongs_to    :user,    null: false, index: true
+
+      # Default
       t.timestamps
     end
   end

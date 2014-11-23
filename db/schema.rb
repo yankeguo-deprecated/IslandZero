@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123004143) do
+ActiveRecord::Schema.define(version: 20141123001006) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -30,36 +30,33 @@ ActiveRecord::Schema.define(version: 20141123004143) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "messages", force: true do |t|
-    t.text     "content",    null: false
-    t.integer  "topic_id"
+    t.integer  "chattable_id"
+    t.string   "chattable_type"
+    t.text     "content",        null: false
+    t.integer  "user_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["topic_id"], name: "index_messages_on_topic_id"
+  add_index "messages", ["chattable_id", "chattable_type"], name: "index_messages_on_chattable_id_and_chattable_type"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "posts", force: true do |t|
-    t.text     "content",    null: false
-    t.integer  "topic_id",   null: false
+    t.integer  "topic_id",               null: false
+    t.integer  "parent_id",  default: 0, null: false
+    t.text     "content",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
 
-  create_table "public_msgs", force: true do |t|
-    t.string   "nickname",   null: false
-    t.text     "content",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "topics", force: true do |t|
+    t.integer  "parent_id",    default: 0, null: false
     t.string   "title",                    null: false
     t.text     "introduction",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id",    default: 0, null: false
   end
 
   create_table "users", force: true do |t|
@@ -80,6 +77,7 @@ ActiveRecord::Schema.define(version: 20141123004143) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "nickname",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

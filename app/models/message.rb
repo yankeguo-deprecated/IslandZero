@@ -1,3 +1,4 @@
 class Message < ActiveRecord::Base
-  belongs_to :topic
+  # Belongs to chattable
+  belongs_to :chattable, polymorphic: true, inverse_of: :messages
 end
