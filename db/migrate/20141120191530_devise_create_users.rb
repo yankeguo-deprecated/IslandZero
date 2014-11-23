@@ -32,6 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Attributes
       t.string   :nickname, null: false
+      t.string   :is_admin, null: false, default: false
 
       t.timestamps
     end

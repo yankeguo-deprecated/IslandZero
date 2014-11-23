@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :timeoutable, :async
 
   before_save do
+    self.is_admin = true if User.count == 0
     self.nickname = self.email.split('@').first if self.nickname.nil?
   end
 end
