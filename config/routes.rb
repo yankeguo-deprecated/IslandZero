@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :posts
+
+  resources :topics
+
   # Root
   root 'welcome#index'
 

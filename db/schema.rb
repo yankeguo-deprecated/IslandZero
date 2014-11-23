@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122211930) do
+ActiveRecord::Schema.define(version: 20141123001006) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -29,9 +29,34 @@ ActiveRecord::Schema.define(version: 20141122211930) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "messages", force: true do |t|
+    t.text     "content",    null: false
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["topic_id"], name: "index_messages_on_topic_id"
+
+  create_table "posts", force: true do |t|
+    t.text     "content",    null: false
+    t.integer  "topic_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
+
   create_table "public_msgs", force: true do |t|
     t.string   "nickname",   null: false
     t.text     "content",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.string   "title",        null: false
+    t.text     "introduction", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
