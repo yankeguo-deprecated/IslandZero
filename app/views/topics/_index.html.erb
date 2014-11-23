@@ -1,0 +1,8 @@
+<div class="list-group">
+  <% @topics.each do |topic| %>
+  <%= link_to topic, class: 'list-group-item' do %>
+  <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{topic.id}" %></small> <%= topic.title %></h4>
+  <p class="list-group-item-text"><%= topic.introduction %></p>
+  <% end %>
+  <% end %>
+</div>

@@ -8,4 +8,9 @@ class Topic < ActiveRecord::Base
 
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
+
+  # Posts within this topic and subtopics
+  def all_posts
+    Post.where(topic_id: self.sub_topic_ids | [ self.id ])
+  end
 end

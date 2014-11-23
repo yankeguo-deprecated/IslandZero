@@ -23,6 +23,11 @@ gem 'faker'
 
 gem 'delayed_job_active_record'
 
+# Redis
+
+gem "redis", "~> 3.0.1"
+gem "hiredis", "~> 0.4.5"
+
 # Devise
 
 gem 'devise'

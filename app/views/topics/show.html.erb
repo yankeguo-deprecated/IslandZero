@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+    <div class="col-md-8">
+      <div class="panel panel-default panel-main">
+        <div class="panel-body">
+          <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
+          <%= @topic.introduction %><br/>
+          <%= link_to 'Edit', edit_topic_path(@topic) %> |
+          <%= link_to 'Back', topics_path %>
+        </div>
+        <%= render 'index' %>
+      </div>
+    </div>
 
-<p>
-  <strong>Introduction:</strong>
-  <%= @topic.introduction %>
-</p>
+    <div class="col-md-4">
+    </div>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+    <div class="col-md-8">
+      <div class="panel panel-default panel-main">
+        <%= render 'posts/index' %>
+      </div>
+    </div>
+  </div>
+
+</div>

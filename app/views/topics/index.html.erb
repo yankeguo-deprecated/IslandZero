@@ -6,14 +6,8 @@
           <%= link_to 'New Topic', new_topic_path %>
         </div>
 
-        <div class="list-group">
-          <% @topics.each do |topic| %>
-          <%= link_to topic, class: 'list-group-item' do %>
-          <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{topic.id}" %></small> <%= topic.title %></h4>
-          <p class="list-group-item-text"><%= topic.introduction %></p>
-          <% end %>
-          <% end %>
-        </div>
+        <%= render 'index' %>
+
       </div>
     </div>
     <div class="col-md-4">

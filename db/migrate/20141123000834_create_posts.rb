@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       # Associations
       t.belongs_to  :topic,     null: false, index: true
+      t.belongs_to  :user,      null: false, index: true
       t.integer     :parent_id, null: false, default: 0, index: true
 
       # Attributes

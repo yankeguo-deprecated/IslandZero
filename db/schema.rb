@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141123001006) do
 
   create_table "posts", force: true do |t|
     t.integer  "topic_id",               null: false
+    t.integer  "user_id",                null: false
     t.integer  "parent_id",  default: 0, null: false
     t.text     "content",                null: false
     t.datetime "created_at"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141123001006) do
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "topics", force: true do |t|
     t.integer  "parent_id",    default: 0, null: false

@@ -11,6 +11,8 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @posts  = @topic.all_posts
+    @topics = @topic.sub_topics
     respond_with(@topic)
   end
 
