@@ -25,6 +25,7 @@ gem 'delayed_job_active_record'
 
 # Redis
 
+gem 'sidekiq'
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
 
