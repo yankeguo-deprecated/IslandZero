@@ -6,4 +6,8 @@ module ApplicationHelper
     end
   end
 
+  def chatbox_meta_tag
+    tag :meta, name: 'chatbox-room', content: 'test_content'
+  end
+
 end
