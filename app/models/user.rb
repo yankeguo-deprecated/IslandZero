@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :posts, inverse_of: :user
+  has_many :messages, inverse_of: :user
 end

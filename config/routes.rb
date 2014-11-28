@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :topics
+  resources :messages
 
 end

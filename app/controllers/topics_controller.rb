@@ -17,7 +17,13 @@ class TopicsController < ApplicationController
     # Reveal Objects
     @posts  = @topic.all_posts.order("id DESC")
     @topics = @topic.sub_topics.order(:rank)
+
+    # Form for tricks
     @post   = Post.new
+    @message= Message.new
+    @message.chattable = @topic
+
+    # Render
     respond_with(@topic)
   end
 

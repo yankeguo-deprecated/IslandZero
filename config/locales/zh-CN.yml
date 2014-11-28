@@ -1,4 +1,6 @@
 zh-CN:
+  content_missing: '缺少内容'
+  send: '发送'
   logout: '退出登录'
   back_to_all_topics: '返回 全部主题'
   back_to_parent_topic: '返回 父主题'

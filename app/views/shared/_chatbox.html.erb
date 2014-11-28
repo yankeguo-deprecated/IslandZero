@@ -3,9 +3,30 @@
   <div class="col-md-12">
     <div class="panel panel-info panel-main">
       <div class="panel-body">
+        <%= form_for @message do |f| %>
+        <%= f.hidden_field :chattable_type %>
+        <%= f.hidden_field :chattable_id %>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= f.text_field :content, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <%= f.submit t(:send), class: 'btn btn-default' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="panel-body">
 
         <% messages.each do |msg| %>
-        <p>
+        <p class="text-primary">
+          <small class="text-muted">
+            <%= msg.user.nickname %> (#<%= msg.user.id %>)
+            <span class="pull-right"><%= msg.created_at %></span>
+          </small>
+          <br/>
           <%= msg.content %>
         </p>
 
