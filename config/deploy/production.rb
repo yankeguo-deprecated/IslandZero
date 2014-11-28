@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'magi.systems', user: 'magi', roles: %w{web worker db}
+server 'magi.systems', user: 'magi', roles: %w{web worker db app}
 
 # Custom SSH Options
 # ==================
