@@ -11,14 +11,33 @@
   <%= chatbox_meta_tag %>
 </head>
 <body>
+
+  <!-- Navigation Bar -->
   <% if user_signed_in? %>
   <%= render 'shared/nav' %>
   <% else %>
   <%= render 'shared/nav_not_logined' %>
   <% end %>
 
+  <!-- Alerts -->
+  <% if flash.alert.present? %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= flash.alert %>
+  </div>
+  <% end %>
+
+  <% if flash.notice.present? %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= flash.notice %>
+  </div>
+  <% end %>
+
+  <!-- Content -->
   <%= yield %>
 
+  <!-- Footer -->
   <%= render 'shared/footer' %>
 
 </body>

@@ -11,13 +11,14 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @posts  = @topic.all_posts
+    @posts  = @topic.all_posts.order("id DESC")
     @topics = @topic.sub_topics
+    @post   = Post.new
     respond_with(@topic)
   end
 
   def new
-    @topic = Topic.new
+    @topic = Topic.new(params.permit(:parent_id))
     respond_with(@topic)
   end
 

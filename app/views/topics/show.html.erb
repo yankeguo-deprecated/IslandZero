@@ -24,30 +24,45 @@
     </div>
 
     <div class="col-md-8">
-      <div class="panel panel-default panel-main">
-        <div class="panel-body">
-          <p class="pull-right">
-            <%= link_to t(:new_post), new_post_path %>
-          </p>
+
+      <div class="panel panel-default">
+
+        <div class="panel-body text-right">
+          <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+            <%= glyphicon 'pencil' %><%= t(:new_post) %>
+          </a>
         </div>
 
-        <% if @posts.length != 0 %>
+        <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <%= form_for @post, remote: false do |f| %>
+            <%= f.hidden_field :topic_id, value: @topic.id %>
+            <div class="form-group">
+              <%= f.text_area :content, class: 'form-control', id: 'inputContent', placeholder: "" %>
+            </div>
+            <div class="form-group text-right">
+              <%= f.submit "Submit", class: "btn btn-sm btn-default" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
 
-        <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.content %></td>
-          <td><%= post.topic %></td>
-          <td><%= link_to 'Show', post %></td>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
+        <div class="list-group">
+          <% if @posts.length != 0 %>
 
-        <% else %>
+          <% @posts.each do |post| %>
+          <%= link_to post, class: 'list-group-item' do %>
+          <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small></h4>
+          <p class="list-group-item-text"><%= post.content %></p>
+          <% end %>
+          <% end %>
 
-        <% end %>
+          <% else %>
 
+          <li class="list-group-item text-center"><%= t(:no_posts) %></li>
 
+          <% end %>
+        </div>
       </div>
 
     </div>

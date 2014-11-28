@@ -1,6 +1,8 @@
 zh-CN:
+  no_posts: '没有帖子'
   new_topic: '新主题'
   new_sub_topic: '新子主题'
+  new_post: '新建帖子'
   back: '返回'
   edit: '编辑'
   login: '登陆'

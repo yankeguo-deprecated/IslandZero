@@ -23,9 +23,32 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    post_params = params.require(:post).permit(:content, :topic_id, :parent_id)
+
+    if post_params[:content].blank?
+      redirect_to :back, flash: { alert: 'Content Missing' }
+      return
+    end
+
+    if post_params[:topic_id].blank? and post_params[:parent_id].blank?
+      redirect_to :back, flash: { alert: 'Params Missing' }
+      return
+    end
+
+    if post_params[:parent_id].present?
+      parent = Post.find_by_id post_params[:parent_id]
+      if parent.nil?
+        redirect_to :back, flash: { alert: 'Parent Post Not Found' }
+        return
+      else
+        post_params[:topic_id] = parent.topic_id
+      end
+    end
+
+    @post = current_user.posts.new(post_params)
     @post.save
-    respond_with(@post)
+    flash.notice = "Post created."
+    redirect_to :back
   end
 
   def update
@@ -39,11 +62,8 @@ class PostsController < ApplicationController
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def post_params
-      params.require(:post).permit(:content, :topic_id)
-    end
 end

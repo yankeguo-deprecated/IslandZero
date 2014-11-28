@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
     self.is_admin = true if User.count == 0
     self.nickname = self.email.split('@').first if self.nickname.nil?
   end
+
+  has_many :posts, inverse_of: :user
 end

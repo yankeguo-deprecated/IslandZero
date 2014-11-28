@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   # Belongs to Topic
   belongs_to :topic, inverse_of: :posts
 
+  # Belongs to User
+  belongs_to :user,  inverse_of: :posts
+
   # Self joins
   has_many    :sub_posts,    class_name: 'Post', foreign_key: 'parent_id', inverse_of: :parent_post
   belongs_to  :parent_post,  class_name: 'Post', foreign_key: 'parent_id', inverse_of: :sub_posts
