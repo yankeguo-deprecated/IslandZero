@@ -5,9 +5,16 @@
       <div class="panel panel-default panel-main">
         <div class="panel-body">
           <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
-          <%= @topic.introduction %><br/>
-          <%= link_to 'Edit', edit_topic_path(@topic) %> |
-          <%= link_to 'Back', topics_path %>
+          <%= @topic.introduction %>
+
+          <% if current_user.is_admin %>
+          <div class="text-right">
+            <p>
+              <%= link_to t(:edit), edit_topic_path(@topic) %> |
+              <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
+            </p>
+          </div>
+          <% end %>
         </div>
         <%= render 'index' %>
       </div>
@@ -18,9 +25,31 @@
 
     <div class="col-md-8">
       <div class="panel panel-default panel-main">
-        <%= render 'posts/index' %>
+        <div class="panel-body">
+          <p class="pull-right">
+            <%= link_to t(:new_post), new_post_path %>
+          </p>
+        </div>
+
+        <% if @posts.length != 0 %>
+
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.content %></td>
+          <td><%= post.topic %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+
+        <% else %>
+
+        <% end %>
+
+
       </div>
+
     </div>
   </div>
-
 </div>

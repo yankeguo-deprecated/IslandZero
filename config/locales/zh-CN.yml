@@ -1,4 +1,8 @@
 zh-CN:
+  new_topic: '新主题'
+  new_sub_topic: '新子主题'
+  back: '返回'
+  edit: '编辑'
   login: '登陆'
   register: '注册'
   public_chat: '匿名聊天'

@@ -1,5 +1,9 @@
 class Chatbox
   constructor: (@element)->
+    # Ensure single Chatbox
+    if Chatbox.current
+      Chatbox.current.cancel()
+    Chatbox.current = this
   subscribe: (room = Chatbox.getPageRoom())=>
     return unless room? and room != ""
     @cancel()
