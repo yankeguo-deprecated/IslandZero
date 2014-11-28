@@ -1,46 +1,10 @@
-<div class="container-fluid">
-
-  <div class="row">
-    <div id="carousel-main" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-main" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-main" data-slide-to="1"></li>
-        <li data-target="#carousel-main" data-slide-to="2"></li>
-      </ol>
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <%= image_tag 'welcome_index/index_1.png', class: :carousel %>
-          <div class="carousel-caption">
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag 'welcome_index/index_2.png', class: :carousel %>
-          <div class="carousel-caption">
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag 'welcome_index/index_3.png', class: :carousel %>
-          <div class="carousel-caption">
-          </div>
-        </div>
-      </div>
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-main" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#carousel-main" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-
 <div class="jumbotron">
   <div class="container">
+    <h3 class="text-danger">
+      警告：网站处于技术验证/开发阶段，当前任何数据都将会在未来某个特定时间抹除。
+      <br/>
+      WARNNING: This site is under development, all data will be wiped out someday in the future.
+    </h3>
     <h1>MAGI::Systems</h1>
     <p><%= t(:magi_introduction) %></p>
     <% unless user_signed_in? %>
