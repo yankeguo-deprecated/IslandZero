@@ -1,4 +1,6 @@
 zh-CN:
+  back_to_all_topics: '返回 全部主题'
+  back_to_parent_topic: '返回 父主题'
   no_posts: '没有帖子'
   new_topic: '新主题'
   new_sub_topic: '新子主题'

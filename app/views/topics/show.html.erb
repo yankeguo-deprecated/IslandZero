@@ -4,6 +4,15 @@
     <div class="col-md-8">
       <div class="panel panel-default panel-main">
         <div class="panel-body">
+
+          <% if @topic.parent_id == 0 %>
+          <%= link_to t(:back_to_all_topics), topics_path %>
+          <% else %>
+          <% if @topic.parent_topic.present? %>
+          <%= link_to t(:back_to_parent_topic), topic_path(@topic.parent_topic) %>
+          <% end %>
+          <% end %>
+
           <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
           <%= @topic.introduction %>
 
