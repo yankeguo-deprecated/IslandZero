@@ -6,8 +6,8 @@ module ApplicationHelper
     end
   end
 
-  def chatbox_meta_tag
-    tag :meta, name: 'chatbox-room', content: 'test_content'
+  def chatroom_meta_tag
+    tag :meta, name: 'chatroom-id', content: request.path
   end
 
   def glyphicon(name)
