@@ -20,3 +20,6 @@
 
 # Redis dump file
 *.rdb
+
+# Assets File
+/public/assets/
