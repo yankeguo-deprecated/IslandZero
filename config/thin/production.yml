@@ -6,11 +6,9 @@ timeout: 30
 wait: 30
 log: log/thin.log
 max_conns: 1024
-require: []
 environment: production
 max_persistent_conns: 512
 servers: 1
-threaded: true
 daemonize: true
 port: 3000
 address: '127.0.0.1'
