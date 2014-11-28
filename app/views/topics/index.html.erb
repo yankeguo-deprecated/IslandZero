@@ -4,16 +4,18 @@
     <div class="col-md-8">
 
       <div class="row">
-        <div class="panel panel-default panel-main">
+        <div class="col-md-12">
+          <div class="panel panel-default panel-main">
 
-          <% if current_user.is_admin %>
-          <div class="panel-body text-right">
-            <%= link_to t(:new_topic), new_topic_path %>
+            <% if current_user.is_admin %>
+            <div class="panel-body text-right">
+              <%= link_to t(:new_topic), new_topic_path %>
+            </div>
+            <% end %>
+
+            <%= render 'index' %>
+
           </div>
-          <% end %>
-
-          <%= render 'index' %>
-
         </div>
       </div>
 

@@ -4,71 +4,75 @@
     <div class="col-md-8">
 
       <div class="row">
-        <div class="panel panel-primary panel-main">
-          <div class="panel-body">
+        <div class="col-md-12">
+          <div class="panel panel-primary panel-main">
+            <div class="panel-body">
 
-            <% if @topic.parent_id == 0 %>
-            <%= link_to t(:back_to_all_topics), topics_path %>
-            <% else %>
-            <% if @topic.parent_topic.present? %>
-            <%= link_to t(:back_to_parent_topic), topic_path(@topic.parent_topic) %>
-            <% end %>
-            <% end %>
+              <% if @topic.parent_id == 0 %>
+              <%= link_to t(:back_to_all_topics), topics_path %>
+              <% else %>
+              <% if @topic.parent_topic.present? %>
+              <%= link_to t(:back_to_parent_topic), topic_path(@topic.parent_topic) %>
+              <% end %>
+              <% end %>
 
-            <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
-            <%= @topic.introduction %>
+              <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
+              <%= @topic.introduction %>
 
-            <% if current_user.is_admin %>
-            <div class="text-right">
-              <p>
-                <%= link_to t(:edit), edit_topic_path(@topic) %> |
-                <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
-              </p>
+              <% if current_user.is_admin %>
+              <div class="text-right">
+                <p>
+                  <%= link_to t(:edit), edit_topic_path(@topic) %> |
+                  <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
+                </p>
+              </div>
+              <% end %>
             </div>
-            <% end %>
+            <%= render 'index' %>
           </div>
-          <%= render 'index' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="panel panel-default">
+        <div class="col-md-12">
+          <div class="panel panel-default">
 
-          <div class="panel-body text-right">
-            <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
-              <%= glyphicon 'pencil' %><%= t(:new_post) %>
-            </a>
-          </div>
+            <div class="panel-body text-right">
+              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+                <%= glyphicon 'pencil' %><%= t(:new_post) %>
+              </a>
+            </div>
 
-          <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <%= form_for @post, remote: false do |f| %>
-              <%= f.hidden_field :topic_id, value: @topic.id %>
-              <div class="form-group">
-                <%= f.text_area :content, class: 'form-control', id: 'inputContent', placeholder: "" %>
+            <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <%= form_for @post, remote: false do |f| %>
+                <%= f.hidden_field :topic_id, value: @topic.id %>
+                <div class="form-group">
+                  <%= f.text_area :content, class: 'form-control', id: 'inputContent', placeholder: "" %>
+                </div>
+                <div class="form-group text-right">
+                  <%= f.submit "Submit", class: "btn btn-sm btn-default" %>
+                </div>
+                <% end %>
               </div>
-              <div class="form-group text-right">
-                <%= f.submit "Submit", class: "btn btn-sm btn-default" %>
-              </div>
+            </div>
+
+            <div class="list-group">
+              <% if @posts.length != 0 %>
+
+              <% @posts.each do |post| %>
+              <%= link_to post, class: 'list-group-item' do %>
+              <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small></h4>
+              <p class="list-group-item-text"><%= post.content %></p>
+              <% end %>
+              <% end %>
+
+              <% else %>
+
+              <li class="list-group-item text-center"><%= t(:no_posts) %></li>
+
               <% end %>
             </div>
-          </div>
-
-          <div class="list-group">
-            <% if @posts.length != 0 %>
-
-            <% @posts.each do |post| %>
-            <%= link_to post, class: 'list-group-item' do %>
-            <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small></h4>
-            <p class="list-group-item-text"><%= post.content %></p>
-            <% end %>
-            <% end %>
-
-            <% else %>
-
-            <li class="list-group-item text-center"><%= t(:no_posts) %></li>
-
-            <% end %>
           </div>
         </div>
       </div>
