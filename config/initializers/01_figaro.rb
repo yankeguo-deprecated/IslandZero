@@ -4,7 +4,7 @@ if Rails.env.production?
 end
 
 # Mailer Configurations
-Figaro.require_keys "MAILER_HOST", 'MAILER_METHOD'
+Figaro.require_keys "MAILER_HOST", 'MAILER_METHOD', 'MAILER_PROTOCOL'
 
 if ENV['MAILER_METHOD'] == 'smtp'
   Figaro.require_keys(

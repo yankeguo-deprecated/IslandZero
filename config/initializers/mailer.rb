@@ -1,8 +1,9 @@
 Rails.application.configure do
   method = ENV['MAILER_METHOD']
 
-  config.action_mailer.default_url_options = { 
-    :host => ENV['MAILER_HOST'] 
+  config.action_mailer.default_url_options = {
+    :host => ENV['MAILER_HOST'],
+    :protocol => ENV['MAILER_PROTOCOL']
   }
 
   config.action_mailer.delivery_method = method
