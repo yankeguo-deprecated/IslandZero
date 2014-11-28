@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20141123001006) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "topics", force: true do |t|
-    t.integer  "parent_id",    default: 0, null: false
-    t.string   "title",                    null: false
-    t.text     "introduction",             null: false
+    t.integer  "parent_id",    default: 0,   null: false
+    t.string   "title",                      null: false
+    t.text     "introduction",               null: false
+    t.integer  "rank",         default: 100, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
