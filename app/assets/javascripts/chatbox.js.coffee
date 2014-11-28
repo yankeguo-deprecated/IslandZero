@@ -1,7 +1,7 @@
 class Chatbox
   constructor: (@element)->
   subscribe: (room = Chatbox.getPageRoom())=>
-    return unless room?
+    return unless room? and room != ""
     @cancel()
     Pusher.init()
     @channelName = "/chat/#{room}"
@@ -17,5 +17,12 @@ class Chatbox
 
 Chatbox.getPageRoom = ()->
   $("meta[name='chatbox-room']").attr("content")
+
+Chatbox.sendMessage = (content = "", room = Chatbox.getPageRoom())=>
+  return unless room? and room != ""
+  if content.length == 0
+    alert "Content cannot be empty."
+  else
+    $.post "/messages", { content, room }
 
 @Chatbox = Chatbox
