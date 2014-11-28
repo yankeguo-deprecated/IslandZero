@@ -3,7 +3,7 @@
   <div class="col-md-12">
     <div class="panel panel-info panel-main">
       <div class="panel-body">
-        <%= form_for @message do |f| %>
+        <%= form_for @message, remote: true do |f| %>
         <%= f.hidden_field :chattable_type %>
         <%= f.hidden_field :chattable_id %>
         <div class="row">
@@ -18,7 +18,7 @@
         </div>
         <% end %>
       </div>
-      <div class="panel-body">
+      <div class="panel-body" id="chatroom-content">
 
         <% messages.each do |msg| %>
         <p class="text-primary">
@@ -32,6 +32,9 @@
 
         <% end %>
       </div>
+      <script>
+      (new Chatbox($("#chatroom-content"))).subscribe("/chat/<%= @message.chattable_type %>/<%= @message.chattable_id %>")
+      </script>
     </div>
   </div>
 </div>

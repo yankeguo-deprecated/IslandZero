@@ -4,29 +4,25 @@ class Chatbox
     if Chatbox.current
       Chatbox.current.cancel()
     Chatbox.current = this
-  subscribe: (room = Chatbox.getPageRoom())=>
+  subscribe: (room)=>
     return unless room? and room != ""
     @cancel()
     Pusher.init()
-    @channelName = "/chat/#{room}"
-    @channel = Pusher.client.subscribe @channelName, @onMessage
+    @channel = Pusher.client.subscribe room, @onMessage
   cancel: ()=>
     if @channel?
       @channel.cancel()
-      @channelName = null
       @channel = null
   onMessage: (msg)=>
-    #TODO: better message listing
-    @element.innerHTML += msg
-
-Chatbox.getPageRoom = ()->
-  $("meta[name='chatroom_id']").attr("content")
-
-Chatbox.sendMessage = (content = "", room = Chatbox.getPageRoom())=>
-  return unless room? and room != ""
-  if content.length == 0
-    alert "Content cannot be empty."
-  else
-    $.post "/messages", { content, room }
+    @element.prepend "
+    <p class=\"text-primary\">
+      <small class=\"text-muted\">
+        #{msg.user_nickname} (##{msg.user_id})
+        <span class=\"pull-right\">#{msg.created_at}</span>
+      </small>
+      <br/>
+      #{msg.content}
+    </p>
+    "
 
 @Chatbox = Chatbox
