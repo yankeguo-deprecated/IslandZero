@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:yanke-guo/magi-systems.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/magi/workspace/magi-systems'
+set :deploy_to, '/home/magi/magi-systems-server'
 
 set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 
