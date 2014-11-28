@@ -20,7 +20,7 @@ class Chatbox
     @element.innerHTML += msg
 
 Chatbox.getPageRoom = ()->
-  $("meta[name='chatroom-id']").attr("content")
+  $("meta[name='chatroom_id']").attr("content")
 
 Chatbox.sendMessage = (content = "", room = Chatbox.getPageRoom())=>
   return unless room? and room != ""

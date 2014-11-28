@@ -1,6 +1,16 @@
-<h1>Editing topic</h1>
+<div class="container">
+  <div class="row">
 
-<%= render 'form' %>
+    <div class="col-md-6 col-md-offset-3">
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+      <div class="panel panel-primary panel-main">
+        <div class="panel-body">
+          <%= link_to t(:back), @topic %>
+        </div>
+        <div class="panel-body">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

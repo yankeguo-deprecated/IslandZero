@@ -1,8 +1,16 @@
-<div id="chatbox">
-<form chatbox-form>
-  <input type="text" chatbox-input></input>
-  <input type="submit" value="submit"></input>
-  <div chatbox-list>
+<% messages = @chattable.messages.order("id DESC").first(100) %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-info panel-main">
+      <div class="panel-body">
+
+        <% messages.each do |msg| %>
+        <p>
+          <%= msg.content %>
+        </p>
+
+        <% end %>
+      </div>
+    </div>
   </div>
-</form>
 </div>

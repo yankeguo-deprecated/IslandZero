@@ -7,6 +7,7 @@ class CreateTopics < ActiveRecord::Migration
       # Attributes
       t.string  :title,         null: false
       t.text    :introduction,  null: false
+      t.integer :rank,          null: false, default: 100, index: true
 
       # Default
       t.timestamps

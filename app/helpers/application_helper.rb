@@ -6,10 +6,6 @@ module ApplicationHelper
     end
   end
 
-  def chatroom_meta_tag
-    tag :meta, name: 'chatroom-id', content: request.path
-  end
-
   def glyphicon(name)
     tag :span, class: "glyphicon glyphicon-#{name}", 'aria-hidden' => "true"
   end
