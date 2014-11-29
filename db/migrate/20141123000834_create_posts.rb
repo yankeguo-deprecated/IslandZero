@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer     :parent_id, null: false, default: 0, index: true
 
       # Attributes
+      t.string      :title
       t.text        :content,   null: false
 
       # Default
