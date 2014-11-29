@@ -1,12 +1,20 @@
 # For more details, search gem figaro
+#
+# Mailer
 MAILER_METHOD: 'sendmail'
 # SMTP params is not necessary if you use sendmail
 MAILER_SMTP_SERVER: ''
 MAILER_SMTP_PORT: ''
 MAILER_SMTP_USERNAME: ''
 MAILER_SMTP_PASSWORD: ''
+# Redis
 REDIS_URL: 'redis://127.0.0.1:6379'
+# Timezone
 TIMEZONE: 'Beijing'
+# Production Server (Commented out for Travis-CI)
+# PROD_SERVER: ''
+# PROD_SERVER_USER: ''
+# PROD_SERVER_PASSWORD: ''
 development:
   MAILER_HOST: 'localhost:3000'
   MAILER_PROTOCOL: 'http'

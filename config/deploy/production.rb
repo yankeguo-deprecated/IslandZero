@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'magi.systems', user: 'magi', roles: %w{web worker db app}
+server ENV['PROD_SERVER'], user: ENV['PROD_SERVER_USER'], roles: %w{web worker db app}, auth_methods: %w{ password }, password: ENV['PROD_SERVER_PASSWORD']
 
 # Custom SSH Options
 # ==================
