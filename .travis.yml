@@ -5,5 +5,9 @@ rvm:
   - 2.1.0
 before_script:
   - cp config/application.yml.sample config/application.yml
+  - RAILS_ENV=test bundle exec rake db:drop
+  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:schema:load
+  - RAILS_ENV=test bundle exec rake db:seed
 script:
-  - RAILS_ENV=test bundle exec rspec
+  - RAILS_ENV=test bundle exec rspec spec
