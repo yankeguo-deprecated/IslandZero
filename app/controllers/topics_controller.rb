@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
 
     # Form for tricks
     @post   = Post.new
+    @post.topic = @topic
     @message= Message.new
     @message.chattable = @topic
 

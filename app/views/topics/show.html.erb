@@ -46,7 +46,7 @@
             <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <%= form_for @post, remote: false do |f| %>
-                <%= f.hidden_field :topic_id, value: @topic.id %>
+                <%= f.hidden_field :topic_id %>
                 <div class="form-group">
                   <%= f.text_field :title, class: 'form-control', id: 'inputTitle', placeholder: t("title") %>
                 </div>

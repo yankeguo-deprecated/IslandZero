@@ -1,4 +1,7 @@
 en:
+  new_reply: 'New Reply'
+  no_replies: 'No Replies'
+  back_to_topic: 'Back to topic'
   title: 'Title'
   content: 'Content'
   submit: 'Submit'

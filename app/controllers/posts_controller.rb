@@ -11,6 +11,22 @@ class PostsController < ApplicationController
   end
 
   def show
+    # Prepare a Message
+    @chattable = @post
+    @message = Message.new
+    @message.chattable = @chattable
+
+    # Prepare a sub-post
+    @sub_post = Post.new
+    @sub_post.topic = @post.topic
+    @sub_post.parent_post = @post
+
+    # Reveal sub-posts
+    @sub_posts = @post.sub_posts.order("id DESC")
+
+    # Reveal Topic
+    @topic = @post.topic
+
     respond_with(@post)
   end
 

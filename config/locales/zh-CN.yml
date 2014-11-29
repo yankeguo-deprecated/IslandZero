@@ -1,4 +1,7 @@
 zh-CN:
+  new_reply: '新建回复'
+  no_replies: '没有回复'
+  back_to_topic: '返回主题'
   title: '标题'
   content: '内容'
   submit: '提交'

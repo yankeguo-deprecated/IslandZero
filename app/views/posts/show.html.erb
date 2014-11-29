@@ -1,14 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+    <div class="col-md-8">
 
-<p>
-  <strong>Topic:</strong>
-  <%= @post.topic %>
-</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-primary panel-main">
+            <div class="panel-body">
+              <%= link_to "#{t(:back_to_topic)}: #{@topic.title}", topic_path(@topic) %>
+            </div>
+            <div class="panel-body">
+              <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"><%= @post.user.nickname %> | <%= @post.created_at %></small></h4>
+              <p>
+                <%= @post.content %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+
+            <div class="panel-body text-right">
+              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+                <%= glyphicon 'pencil' %><%= t(:new_reply) %>
+              </a>
+            </div>
+
+            <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <%= form_for @sub_post, remote: false do |f| %>
+                <%= f.hidden_field :topic_id %>
+                <%= f.hidden_field :parent_id %>
+                <div class="form-group">
+                  <%= f.text_area :content, class: 'form-control', id: 'inputContent', placeholder: t("content") %>
+                </div>
+                <div class="form-group text-right">
+                  <%= f.submit t("submit"), class: "btn btn-sm btn-default" %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+            <ul class="list-group">
+              <% if @sub_posts.length != 0 %>
+
+              <% @sub_posts.each do |post| %>
+              <li class="list-group-item">
+                <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %> <%= post.user.nickname %> | <%= post.created_at %></small></h4>
+                <p class="list-group-item-text"><%= post.content %></p>
+              </li>
+              <% end %>
+
+              <% else %>
+
+              <li class="list-group-item text-center"><%= t(:no_replies) %></li>
+
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+      <%= render 'shared/chatbox' %>
+    </div>
+
+  </div>
+</div>
