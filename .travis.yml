@@ -3,6 +3,9 @@ services:
   - redis-server
 rvm:
   - 2.1.0
+branches:
+  only:
+    - master
 before_script:
   - cp config/application.yml.sample config/application.yml
   - RAILS_ENV=test bundle exec rake db:drop
@@ -11,3 +14,6 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:seed
 script:
   - RAILS_ENV=test bundle exec rspec spec
+after_success:
+  - bundle exec cap production deploy
+  - bundle exec cap production deploy:restart
