@@ -9,6 +9,8 @@ MAILER_SMTP_USERNAME: ''
 MAILER_SMTP_PASSWORD: ''
 # Redis
 REDIS_URL: 'redis://127.0.0.1:6379'
+# New Relic
+NEW_RELIC_KEY: ''
 # Timezone
 TIMEZONE: 'Beijing'
 # Production Server (Used by Capistrano, commented out for Travis-CI variables)
