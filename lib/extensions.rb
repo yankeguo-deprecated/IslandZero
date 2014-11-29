@@ -1,6 +1,11 @@
-# Extend Sanitize with cleaning hash values
-class Sanitize
-  def self.clean_hash(hash, config)
-    hash.each { |key, value| hash[key] = self.clean value, config }
+# Extend ActionController::Parameters with sanitize
+class ActionController::Parameters
+  def clean(*keys)
+    keys.flatten.compact.each do |key|
+      if self[key].present?
+        self[key] = Sanitize.clean(self[key], Sanitize::Config::RESTRICTED)
+      end
+    end
+    self
   end
 end

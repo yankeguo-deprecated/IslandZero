@@ -2,7 +2,10 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    post_params = params.require(:message).permit(:chattable_id, :chattable_type, :content)
+    post_params = params.require(:message)
+    .permit(:chattable_id, :chattable_type, :content)
+    .clean(:content)
+
     if post_params[:content].blank?
       if request.xhr?
         render plain: t(:content_missing), status: 400
