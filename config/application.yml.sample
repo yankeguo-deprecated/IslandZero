@@ -1,0 +1,17 @@
+# For more details, search gem figaro
+MAILER_METHOD: 'sendmail'
+# SMTP params is not necessary if you use sendmail
+MAILER_SMTP_SERVER: ''
+MAILER_SMTP_PORT: ''
+MAILER_SMTP_USERNAME: ''
+MAILER_SMTP_PASSWORD: ''
+REDIS_URL: 'redis://127.0.0.1:6379'
+TIMEZONE: 'Beijing'
+development:
+  MAILER_HOST: 'localhost:3000'
+  MAILER_PROTOCOL: 'http'
+production:
+  GA_TRACK_ID: ''
+  MAILER_HOST: 'magi.systems'
+  MAILER_PROTOCOL: 'https'
+  SECRET_KEY_BASE: ''
