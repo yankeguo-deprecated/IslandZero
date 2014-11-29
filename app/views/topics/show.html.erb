@@ -65,7 +65,7 @@
 
               <% @posts.each do |post| %>
               <%= link_to post, class: 'list-group-item' do %>
-              <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></h4>
+              <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %> <small class="pull-right"><%= post.user.nickname %> | <%= post.created_at %></small></h4>
               <p class="list-group-item-text"><%= post.content %></p>
               <% end %>
               <% end %>
