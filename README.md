@@ -1,7 +1,7 @@
 # MAGI::Systems
 
-![Travis Status](//travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
-![Gratipay](//img.shields.io/gratipay/yanke-guo.svg)
+![Travis Status](https://travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
+![Gratipay](https://img.shields.io/gratipay/yanke-guo.svg)
 
 ## Requirements
 
