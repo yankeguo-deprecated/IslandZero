@@ -24,5 +24,16 @@ class Chatbox
       #{msg.content}
     </p>
     "
+Chatbox.setupFormSend = (form)->
+  inputEle = form.find '#input-content'
+  form.on 'ajax:beforeSend', ->
+    inputEle.attr('disabled', true)
+  form.on 'ajax:success', (data, status, xhr)->
+    inputEle.val("")
+  form.on 'ajax:error', (event, xhr, error)->
+    alert xhr.responseText
+  form.on 'ajax:complete', ->
+    inputEle.attr('disabled', false)
+
 
 @Chatbox = Chatbox

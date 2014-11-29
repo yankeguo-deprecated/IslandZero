@@ -3,13 +3,13 @@
   <div class="col-md-12">
     <div class="panel panel-info panel-main">
       <div class="panel-body">
-        <%= form_for @message, remote: true do |f| %>
+        <%= form_for @message, remote: true, html: { id: 'chatroom-send-form' } do |f| %>
         <%= f.hidden_field :chattable_type %>
         <%= f.hidden_field :chattable_id %>
         <div class="row">
           <div class="col-md-8">
             <div class="form-group">
-              <%= f.text_field :content, class: 'form-control' %>
+              <%= f.text_field :content, class: 'form-control', id: 'input-content' %>
             </div>
           </div>
           <div class="col-md-2">
@@ -33,7 +33,8 @@
         <% end %>
       </div>
       <script>
-      (new Chatbox($("#chatroom-content"))).subscribe("/chat/<%= @message.chattable_type %>/<%= @message.chattable_id %>")
+      (new Chatbox($("#chatroom-content"))).subscribe("/chat/<%= @message.chattable_type %>/<%= @message.chattable_id %>");
+      Chatbox.setupFormSend($("#chatroom-send-form"));
       </script>
     </div>
   </div>

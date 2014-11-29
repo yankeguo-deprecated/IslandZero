@@ -4,10 +4,10 @@ class MessagesController < ApplicationController
   def create
     post_params = params.require(:message).permit(:chattable_id, :chattable_type, :content)
     if post_params[:content].blank?
-      flash.alert = t(:content_missing)
       if request.xhr?
-        render nothing: true
+        render plain: t(:content_missing), status: 400
       else
+        flash.alert = t(:content_missing)
         redirect_to :back
       end
       return
