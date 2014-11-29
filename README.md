@@ -1,5 +1,7 @@
 # MAGI::Systems
 
+![Travis Status](https://travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
+
 ## Requirements
 
 -  Ruby (Modern)
