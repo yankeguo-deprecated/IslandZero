@@ -42,6 +42,10 @@ gem 'thin'
 
 gem "figaro"
 
+# Monitor
+
+gem 'newrelic_rpm'
+
 # Rspect
 
 group :development, :test do
