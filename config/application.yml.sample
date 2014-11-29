@@ -11,7 +11,7 @@ MAILER_SMTP_PASSWORD: ''
 REDIS_URL: 'redis://127.0.0.1:6379'
 # Timezone
 TIMEZONE: 'Beijing'
-# Production Server (Commented out for Travis-CI)
+# Production Server (Used by Capistrano, commented out for Travis-CI variables)
 # PROD_SERVER: ''
 # PROD_SERVER_USER: ''
 # PROD_SERVER_PASSWORD: ''
