@@ -2,8 +2,6 @@
 
 ![Travis Status](https://travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
 
-<a href="https://gratipay.com/yanke-guo"><img src="//img.shields.io/gratipay/yanke-guo.svg"></a>
-
 ## Requirements
 
 -  Ruby (Modern)
