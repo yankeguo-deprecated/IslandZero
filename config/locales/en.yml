@@ -1,2 +1,26 @@
 en:
-  magi_introduction: 'This is MAGI::Systems humain interface.'
+  title: 'Title'
+  content: 'Content'
+  submit: 'Submit'
+  content_missing: 'Content Missing'
+  send: 'Send'
+  logout: 'Logout'
+  back_to_all_topics: 'Return to all topics'
+  back_to_parent_topic: 'Return to parent topic'
+  no_posts: 'No Posts'
+  new_topic: 'New Topic'
+  new_sub_topic: 'New Sub-topic'
+  new_post: 'New Post'
+  back: 'Back'
+  edit: 'Edit'
+  login: 'Login'
+  register: 'Register'
+  magi_introduction: 'This is MAGI::Systems.'
+  attributes:
+    password_confirmation: 'Repeat'
+  remember_me: 'Remember me'
+  helpers:
+    label:
+      user:
+        email: 'Email'
+        password: 'Password'
