@@ -10,12 +10,22 @@
 
 MAGI::Systems use `Figaro` for configuration.
 
-Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
+-  Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
+-  Check and edit `config/database.yml`, default is `sqlite3` for both `development` and `production`, ;).
+-  If you plan to use `Capistrano`, check and edit `config/deploy.rb`, `config/deploy/*.rb`, default production server is the `https://magi.systems`, ;).
+
+It is suggested to move any customized parameters to `config/application.yml`, thus `Capistrano` will handle it well.
 
 ## Run
 
 -  Thin     (see `config/thin/production.yml`)
 -  Sidekiq  (see `config/sidekiq.yml`)
+
+## Development
+
+**ANY** stable code will be merged into master as soon as possible.
+
+Feel free to fork or open issues.
 
 ## LICENSE
 
