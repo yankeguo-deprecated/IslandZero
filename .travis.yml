@@ -1,0 +1,12 @@
+language: ruby
+services:
+  - redis-server
+rvm:
+  - 2.1.0
+branches:
+  only:
+    - master
+before_script:
+  - cp config/application.yml.sample config/application.yml
+script:
+  - RAILS_ENV=test bundle exec rspec

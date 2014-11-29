@@ -10,8 +10,11 @@ TIMEZONE: 'Beijing'
 development:
   MAILER_HOST: 'localhost:3000'
   MAILER_PROTOCOL: 'http'
+test:
+  MAILER_HOST: 'localhost:3000'
+  MAILER_PROTOCOL: 'http'
 production:
   GA_TRACK_ID: ''
-  MAILER_HOST: 'magi.systems'
-  MAILER_PROTOCOL: 'https'
-  SECRET_KEY_BASE: ''
+  MAILER_HOST: 'localhost:3000'
+  MAILER_PROTOCOL: 'http'
+  SECRET_KEY_BASE: 'this-is-a-random-string-trust-me'

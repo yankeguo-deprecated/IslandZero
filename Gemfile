@@ -42,20 +42,24 @@ gem 'thin'
 
 gem "figaro"
 
-# Development
+# Rspect
 
-gem 'i18n-debug', group: :development
+group :development, :test do
+  # Deployment
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-thin'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
 
-# Deployment
+  # Document
+  gem 'redcarpet'
+  gem 'yard'
 
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-thin'
-gem 'capistrano-rails', '~> 1.1'
-gem 'capistrano-rvm'
-gem 'capistrano-sidekiq'
+  # i18n
+  gem 'i18n-debug'
 
-# Document
-
-gem 'redcarpet'
-gem 'yard'
+  # Test
+  gem 'rspec-rails', '~> 3.0'
+end
