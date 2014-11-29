@@ -14,18 +14,28 @@ MAGI::Systems use `Figaro` for configuration.
 
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
 -  Check and edit `config/database.yml`, default is `sqlite3` for both `development` and `production`, ;).
--  If you plan to use `Capistrano`, check and edit `config/deploy.rb`, `config/deploy/*.rb`, default production server is the `https://magi.systems`, ;).
 
-It is suggested to move any customized parameters to `config/application.yml`, thus `Capistrano` will handle it well.
+It is suggested to move parameters to `config/application.yml`, thus `Capistrano` will handle it well.
 
 ## Run
 
 -  Thin     (see `config/thin/production.yml`)
 -  Sidekiq  (see `config/sidekiq.yml`)
 
+## Deploy Via `Capistrano`
+
+-  Setup your server with `Ruby`, and a running `Redis`.
+-  Edit `config/deploy.rb`, use a proper path.
+-  Edit `config/application.yml`, add a proper server.
+-  Run  `bundle exec cap deploy:setup`, prepare initial environment.
+-  Run  `bundle exec cap figaro:setup`, deploy local `application.yml` to remote.
+-  Run  `bundle exec cap deploy`, deploy a new release.
+-  Run  `bundle exec cap deploy:restart`, restart `thin`.
+
 ## Development
 
 **ANY** stable code will be merged into master as soon as possible.
+**ANY** commits made to `master` branch will deployed to `https://magi.systems` via `Travis CI`.
 
 Feel free to fork or open issues.
 
