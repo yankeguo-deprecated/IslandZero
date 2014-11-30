@@ -1,4 +1,5 @@
 <% messages = @chattable.messages.order("id DESC").first(100) %>
+
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-info panel-main">
@@ -23,10 +24,6 @@
         <%= render partial: 'shared/chatitem', locals: { msg: msg } %>
         <% end %>
       </div>
-      <script>
-      (new Chatbox($("#chatroom-content"))).subscribe("/chat/<%= @message.chattable_type %>/<%= @message.chattable_id %>");
-      Chatbox.setupFormSend($("#chatroom-send-form"));
-      </script>
     </div>
   </div>
 </div>

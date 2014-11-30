@@ -1,9 +1,10 @@
 class Chatbox
-  constructor: (@element)->
+  constructor: (@element, channelName)->
     # Ensure single Chatbox
     if Chatbox.current
       Chatbox.current.cancel()
     Chatbox.current = this
+    @subscribe channelName
   subscribe: (room)=>
     return unless room? and room != ""
     @cancel()
@@ -26,6 +27,12 @@ Chatbox.setupFormSend = (form)->
     alert xhr.responseText
   form.on 'ajax:complete', ->
     inputEle.attr('disabled', false)
+
+$(document).on 'page:change', ()->
+  channel = $("meta[name='chatroom-channel']").attr "content"
+  if channel? and channel != ""
+    Chatbox.setupFormSend $("#chatroom-send-form")
+    new Chatbox $("#chatroom-content"), channel
 
 
 @Chatbox = Chatbox
