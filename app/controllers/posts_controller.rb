@@ -81,7 +81,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    respond_with(@post)
+    if @post.parent_id == 0
+      redirect_to topic_path(@post.topic)
+    else
+      redirect_to :back
+    end
   end
 
   private
