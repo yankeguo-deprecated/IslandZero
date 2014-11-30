@@ -8,6 +8,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= csrf_meta_tags %>
+  <!-- GA Head -->
+  <%= render 'shared/ga_head' %>
 </head>
 <body>
 
@@ -51,12 +53,12 @@
   <!-- Footer -->
   <%= render 'shared/footer' %>
 
-  <!-- GA -->
-  <%= render 'shared/ga' %>
-
   <% if @new_message %>
   <%= chatroom_meta_for @new_message %>
   <% end %>
+
+  <!-- GA Page View -->
+  <%= render 'shared/ga_page_view' %>
 
 </body>
 </html>
