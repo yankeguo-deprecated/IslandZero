@@ -20,6 +20,6 @@ class Post < ActiveRecord::Base
   end
 
   def content_plain
-    Sanitize.clean(self.content_parsed, Sanitize::Config::RESTRICTED)
+    Sanitize.clean(self.content_parsed, Sanitize::Config::STRICT)
   end
 end

@@ -22,6 +22,6 @@ class Topic < ActiveRecord::Base
   end
 
   def introduction_plain
-    Sanitize.clean(self.introduction_parsed, Sanitize::Config::RESTRICTED)
+    Sanitize.clean(self.introduction_parsed, Sanitize::Config::STRICT)
   end
 end
