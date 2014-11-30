@@ -20,9 +20,7 @@ class MessagesController < ApplicationController
     # Check Duplicated Message
     msg_hash = Digest::SHA1.hexdigest(post_params[:content])
     lock_key = "lock.dm.#{current_user.id}"
-    if $redis.setnx(lock_key, msg_hash)
-      $redis.expire(lock_key, 3)
-    else
+    if $redis.get(lock_key) == msg_hash
       if request.xhr?
         render plain: t(:pls_no_duplicated_message), status: 400
       else
@@ -30,6 +28,8 @@ class MessagesController < ApplicationController
         redirect_to :back
       end
       return
+    else
+      $redis.setex(lock_key, 3, msg_hash)
     end
 
     # Create model
