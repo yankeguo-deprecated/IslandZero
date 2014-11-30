@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   # Devise
-  devise_for :users
+  devise_for :users , controllers: {
+    registrations: 'users/registrations'
+  }
 
   resources :posts
   resources :topics

@@ -1,4 +1,5 @@
 en:
+  update: 'Update'
   profile: 'Profile'
   will_paginate:
     previous_label: 'Previous'
@@ -24,6 +25,7 @@ en:
   register: 'Register'
   magi_introduction: 'This is MAGI::Systems.'
   attributes:
+    current_password: 'Current Password'
     password_confirmation: 'Repeat'
   remember_me: 'Remember me'
   helpers:
