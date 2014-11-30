@@ -20,7 +20,7 @@
       </div>
       <div class="panel-body" id="chatroom-content">
         <% messages.each do |msg| %>
-        <%= render 'shared/chatitem', msg: msg %>
+        <%= render partial: 'shared/chatitem', locals: { msg: msg } %>
         <% end %>
       </div>
       <script>

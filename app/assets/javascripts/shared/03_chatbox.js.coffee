@@ -14,16 +14,8 @@ class Chatbox
       @channel.cancel()
       @channel = null
   onMessage: (msg)=>
-    @element.prepend "
-    <p class=\"text-primary\">
-      <small class=\"text-muted\">
-        #{msg.user_nickname} (##{msg.user_id})
-        <span class=\"pull-right\">#{msg.created_at}</span>
-      </small>
-      <br/>
-      #{msg.content}
-    </p>
-    "
+    @element.prepend msg._html
+
 Chatbox.setupFormSend = (form)->
   inputEle = form.find '#input-content'
   form.on 'ajax:beforeSend', ->
