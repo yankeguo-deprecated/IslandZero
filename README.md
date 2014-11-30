@@ -13,7 +13,6 @@
 MAGI::Systems use `Figaro` for configuration.
 
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
--  Check and edit `config/database.yml`, default is `sqlite3` for both `development` and `production`, ;).
 
 It is suggested to move parameters to `config/application.yml`, thus `Capistrano` will handle it well.
 
@@ -35,7 +34,12 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 ## Development
 
 **ANY** stable code will be merged into master as soon as possible.
+
 **ANY** commits made to `master` branch will deployed to `https://magi.systems` via `Travis CI`.
+
+See [My Blog](http://blog.yanke.io/2014/11/30/Deploy-Production-Server-Using-Travis-CI-Figaro-and-Capistrano.html) for detail.
+
+From commit `f2bf2e32976f476cea466890b06096e0abdbd460` onward, all commits made by me will be signed with GPG key `YANKE Guo <me@yanke.io> 8C4D9C36` (unless I forget to), you can retrieve it from `hkp://keys.gnupg.net`.
 
 Feel free to fork or open issues.
 
