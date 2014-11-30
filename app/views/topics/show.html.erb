@@ -67,8 +67,11 @@
               <%= link_to post, class: 'list-group-item' do %>
               <h4 class="list-group-item-heading">
                 <span><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></span>
-                <span class="pull-right"><small><%= post.user.nickname %> | <%= time_ago_in_words post.created_at %></small></span>
+                <% if post.topic != @topic %>
+                <span class="label label-default pull-right"><%= post.topic.title %></span>
+                <% end %>
               </h4>
+              <p class="list-group-item-text text-right"><small><%= post.user.nickname %> | <%= time_ago_in_words post.created_at %></small></p>
               <p class="list-group-item-text"><%= post.content %></p>
               <% end %>
               <% end %>
