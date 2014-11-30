@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require bootstrap-markdown
  *= require_tree ./shared
  *= require_tree .
  *= require_self

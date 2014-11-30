@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-markdown
+//= require bootstrap-markdown.zh
 //= require_tree ./shared
 //= require_tree .
