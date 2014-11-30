@@ -6,7 +6,7 @@
 
 -  Ruby (Modern)
 -  Redis
--  Sqlite3
+-  MySQL
 
 ## Configuration
 
@@ -23,8 +23,7 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 
 ## Deploy Via `Capistrano`
 
--  Setup your server with `Ruby`, and a running `Redis`.
--  Edit `config/deploy.rb`, use a proper path.
+-  Setup your server with `Ruby`, a running `Redis`, and a running `MySQL`.
 -  Edit `config/application.yml`, add a proper server.
 -  Run  `bundle exec cap deploy:setup`, prepare initial environment.
 -  Run  `bundle exec cap figaro:setup`, deploy local `application.yml` to remote.

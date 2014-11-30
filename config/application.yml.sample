@@ -17,6 +17,7 @@ TIMEZONE: 'Beijing'
 # PROD_SERVER: ''
 # PROD_SERVER_USER: ''
 # PROD_SERVER_PASSWORD: ''
+# PROD_SERVER_PATH: ''
 development:
   MAILER_HOST: 'localhost:3000'
   MAILER_PROTOCOL: 'http'
