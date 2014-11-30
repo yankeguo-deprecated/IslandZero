@@ -11,4 +11,15 @@ class Post < ActiveRecord::Base
 
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
+
+  # Shortcut for Markdown parsed introduction
+
+  def content_parsed
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    .render(self.content || "")
+  end
+
+  def content_plain
+    Sanitize.clean(self.content_parsed, Sanitize::Config::RESTRICTED)
+  end
 end

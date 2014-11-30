@@ -12,7 +12,7 @@
             <div class="panel-body">
               <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"><%= @post.user.nickname %> | <%= time_ago_in_words @post.created_at %></small></h4>
               <p>
-                <%= @post.content %>
+                <%= @post.content_parsed.html_safe %>
               </p>
             </div>
           </div>
@@ -50,7 +50,7 @@
               <% @sub_posts.each do |post| %>
               <li class="list-group-item">
                 <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %> <%= post.user.nickname %> | <%= time_ago_in_words post.created_at %></small></h4>
-                <p class="list-group-item-text"><%= post.content %></p>
+                <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>
               </li>
               <% end %>
 
