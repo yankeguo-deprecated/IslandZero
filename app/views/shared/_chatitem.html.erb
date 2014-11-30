@@ -1,0 +1,8 @@
+<p class="text-primary">
+  <small class="text-muted">
+    <%= msg.user.nickname %> (#<%= msg.user.id %>)
+    <span class="pull-right"><%= time_ago_in_words msg.created_at %></span>
+  </small>
+  <br/>
+  <%= msg.content %>
+</p>

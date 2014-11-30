@@ -12,7 +12,7 @@
               <%= link_to t(:back_to_all_topics), topics_path %>
               <% else %>
               <% if @topic.parent_topic.present? %>
-              <%= link_to t(:back_to_parent_topic), topic_path(@topic.parent_topic) %>
+              <%= link_to "#{t(:back_to_parent_topic)}: #{@topic.parent_topic.title}", topic_path(@topic.parent_topic) %>
               <% end %>
               <% end %>
 
@@ -65,7 +65,10 @@
 
               <% @posts.each do |post| %>
               <%= link_to post, class: 'list-group-item' do %>
-              <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %> <small class="pull-right"><%= post.user.nickname %> | <%= post.created_at %></small></h4>
+              <h4 class="list-group-item-heading">
+                <span><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></span>
+                <span class="pull-right"><small><%= post.user.nickname %> | <%= time_ago_in_words post.created_at %></small></span>
+              </h4>
               <p class="list-group-item-text"><%= post.content %></p>
               <% end %>
               <% end %>

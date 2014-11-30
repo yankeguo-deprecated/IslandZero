@@ -19,17 +19,8 @@
         <% end %>
       </div>
       <div class="panel-body" id="chatroom-content">
-
         <% messages.each do |msg| %>
-        <p class="text-primary">
-          <small class="text-muted">
-            <%= msg.user.nickname %> (#<%= msg.user.id %>)
-            <span class="pull-right"><%= msg.created_at %></span>
-          </small>
-          <br/>
-          <%= msg.content %>
-        </p>
-
+        <%= render 'shared/chatitem', msg: msg %>
         <% end %>
       </div>
       <script>
