@@ -13,13 +13,13 @@ class PostsController < ApplicationController
   def show
     # Prepare a Message
     @chattable = @post
-    @message = Message.new
-    @message.chattable = @chattable
+    @new_message = Message.new
+    @new_message.chattable = @chattable
 
     # Prepare a sub-post
-    @sub_post = Post.new
-    @sub_post.topic = @post.topic
-    @sub_post.parent_post = @post
+    @new_post = Post.new
+    @new_post.topic = @post.topic
+    @new_post.parent_post = @post
 
     # Reveal sub-posts
     @sub_posts = @post.sub_posts.order("id DESC")

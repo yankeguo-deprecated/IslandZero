@@ -31,7 +31,7 @@
 
             <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
-                <%= form_for @sub_post, remote: true, html: { class: 'need-reload' } do |f| %>
+                <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
                 <%= f.hidden_field :topic_id %>
                 <%= f.hidden_field :parent_id %>
                 <div class="form-group">

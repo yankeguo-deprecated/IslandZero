@@ -11,18 +11,18 @@ class TopicsController < ApplicationController
   end
 
   def show
-    # Setup Chattable
+    # Setup message
     @chattable = @topic
+    @new_message= Message.new
+    @new_message.chattable = @topic
 
     # Reveal Objects
     @posts  = @topic.all_posts.order("id DESC")
-    @topics = @topic.sub_topics.order(:rank)
+    @sub_topics = @topic.sub_topics.order(:rank)
 
     # Form for tricks
-    @post   = Post.new
-    @post.topic = @topic
-    @message= Message.new
-    @message.chattable = @topic
+    @new_post   = Post.new
+    @new_post.topic = @topic
 
     # Render
     respond_with(@topic)

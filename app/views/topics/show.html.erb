@@ -28,7 +28,7 @@
               </div>
               <% end %>
             </div>
-            <%= render 'index' %>
+            <%= render 'index', topics: @sub_topics %>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
 
             <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
-                <%= form_for @post, remote: true, html: { class: 'need-reload' } do |f| %>
+                <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
                 <%= f.hidden_field :topic_id %>
                 <div class="form-group">
                   <%= f.text_field :title, class: 'form-control', id: 'inputTitle', placeholder: t("title") %>

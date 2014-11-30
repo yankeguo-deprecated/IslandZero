@@ -54,8 +54,8 @@
   <!-- GA -->
   <%= render 'shared/ga' %>
 
-  <% if @message.present? and !@message.persisted? %>
-  <%= chatroom_meta_for @message %>
+  <% if @new_message %>
+  <%= chatroom_meta_for @new_message %>
   <% end %>
 
 </body>
