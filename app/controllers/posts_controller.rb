@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_permission, only: [:edit, :update, :destroy]
 
   respond_to :html
 
@@ -91,6 +92,13 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def check_permission
+    unless current_user.is_admin || current_user == @post.user
+      flash.alert = t(:you_are_not_admin)
+      redirect_to topic_path(@post.topic)
+    end
   end
 
 end
