@@ -17,7 +17,7 @@
               <% end %>
 
               <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
-              <%= @topic.introduction %>
+              <%= @topic.introduction_parsed.html_safe %>
 
               <% if current_user.is_admin %>
               <div class="text-right">

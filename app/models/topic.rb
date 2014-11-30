@@ -13,4 +13,15 @@ class Topic < ActiveRecord::Base
   def all_posts
     Post.where(topic_id: self.sub_topic_ids | [ self.id ])
   end
+
+  # Shortcut for Markdown parsed introduction
+
+  def introduction_parsed
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    .render(self.introduction || "")
+  end
+
+  def introduction_plain
+    Sanitize.clean(self.introduction_parsed, Sanitize::Config::RESTRICTED)
+  end
 end
