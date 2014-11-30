@@ -28,3 +28,7 @@ production:
   MAILER_HOST: 'localhost:3000'
   MAILER_PROTOCOL: 'http'
   SECRET_KEY_BASE: 'this-is-a-random-string-trust-me'
+  MYSQL_DATABASE: ''
+  MYSQL_USERNAME: ''
+  MYSQL_PASSWORD: ''
+  MYSQL_SOCKET: ''

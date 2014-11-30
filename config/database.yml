@@ -12,5 +12,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: /data/magi/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: "<%= ENV['MYSQL_DATABASE'] %>"
+  pool: 5
+  username: "<%= ENV['MYSQL_USERNAME'] %>"
+  password: "<%= ENV['MYSQL_PASSWORD'] %>"
+  socket:   "<%= ENV['MYSQL_SOCKET'] %>"

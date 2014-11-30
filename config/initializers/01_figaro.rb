@@ -1,6 +1,9 @@
-# Secret Key Base (Production Only)
+# Production Only
 if Rails.env.production?
+  # Secret Key Base
   Figaro.require_keys 'SECRET_KEY_BASE'
+  # MySQL
+  Figaro.require_keys 'MYSQL_USERNAME', 'MYSQL_PASSWORD', 'MYSQL_SOCKET', 'MYSQL_DATABASE'
 end
 
 # Mailer Configurations

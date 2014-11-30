@@ -20,6 +20,10 @@ gem 'sanitize', '~> 2.0'
 gem 'faker'
 gem 'will_paginate', '~> 3.0.6'
 
+# MySQL
+
+gem 'mysql2'
+
 # Redis
 
 gem 'sidekiq'
