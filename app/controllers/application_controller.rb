@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
 
+  def authenticate_admin!
+    unless current_user.is_admin
+      flash.alert = t(:you_are_not_admin)
+      redirect_to :back
+    end
+  end
+
   private
 
   def set_locale

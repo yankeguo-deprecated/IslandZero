@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   }
 
   resources :posts
-  resources :topics
+  resources :topics, except: [:destroy]
   resources :messages
 
 end

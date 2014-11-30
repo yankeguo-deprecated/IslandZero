@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:edit, :update, :new, :create]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

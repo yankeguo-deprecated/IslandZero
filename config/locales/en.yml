@@ -1,4 +1,5 @@
 en:
+  you_are_not_admin: 'You are not admin.'
   confirm_to_delete: 'Confirm to delete ?'
   delete: 'delete'
   pls_no_duplicated_message: 'Please donnot send same content in short periode.'
