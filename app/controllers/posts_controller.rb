@@ -65,8 +65,12 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.new(post_params)
     @post.save
-    flash.notice = "Post created."
-    redirect_to :back
+    if request.xhr?
+      render nothing: true
+    else
+      flash.notice = "Post created."
+      redirect_to :back
+    end
   end
 
   def update
