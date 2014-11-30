@@ -1,4 +1,5 @@
 en:
+  pls_no_duplicated_message: 'Please donnot send same content in short periode.'
   update: 'Update'
   profile: 'Profile'
   will_paginate:
