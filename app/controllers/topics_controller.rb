@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
     @new_message.chattable = @topic
 
     # Reveal Objects
-    @posts  = @topic.all_posts.order("id DESC")
+    @posts  = @topic.all_posts.order("id DESC").paginate(:page => params[:page])
     @sub_topics = @topic.sub_topics.order(:rank)
 
     # Form for tricks

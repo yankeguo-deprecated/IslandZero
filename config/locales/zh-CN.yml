@@ -1,4 +1,7 @@
 zh-CN:
+  will_paginate:
+    previous_label: '上一页'
+    next_label: '下一页'
   new_reply: '新建回复'
   no_replies: '没有回复'
   back_to_topic: '返回主题'

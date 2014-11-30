@@ -1,4 +1,7 @@
 en:
+  will_paginate:
+    previous_label: 'Previous'
+    next_label: 'Next'
   new_reply: 'New Reply'
   no_replies: 'No Replies'
   back_to_topic: 'Back to topic'

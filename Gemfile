@@ -18,6 +18,7 @@ gem 'faye-rails'
 
 gem 'sanitize', '~> 2.0'
 gem 'faker'
+gem 'will_paginate', '~> 3.0.6'
 
 # Redis
 

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @new_post.parent_post = @post
 
     # Reveal sub-posts
-    @sub_posts = @post.sub_posts.order("id DESC")
+    @sub_posts = @post.sub_posts.order("id DESC").paginate(:page => params[:page])
 
     # Reveal Topic
     @topic = @post.topic
