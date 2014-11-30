@@ -1,4 +1,5 @@
 en:
+  profile: 'Profile'
   will_paginate:
     previous_label: 'Previous'
     next_label: 'Next'
