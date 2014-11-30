@@ -41,7 +41,8 @@ class PostsController < ApplicationController
   def create
     post_params = params.require(:post)
     .permit(:content, :topic_id, :parent_id, :title)
-    .clean(:content, :title)
+    .clean_basic(:content)
+    .clean_strict(:title)
 
     if post_params[:content].blank?
       redirect_to :back, flash: { alert: 'Content Missing' }

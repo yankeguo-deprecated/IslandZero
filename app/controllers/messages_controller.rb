@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     post_params = params.require(:message)
     .permit(:chattable_id, :chattable_type, :content)
-    .clean(:content)
+    .clean_strict(:content)
 
     # Check and return error
     if post_params[:content].blank?
