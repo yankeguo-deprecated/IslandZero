@@ -64,7 +64,6 @@ group :development, :test do
   gem 'capistrano-sidekiq'
 
   # Document
-  gem 'redcarpet'
   gem 'yard'
 
   # i18n
