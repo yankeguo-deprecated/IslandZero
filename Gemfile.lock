@@ -123,6 +123,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailgun_rails (0.6.4)
+      rails (>= 3.2.13)
+      rest-client (>= 1.6.7)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.4.3)
@@ -131,6 +134,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    netrc (0.8.0)
     newrelic_rpm (3.9.6.257)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -166,6 +170,9 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -261,6 +268,7 @@ DEPENDENCIES
   i18n-debug
   jbuilder (~> 2.0)
   jquery-rails
+  mailgun_rails
   mysql2
   newrelic_rpm
   rails (= 4.1.4)

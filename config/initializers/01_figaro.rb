@@ -9,6 +9,13 @@ end
 # Mailer Configurations
 Figaro.require_keys "MAILER_HOST", 'MAILER_METHOD', 'MAILER_PROTOCOL'
 
+if ENV['MAILER_METHOD'] == 'mailgun'
+  Figaro.require_keys(
+  "MAILGUN_DOMAIN",
+  "MAILGUN_API_KEY"
+  )
+end
+
 if ENV['MAILER_METHOD'] == 'smtp'
   Figaro.require_keys(
   "MAILER_SMTP_SERVER",

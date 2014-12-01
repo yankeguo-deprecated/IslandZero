@@ -1,12 +1,15 @@
 # For more details, search gem figaro
 #
-# Mailer
+# Mailer, use 'sendmail', 'smtp', or 'mailgun'
 MAILER_METHOD: 'sendmail'
 # SMTP params is not necessary if you use sendmail
 MAILER_SMTP_SERVER: ''
 MAILER_SMTP_PORT: ''
 MAILER_SMTP_USERNAME: ''
 MAILER_SMTP_PASSWORD: ''
+# Mailgun Configs
+MAILGUN_DOMAIN: ''
+MAILGUN_API_KEY: ''
 # Redis
 REDIS_URL: 'redis://127.0.0.1:6379'
 # New Relic
