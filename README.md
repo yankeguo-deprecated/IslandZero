@@ -33,10 +33,12 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 - Install `fig`.
 - Create `/data/mysql` for persistence.
 - Download `fig.yml` at the root of this repo.
-- Put configurations to `fig.yml`, see `config/application.yml.sample`
-- `fig run web bundle exec rake db:migrate` to migrate db to latest.
-- `fig up` to test.
-- `fig start`.
+- Put configurations to `fig.yml`, see `config/application.yml.sample` for detail.
+- `fig up -d` to start, wait a bit more time after command finished.
+- Newly install:
+  - `fig run web rake db:drop` drop the auto-created database due to known issue, see below.
+  - `fig run web rake db:create` create an new database.
+- `fig run web rake db:migrate` to migrate db to latest schema.
 - Setup `nginx` to proxy 3000 to 80.
 
 ## Deploy Via `Capistrano` (Not suggested, docker is better lol)
@@ -47,6 +49,14 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 -  Run  `bundle exec cap figaro:setup`, deploy local `application.yml` to remote.
 -  Run  `bundle exec cap deploy`, deploy a new release.
 -  Run  `bundle exec cap deploy:restart`, restart `thin`.
+
+## Known issues
+
+### MySQL charset problem with `Docker`
+
+Official MySQL package will automatically create database without utf8 support.
+
+To solve this issue, drop the auto-created database and recreate with rake.
 
 ## Development
 
