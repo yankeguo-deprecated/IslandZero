@@ -1,14 +1,12 @@
+# This file is for docker, will not daemonize
 ---
-user: magi
-group: magi
 pid: tmp/pids/thin.pid
 timeout: 30
 wait: 30
 log: log/thin.log
 max_conns: 1024
-environment: production
 max_persistent_conns: 512
 servers: 1
-daemonize: true
+daemonize: false
 port: 3000
 address: '127.0.0.1'

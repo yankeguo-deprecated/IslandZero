@@ -2,7 +2,6 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/rails'
 require 'capistrano/rvm'
-require 'capistrano/thin'
 require 'capistrano/sidekiq'
 
 # Load Rails Environment so we have Figaro

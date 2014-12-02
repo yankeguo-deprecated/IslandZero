@@ -49,9 +49,6 @@ GEM
       capistrano
       sidekiq
     capistrano-stats (1.0.3)
-    capistrano-thin (1.1.0)
-      capistrano (~> 3.0)
-      thin (~> 1.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coffee-rails (4.0.1)
@@ -255,7 +252,6 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rvm
   capistrano-sidekiq
-  capistrano-thin
   coffee-rails (~> 4.0.0)
   devise
   devise-async
