@@ -5,6 +5,5 @@ wait: 30
 log: log/thin_production.log
 max_conns: 1024
 max_persistent_conns: 512
-servers: 1
 daemonize: false
 port: 3000
