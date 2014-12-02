@@ -1,1 +1,1 @@
-Rails.application.config.time_zone = ENV['TIMEZONE']
+Rails.application.config.time_zone = ENV['TIMEZONE'] || 'Beijing'

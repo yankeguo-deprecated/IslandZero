@@ -1,38 +1,60 @@
-# For more details, search gem figaro
+# You can specify environment like secrets.yml. For more details, search gem figaro
 #
-# Mailer, use 'sendmail', 'smtp', or 'mailgun'
+# 1. Rails
+#
+TIMEZONE: 'Beijing'
+#
+# Secure key base is for production only
+#
+SECRET_KEY_BASE: 'this-is-a-random-string'
+#
+# 2. Mailer
+#
+# Use 'sendmail', 'smtp', or 'mailgun'
+#
 MAILER_METHOD: 'sendmail'
-# SMTP params is not necessary if you use sendmail
+MAILER_SENDER: 'admin@example.com'
+MAILER_HOST: 'localhost:3000'
+MAILER_PROTOCOL: 'http'
+#
+# SMTP (Optional)
+#
 MAILER_SMTP_SERVER: ''
 MAILER_SMTP_PORT: ''
 MAILER_SMTP_USERNAME: ''
 MAILER_SMTP_PASSWORD: ''
-# Mailgun Configs
+#
+# Mailgun (Optional)
+#
 MAILGUN_DOMAIN: ''
 MAILGUN_API_KEY: ''
-# Redis
-REDIS_URL: 'redis://127.0.0.1:6379'
-# New Relic
+#
+# 3. Redis
+#
+REDIS_PORT_6379_TCP_ADDR: '127.0.0.1'
+REDIS_PORT_6379_TCP_PORT: 6379
+#
+# 4. MySQL (Production Only, Docker Compatible)
+#
+MYSQL_ENV_MYSQL_DATABASE: 'magi'
+MYSQL_ENV_MYSQL_USER: 'magi'
+MYSQL_ENV_MYSQL_PASSWORD: 'magi'
+MYSQL_PORT_3306_TCP_PORT: 3306
+MYSQL_PORT_3306_TCP_ADDR: '127.0.0.1'
+#
+# 5. New Relic (Optional)
+#
 NEW_RELIC_KEY: ''
-# Timezone
-TIMEZONE: 'Beijing'
-# Production Server (Used by Capistrano, commented out for Travis-CI variables)
+#
+# 6. Google Analytics (Optional)
+#
+GA_TRACK_ID: ''
+#
+# 5. Capistrano (Optional)
+#
+# These sample are commented out for Travis-CI.
 # PROD_SERVER: ''
 # PROD_SERVER_USER: ''
 # PROD_SERVER_PASSWORD: ''
 # PROD_SERVER_PATH: ''
-development:
-  MAILER_HOST: 'localhost:3000'
-  MAILER_PROTOCOL: 'http'
-test:
-  MAILER_HOST: 'localhost:3000'
-  MAILER_PROTOCOL: 'http'
-production:
-  GA_TRACK_ID: ''
-  MAILER_HOST: 'localhost:3000'
-  MAILER_PROTOCOL: 'http'
-  SECRET_KEY_BASE: 'this-is-a-random-string-trust-me'
-  MYSQL_DATABASE: ''
-  MYSQL_USERNAME: ''
-  MYSQL_PASSWORD: ''
-  MYSQL_SOCKET: ''
+#

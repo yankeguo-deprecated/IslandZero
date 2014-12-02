@@ -11,6 +11,12 @@ module Magi
     # Autoload lib fonder
     config.autoload_paths << Rails.root.join('lib')
 
+    # Mailer
+
+    ENV['MAILER_METHOD']    ||= 'sendmail'
+    ENV['MAILER_HOST']      ||= 'localhost:3000'
+    ENV['MAILER_PROTOCOL']  ||= 'http'
+
     config.action_mailer.default_url_options = {
       :host =>     ENV['MAILER_HOST'],
       :protocol => ENV['MAILER_PROTOCOL']
