@@ -5,6 +5,8 @@ mysql:
     MYSQL_USER: magi
     MYSQL_ROOT_PASSWORD: myrootpassword
     MYSQL_PASSWORD: magisystems
+  volumes:
+    - /data/mysql/:/var/lib/mysql
 redis:
   image: redis
 web:
