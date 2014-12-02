@@ -16,7 +16,7 @@ ENV RAILS_ENV production
 EXPOSE 3000
 
 # Prepare Gemfile ahead
-COPY Gemfile /usr/src/app
+COPY Gemfile /usr/src/app/
 
 # Bundle install ahead
 RUN bundle install --without development test --jobs 3
