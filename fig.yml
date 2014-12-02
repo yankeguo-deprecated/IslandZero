@@ -1,0 +1,31 @@
+mysql:
+  image: mysql
+  ports:
+    - 3306
+  environment:
+    MYSQL_DATABASE: magi
+    MYSQL_USER: magi
+    MYSQL_ROOT_PASSWORD: myrootpassword
+    MYSQL_PASSWORD: magisystems
+redis:
+  image: redis
+  ports:
+    - 6379
+web:
+  build: .
+  command: bundle exec thin start -C config/docker/thin.yml
+  ports:
+    - "3000:3000"
+  links:
+    - mysql
+    - redis
+  # environment:
+  # Add environments here, see config/application.yml.sample
+worker:
+  build: .
+  command: bundle exec sidekiq -C config/sidekiq.yml
+  links:
+    - mysql
+    - redis
+  # environment:
+  # Add environments here, see config/application.yml.sample
