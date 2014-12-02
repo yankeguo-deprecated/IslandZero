@@ -1,4 +1,5 @@
 en:
+  resend_confirmation_email: 'Resend Confirmation Email'
   you_are_not_admin: 'You are not admin.'
   confirm_to_delete: 'Confirm to delete ?'
   delete: 'delete'

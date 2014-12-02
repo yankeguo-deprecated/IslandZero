@@ -1,4 +1,5 @@
 zh-CN:
+  resend_confirmation_email: '重发验证邮件'
   you_are_not_admin: '没有管理员权限'
   delete: '删除'
   confirm_to_delete: '确认删除?'
