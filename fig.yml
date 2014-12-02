@@ -19,13 +19,9 @@ web:
   links:
     - mysql
     - redis
-  # environment:
-  # Add environments here, see config/application.yml.sample
 worker:
   build: .
   command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
   links:
     - mysql
     - redis
-  # environment:
-  # Add environments here, see config/application.yml.sample

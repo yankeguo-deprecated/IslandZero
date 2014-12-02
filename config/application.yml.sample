@@ -29,12 +29,12 @@ MAILER_SMTP_PASSWORD: ''
 MAILGUN_DOMAIN: ''
 MAILGUN_API_KEY: ''
 #
-# 3. Redis (Docker compatible, remove if you are using docker)
+# 3. Redis (Docker compatible, remove if you are using docker link)
 #
 REDIS_PORT_6379_TCP_ADDR: '127.0.0.1'
 REDIS_PORT_6379_TCP_PORT: 6379
 #
-# 4. MySQL (Production only, docker compatible, remove if you are using docker)
+# 4. MySQL (Production only, docker compatible, remove if you are using docker link)
 #
 MYSQL_ENV_MYSQL_DATABASE: 'magi'
 MYSQL_ENV_MYSQL_USER: 'magi'
