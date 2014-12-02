@@ -2,6 +2,12 @@
 
 ![Travis Status](https://travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
 
+Site    [https://magi.systems](https://magi.systems)
+
+Github (Main Repo)  [https://github.com/yanke-guo/magi-systems](https://github.com/yanke-guo/magi-systems)
+
+Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/magi-systems](https://gitcafe.com/yanke_guo/magi-systems)
+
 ## Requirements
 
 -  Ruby (Modern)
