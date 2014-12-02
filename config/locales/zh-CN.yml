@@ -1,4 +1,8 @@
 zh-CN:
+  rank: '排序'
+  introduction: '介绍'
+  parent_id: '父级编号'
+  edit_post: '修改帖子'
   resend_confirmation_email: '重发验证邮件'
   you_are_not_admin: '没有管理员权限'
   delete: '删除'

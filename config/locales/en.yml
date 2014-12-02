@@ -1,4 +1,8 @@
 en:
+  rank: 'Rank'
+  introduction: 'Introduction'
+  parent_id: 'Parent ID'
+  edit_post: 'Edit Post'
   resend_confirmation_email: 'Resend Confirmation Email'
   you_are_not_admin: 'You are not admin.'
   confirm_to_delete: 'Confirm to delete ?'

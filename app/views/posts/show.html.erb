@@ -11,11 +11,15 @@
             </div>
             <div class="panel-body">
               <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"><%= @post.user.nickname %> | <%= time_ago_in_words @post.created_at %></small></h4>
+
+              <% if current_user.is_admin || @post.user == current_user %>
               <p class="text-right">
-                <% if current_user.is_admin || @post.user == current_user %>
                 <%= link_to t(:delete), @post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
-                <% end %>
+                |
+                <%= link_to t(:edit), edit_post_path(@post) %>
               </p>
+              <% end %>
+
               <p>
                 <%= @post.content_parsed.html_safe %>
               </p>
@@ -58,6 +62,8 @@
                 <p class="text-right">
                   <% if current_user.is_admin || post.user == current_user %>
                   <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
+                  |
+                  <%= link_to t(:edit), edit_post_path(post) %>
                   <% end %>
                 </p>
                 <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>

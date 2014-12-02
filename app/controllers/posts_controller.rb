@@ -76,8 +76,20 @@ class PostsController < ApplicationController
   end
 
   def update
+    post_params = params.require(:post)
+    .permit(:content, :title)
+    .clean_basic(:content)
+    .clean_strict(:title)
     @post.update(post_params)
-    respond_with(@post)
+    if request.xhr?
+      render nothing: true
+    else
+      if @post.parent_id == 0
+        redirect_to post_path(@post)
+      else
+        redirect_to post_path(@post.parent_post)
+      end
+    end
   end
 
   def destroy
