@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
 gem 'rails-i18n'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -13,27 +12,19 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'http_accept_language'
 gem 'faye-rails'
-
-# Tools
-
 gem 'sanitize', '~> 2.0'
 gem 'faker'
 gem 'will_paginate', '~> 3.0.6'
 gem 'redcarpet'
 gem 'mailgun_rails'
 
-# MySQL
-
-gem 'mysql2'
-
 # Redis
 
-gem 'sidekiq'
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
 
-# if you require 'sinatra' you get the DSL extended to Object
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil # No require, no DSL
 
 # Devise
 
@@ -53,9 +44,17 @@ gem "figaro"
 
 gem 'newrelic_rpm'
 
-# Rspect
+# Environment specified
+
+group :production do
+  # MySQL
+  gem 'mysql2'
+end
 
 group :development, :test do
+  # Sqlite3
+  gem 'sqlite3'
+
   # Deployment
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-bundler', '~> 1.1.2'
