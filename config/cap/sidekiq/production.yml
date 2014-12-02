@@ -1,7 +1,6 @@
-# This file is for docker and capistrano-sidekiq
+# This file is for capistrano-sidekiq
 ---
 :concurrency: 10
-:pidfile: tmp/pids/sidekiq.pid
 staging:
   :concurrency: 10
 production:

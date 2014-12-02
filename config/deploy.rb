@@ -10,7 +10,7 @@ set :repo_url, 'git@github.com:yanke-guo/magi-systems.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, ENV['PROD_SERVER_PATH']
 
-set :sidekiq_config,    -> { File.join(release_path, 'config', 'sidekiq.yml') }
+set :sidekiq_config,    -> { File.join(release_path, 'config', 'cap', 'sidekiq', "#{fetch(:stage)}.yml") }
 set :sidekiq_role,      -> { :worker }
 
 # Default value for :scm is :git

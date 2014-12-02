@@ -1,0 +1,7 @@
+# This file is for docker sidekiq production, no pid, should not daemonize
+---
+:concurrency: 20
+:logfile: ./log/sidekiq_production.log
+:queues:
+  - default
+  - [mailer, 10]

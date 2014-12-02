@@ -13,7 +13,7 @@ redis:
     - 6379
 web:
   build: .
-  command: bundle exec thin start -C config/docker/thin.yml
+  command: bundle exec thin start -e production -C config/docker/thin.yml
   ports:
     - "3000:3000"
   links:
@@ -23,7 +23,7 @@ web:
   # Add environments here, see config/application.yml.sample
 worker:
   build: .
-  command: bundle exec sidekiq -C config/sidekiq.yml
+  command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
   links:
     - mysql
     - redis
