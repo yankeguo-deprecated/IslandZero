@@ -29,26 +29,17 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 
 ## Deploy via `Docker`
 
-- Install `docker`
-- Run  `mysql`, don't forget to specify a database with user
-- Run  `redis`
-- Run `yanke/magi-systems` with `mysql`, `redis` linked as the alias name exactly `mysql` and `redis`.
-
-See config/application.yml.sample for avaliable environment variables.
-
-See fig.yml for how to start `thin` and `sidekiq`.
-
-## Deploy via `fig`
-
-- Install `docker`
-- Install `fig`
+- Install `docker`.
+- Install `fig`.
 - Create `/data/mysql` for persistence.
-- Clone this repo
-- Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
-- `fig run web bundle exec rake db:migrate`
-- `fig up`
+- Download `fig.yml` at the root of this repo.
+- Put configurations to `fig.yml`, see `config/application.yml.sample`
+- `fig run web bundle exec rake db:migrate` to migrate db to latest.
+- `fig up` to test.
+- `fig start`.
+- Setup `nginx` to proxy 3000 to 80.
 
-## Deploy Via `Capistrano`
+## Deploy Via `Capistrano` (Not suggested, docker is better lol)
 
 -  Install `ruby`, `mysql`, `redis` in your remote server and start them.
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it, don't forget to add a server.
