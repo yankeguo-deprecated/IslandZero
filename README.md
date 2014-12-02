@@ -27,7 +27,7 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 -  Thin     (see `config/thin/production.yml`)
 -  Sidekiq  (see `config/sidekiq.yml`)
 
-## Deploy via 'Docker'
+## Deploy via `Docker`
 
 - Install `docker`
 - Run  `mysql`, don't forget to specify a database with user
@@ -42,6 +42,7 @@ See fig.yml for how to start `thin` and `sidekiq`.
 
 - Install `docker`
 - Install `fig`
+- Create `/data/mysql` for persistence.
 - Clone this repo
 - Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
 - `fig run web bundle exec rake db:migrate`
