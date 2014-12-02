@@ -23,3 +23,6 @@
 
 # Assets File
 /public/assets/
+
+# Gemfile.lock for docker
+Gemfile.lock
