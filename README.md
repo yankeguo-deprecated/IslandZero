@@ -27,22 +27,36 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 -  Thin     (see `config/thin/production.yml`)
 -  Sidekiq  (see `config/sidekiq.yml`)
 
+## Deploy via 'Docker'
+
+- Install `docker`
+- Run  `mysql`, don't forget to specify a database with user
+- Run  `redis`
+- Run `yanke/magi-systems` with `mysql`, `redis` linked as the alias name exactly `mysql` and `redis`.
+
+See config/application.yml.sample for avaliable environment variables.
+
+See fig.yml for how to start `thin` and `sidekiq`.
+
+## Deploy via `fig`
+
+- Install `docker`
+- Install `fig`
+- Clone this repo
+- Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
+- `fig run web bundle exec rake db:migrate`
+- `fig up`
+
 ## Deploy Via `Capistrano`
 
--  Setup your server with `Ruby`, a running `Redis`, and a running `MySQL`.
--  Edit `config/application.yml`, add a proper server.
+-  Install `ruby`, `mysql`, `redis` in your remote server and start them.
+-  Copy `config/application.yml.sample` to `config/application.yml`, then edit it, don't forget to add a server.
 -  Run  `bundle exec cap deploy:setup`, prepare initial environment.
 -  Run  `bundle exec cap figaro:setup`, deploy local `application.yml` to remote.
 -  Run  `bundle exec cap deploy`, deploy a new release.
 -  Run  `bundle exec cap deploy:restart`, restart `thin`.
 
 ## Development
-
-**ANY** stable code will be merged into master as soon as possible.
-
-**ANY** commits made to `master` branch will deployed to `https://magi.systems` via `Travis CI`.
-
-See [My Blog](http://blog.yanke.io/2014/11/30/Deploy-Production-Server-Using-Travis-CI-Figaro-and-Capistrano.html) for detail.
 
 From commit `f2bf2e32976f476cea466890b06096e0abdbd460` onward, all commits made by me will be signed with GPG key `YANKE Guo <me@yanke.io> 8C4D9C36` (unless I forget to), you can retrieve it from `hkp://keys.gnupg.net`.
 
