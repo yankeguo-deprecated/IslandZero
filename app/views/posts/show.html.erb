@@ -10,7 +10,7 @@
               <%= link_to "#{t(:back_to_topic)}: #{@topic.title}", topic_path(@topic) %>
             </div>
             <div class="panel-body">
-              <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"><%= @post.user.nickname %> | <%= time_ago_in_words @post.created_at %></small></h4>
+              <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>
 
               <% if current_user.is_admin || @post.user == current_user %>
               <p class="text-right">
@@ -58,7 +58,7 @@
 
               <% @sub_posts.each do |post| %>
               <li class="list-group-item">
-                <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %> <%= post.user.nickname %> | <%= time_ago_in_words post.created_at %></small></h4>
+                <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></h4>
                 <p class="text-right">
                   <% if current_user.is_admin || post.user == current_user %>
                   <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
