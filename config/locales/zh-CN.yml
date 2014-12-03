@@ -1,4 +1,6 @@
 zh-CN:
+  star: '关注'
+  unstar: '取消关注'
   starred_topics: '关注的主题'
   no_starred_topics: '没有关注的主题'
   rank: '排序'

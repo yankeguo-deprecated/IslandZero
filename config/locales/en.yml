@@ -1,4 +1,6 @@
 en:
+  star: 'Star'
+  unstar: 'Unstar'
   starred_topics: 'starred Topics'
   no_starred_topics: 'No starred Topics'
   rank: 'Rank'

@@ -12,11 +12,12 @@ class StarredTopicsController < ApplicationController
       .update(is_starred: true)
 
       if request.xhr?
-        render empty: true
+        render nothing: true
       else
         redirect_to :back
       end
     else
+      render plain: 'Topic not found'
     end
   end
 
@@ -25,7 +26,7 @@ class StarredTopicsController < ApplicationController
     TopicUser.where(topic: topic, user: current_user).update_all(is_starred: false)
 
     if request.xhr?
-      render empty: true
+      render nothing: true
     else
       redirect_to :back
     end

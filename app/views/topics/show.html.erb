@@ -16,6 +16,12 @@
               <% end %>
               <% end %>
 
+              <% if @topic.starring_users.include? current_user %>
+              <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'pull-right need-reload' %>
+              <% else %>
+              <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'pull-right need-reload' %>
+              <% end %>
+
               <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
               <%= @topic.introduction_parsed.html_safe %>
 
