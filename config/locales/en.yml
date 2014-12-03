@@ -1,4 +1,6 @@
 en:
+  starred_topics: 'starred Topics'
+  no_starred_topics: 'No starred Topics'
   rank: 'Rank'
   introduction: 'Introduction'
   parent_id: 'Parent ID'

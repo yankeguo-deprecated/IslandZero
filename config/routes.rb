@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :posts
   resources :topics, except: [:destroy]
   resources :messages
+  resources :starred_topics, only: [:index, :destroy, :create]
 
 end

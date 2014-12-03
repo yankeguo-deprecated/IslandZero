@@ -9,8 +9,6 @@
       <%= link_to "MAGI::Systems", topics_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-      </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" name="keyword" placeholder="Search">
@@ -26,6 +24,9 @@
             <li><%= link_to t(:logout), destroy_user_session_path, { method: :delete } %></li>
           </ul>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <%= li_link t('starred_topics'), starred_topics_path %>
       </ul>
     </div>
   </div>

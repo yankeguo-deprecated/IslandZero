@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default panel-main">
+
+            <% if @starred_topics.empty? %>
+
+            <div class="list-group">
+              <li class="list-group-item text-center"><%= t :no_starred_topics %></li>
+            </div>
+
+            <% else %>
+
+            <%= render 'topics/index', topics: @starred_topics %>
+
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

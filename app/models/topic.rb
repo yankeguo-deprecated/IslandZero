@@ -6,6 +6,12 @@ class Topic < ActiveRecord::Base
   # Has many Posts
   has_many    :posts, inverse_of: :topic
 
+  # Has many relations with User
+  has_many    :topic_users, inverse_of: :topic
+
+  # Has many users
+  has_many    :users, through: :topic_users
+
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
 
@@ -23,5 +29,10 @@ class Topic < ActiveRecord::Base
 
   def introduction_plain
     Sanitize.clean(self.introduction_parsed, Sanitize::Config::STRICT)
+  end
+
+  # Helpers for stare
+  def starring_users
+    self.users.where("topic_users.is_starred" => true)
   end
 end

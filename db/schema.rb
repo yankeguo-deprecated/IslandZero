@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123001006) do
+ActiveRecord::Schema.define(version: 20141203042436) do
 
   create_table "messages", force: true do |t|
     t.integer  "chattable_id"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20141123001006) do
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "topic_users", force: true do |t|
+    t.integer "topic_id",                   null: false
+    t.integer "user_id",                    null: false
+    t.boolean "is_starred", default: false, null: false
+  end
+
+  add_index "topic_users", ["topic_id", "user_id"], name: "index_topic_users_on_topic_id_and_user_id", unique: true
 
   create_table "topics", force: true do |t|
     t.integer  "parent_id",    default: 0,   null: false

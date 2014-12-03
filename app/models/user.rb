@@ -10,6 +10,19 @@ class User < ActiveRecord::Base
     true
   end
 
+  # Posts
   has_many :posts, inverse_of: :user
+
+  # Messages
   has_many :messages, inverse_of: :user
+
+  # Has many relations with Topic
+  has_many    :topic_users, inverse_of: :user
+
+  has_many    :topics, through: :topic_users
+
+  # Helpers for stare
+  def starred_topics
+    self.topics.where("topic_users.is_starred" => true)
+  end
 end

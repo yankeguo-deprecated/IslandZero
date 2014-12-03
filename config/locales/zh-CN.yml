@@ -1,4 +1,6 @@
 zh-CN:
+  starred_topics: '关注的主题'
+  no_starred_topics: '没有关注的主题'
   rank: '排序'
   introduction: '介绍'
   parent_id: '父级编号'
