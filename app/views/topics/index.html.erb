@@ -7,11 +7,19 @@
         <div class="col-md-12">
           <div class="panel panel-default panel-main">
 
-            <% if current_user.is_admin %>
-            <div class="panel-body text-right">
-              <%= link_to t(:new_topic), new_topic_path %>
+
+            <div class="panel-body">
+              <span>
+                <%= t(:all_topics) %>
+              </span>
+              <% if current_user.is_admin %>
+              <span class="pull-right">
+                <%= link_to t(:new_topic), new_topic_path %>
+              </span>
+              <% end %>
+
             </div>
-            <% end %>
+
 
             <%= render 'index', topics: @topics %>
 

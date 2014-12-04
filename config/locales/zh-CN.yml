@@ -1,4 +1,9 @@
 zh-CN:
+  keyword_should_not_be_empty: '关键字不能为空'
+  all_topics: '全部主题'
+  search_topic: '搜索主题'
+  search_result: '搜索结果'
+  no_result: '没有结果'
   star: '关注'
   unstar: '取消关注'
   starred_topics: '关注的主题'

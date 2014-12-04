@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default panel-main">
+            <div class="panel-body">
+              "<%= params[:keyword] %>"<%= t(:search_result) %>
+            </div>
+
+            <% if @topics.empty? %>
+            <ul class="list-group">
+              <li class="list-group-item text-center"><%= t(:no_result) %></li>
+            </ul>
+            <% else %>
+            <%= render 'topics/index', topics: @topics %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

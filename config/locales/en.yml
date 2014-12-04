@@ -1,4 +1,9 @@
 en:
+  keyword_should_not_be_empty: 'Keyword should not be blank.'
+  all_topics: 'All Topics'
+  search_topic: 'Search Topic'
+  search_result: 'Search Result'
+  no_result: 'No Result'
   star: 'Star'
   unstar: 'Unstar'
   starred_topics: 'starred Topics'

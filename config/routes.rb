@@ -14,9 +14,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  # Resource
   resources :posts
   resources :topics, except: [:destroy]
   resources :messages
   resources :starred_topics, only: [:index, :destroy, :create]
+
+  # Search
+  post "search" => "search#search"
 
 end
