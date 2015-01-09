@@ -14,9 +14,9 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: "<%= ENV['MYSQL_ENV_MYSQL_DATABASE'] || "magi" %>"
+  database: "<%= ENV['MYSQL_ENV_MYSQL_DATABASE'] || "islandzero" %>"
   pool: 5
-  username: "<%= ENV['MYSQL_ENV_MYSQL_USER']     || "magi" %>"
-  password: "<%= ENV['MYSQL_ENV_MYSQL_PASSWORD'] || "magi" %>"
+  username: "<%= ENV['MYSQL_ENV_MYSQL_USER']     || "islandzero" %>"
+  password: "<%= ENV['MYSQL_ENV_MYSQL_PASSWORD'] || "islandzero" %>"
   host:     "<%= ENV['MYSQL_PORT_3306_TCP_ADDR'] || "127.0.0.1" %>"
   port:      <%= ENV['MYSQL_PORT_3306_TCP_PORT'] || 3306 %>

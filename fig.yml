@@ -2,16 +2,16 @@ mysql:
   image: mysql:5.6.21
   environment:
     # Change default values for better security, remember to use the same root password once mysql container created.
-    MYSQL_DATABASE: magi
-    MYSQL_USER: magi
-    MYSQL_ROOT_PASSWORD: myrootpassword
-    MYSQL_PASSWORD: magisystems
+    MYSQL_DATABASE: islandzero
+    MYSQL_USER: islandzero
+    MYSQL_ROOT_PASSWORD: islandzero
+    MYSQL_PASSWORD: islandzero
   volumes:
     - /data/mysql/:/var/lib/mysql
 redis:
   image: redis:2.8.17
 web:
-  image: yanke/magi-systems
+  build: .
   command: bundle exec thin start -e production -C config/docker/thin.yml
   environment:
     # Configs gos here, mysql and redis will be automatically handled.
@@ -21,7 +21,7 @@ web:
     - mysql
     - redis
 worker:
-  image: yanke/magi-systems
+  build: .
   command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
   environment:
     # Configs gos here, mysql and redis will be automatically handled.

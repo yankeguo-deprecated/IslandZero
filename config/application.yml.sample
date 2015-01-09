@@ -36,9 +36,9 @@ REDIS_PORT_6379_TCP_PORT: 6379
 #
 # 4. MySQL (Production only, docker compatible, remove if you are using docker link)
 #
-MYSQL_ENV_MYSQL_DATABASE: 'magi'
-MYSQL_ENV_MYSQL_USER: 'magi'
-MYSQL_ENV_MYSQL_PASSWORD: 'magi'
+MYSQL_ENV_MYSQL_DATABASE: 'islandzero'
+MYSQL_ENV_MYSQL_USER: 'islandzero'
+MYSQL_ENV_MYSQL_PASSWORD: 'islandzero'
 MYSQL_PORT_3306_TCP_PORT: 3306
 MYSQL_PORT_3306_TCP_ADDR: '127.0.0.1'
 #

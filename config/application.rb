@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Magi
+module IslandZero
   class Application < Rails::Application
     # Autoload lib fonder
     config.autoload_paths << Rails.root.join('lib')

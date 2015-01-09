@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.3.3'
 
-set :application, 'magi-systems'
-set :repo_url, 'git@github.com:yanke-guo/magi-systems.git'
+set :application, 'islandzero'
+set :repo_url, 'git@github.com:yanke-guo/IslandZero.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call

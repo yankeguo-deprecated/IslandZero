@@ -41,7 +41,7 @@ en:
   edit: 'Edit'
   login: 'Login'
   register: 'Register'
-  magi_introduction: 'This is MAGI::Systems.'
+  islandzero_introduction: 'Welcome to IslandZero'
   attributes:
     current_password: 'Current Password'
     password_confirmation: 'Repeat'

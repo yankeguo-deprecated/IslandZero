@@ -1,12 +1,10 @@
-# MAGI::Systems
+# IslandZero
 
-![Travis Status](https://travis-ci.org/yanke-guo/magi-systems.svg?branch=master)
+Site    [https://is0.org](https://is0.org)
 
-Site    [https://magi.systems](https://magi.systems)
+Github (Main Repo)  [https://github.com/yanke-guo/IslandZero](https://github.com/yanke-guo/IslandZero)
 
-Github (Main Repo)  [https://github.com/yanke-guo/magi-systems](https://github.com/yanke-guo/magi-systems)
-
-Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/magi-systems](https://gitcafe.com/yanke_guo/magi-systems)
+Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/IslandZero](https://gitcafe.com/yanke_guo/IslandZero)
 
 ## Requirements
 
@@ -16,7 +14,7 @@ Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/magi-systems](https://gitcaf
 
 ## Configuration
 
-MAGI::Systems use `Figaro` for configuration.
+IslandZero use `Figaro` for configuration.
 
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
 
