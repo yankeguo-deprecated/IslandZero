@@ -50,6 +50,7 @@ gem 'newrelic_rpm'
 group :production do
   # MySQL
   gem 'mysql2', '~> 0.3.17'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
