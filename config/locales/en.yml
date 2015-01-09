@@ -1,4 +1,5 @@
 en:
+  islandzero: 'IslandZero'
   keyword_should_not_be_empty: 'Keyword should not be blank.'
   all_topics: 'All Topics'
   search_topic: 'Search Topic'

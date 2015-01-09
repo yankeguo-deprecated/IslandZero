@@ -1,4 +1,5 @@
 zh-CN:
+  islandzero: '零島'
   keyword_should_not_be_empty: '关键字不能为空'
   all_topics: '全部主题'
   search_topic: '搜索主题'
@@ -42,7 +43,7 @@ zh-CN:
   login: '登陆'
   register: '注册'
   public_chat: '匿名聊天'
-  islandzero_introduction: '这里是島零。'
+  islandzero_introduction: '这里是零島。'
   attributes:
     current_password: '当前密码'
     password_confirmation: '重复密码'
