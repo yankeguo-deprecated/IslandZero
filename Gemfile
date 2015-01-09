@@ -22,6 +22,7 @@ gem 'mailgun_rails', '~> 0.6.4'
 
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
+gem "faye-redis", "~> 0.2.0"
 
 gem 'sidekiq', '~> 3.3.0'
 gem 'sinatra', '>= 1.3.0', :require => nil # No require, no DSL
