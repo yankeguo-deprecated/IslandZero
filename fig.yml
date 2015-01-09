@@ -10,6 +10,9 @@ mysql:
     - /data/mysql/:/var/lib/mysql
 redis:
   image: redis:2.8.17
+  command: redis-server --appendonly yes
+  volumes:
+    - /data/redis/:/data
 web:
   build: .
   command: bundle exec thin start -e production -C config/docker/thin.yml
