@@ -43,16 +43,28 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.save
+
+    # Update parent all_sub_topic_ids
+    @topic.update_all_parents_with_sub_topic_ids
+
     respond_with(@topic)
   end
 
   def update
     @topic.update(topic_params)
+
+    # Update parent all_sub_topic_ids
+    @topic.update_all_parents_with_sub_topic_ids
+
     respond_with(@topic)
   end
 
   def destroy
     @topic.destroy
+
+    # Update parent all_sub_topic_ids
+    @topic.update_all_parents_with_sub_topic_ids
+
     respond_with(@topic)
   end
 

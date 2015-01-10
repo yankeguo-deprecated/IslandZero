@@ -15,12 +15,6 @@ class Topic < ActiveRecord::Base
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
 
-  # Before save
-  before_save do
-    self.update_all_sub_topic_ids
-    true
-  end
-
   # Posts within this topic and subtopics
   def all_posts
     Post.where(topic_id: self.all_sub_topic_ids_array | [ self.id ])
@@ -35,6 +29,15 @@ class Topic < ActiveRecord::Base
     ids = []
     Topic.find_all_sub_topic_ids self.id, ids
     self.all_sub_topic_ids = ids.compact.uniq.join(",")
+    self.save
+  end
+
+  def update_all_parents_with_sub_topic_ids
+    parent = self.parent_topic
+    while parent != nil do
+      parent.update_all_sub_topic_ids
+      parent = parent.parent_topic
+    end
   end
 
   def self.find_all_sub_topic_ids(id, store)
