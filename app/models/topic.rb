@@ -24,9 +24,9 @@ class Topic < ActiveRecord::Base
   def posts_count_unvisited(user)
     topic_user = TopicUser.find_by(user: user, topic: self)
     if topic_user.present? and topic_user.visited_at.present?
-      self.posts.where("created_at > ?", topic_user.visited_at).count
+      self.all_posts.where("created_at > ?", topic_user.visited_at).count
     else
-      self.posts.count
+      self.all_posts.count
     end
   end
 

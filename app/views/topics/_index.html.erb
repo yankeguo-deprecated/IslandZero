@@ -1,7 +1,11 @@
 <div class="list-group">
   <% topics.each do |topic| %>
   <%= link_to topic, class: 'list-group-item' do %>
-    <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{topic.id}" %></small> <%= topic.title %> (<%= topic.posts_count_unvisited current_user %>)</h4>
+    <h4 class="list-group-item-heading">
+      <small class="text-muted"><%= "##{topic.id}" %></small> 
+      <%= topic.title %> 
+      <small class="text-muted pull-right text-right"><%= topic.posts_count_unvisited current_user %>/<%= topic.all_posts.count %></small>
+    </h4>
   <p class="list-group-item-text"><%= topic.introduction_plain %></p>
   <% end %>
   <% end %>
