@@ -1,4 +1,7 @@
 zh-CN:
+  resend_unlock_email: '重发解锁邮件'
+  resend_confirmation_email: '重发验证邮件'
+  forgot_your_password: '忘记密码?'
   islandzero: '零島'
   keyword_should_not_be_empty: '关键字不能为空'
   all_topics: '全部主题'

@@ -1,4 +1,7 @@
 en:
+  resend_unlock_email: 'Resend unlock email'
+  resend_confirmation_email: 'Resend confirmation email'
+  forgot_your_password: 'Forgot your password?'
   islandzero: 'IslandZero'
   keyword_should_not_be_empty: 'Keyword should not be blank.'
   all_topics: 'All Topics'
