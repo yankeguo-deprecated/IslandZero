@@ -5,9 +5,11 @@
 
       <div class="row">
         <div class="col-md-12">
-          <div class="panel panel-primary panel-main">
-            <div class="panel-body">
-              <%= link_to "#{t(:back_to_topic)}: #{@topic.title}", topic_path(@topic) %>
+          <div class="panel panel-info panel-main">
+            <div class="panel-heading">
+              <%= link_to topic_path(@topic), class: 'text-white' do %>
+                <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_topic)}: #{@topic.title}" %>
+              <% end %>
             </div>
             <div class="panel-body">
               <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-muted pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>

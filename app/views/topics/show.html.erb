@@ -1,57 +1,61 @@
 <div class="container">
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-8">
+  <div class="col-md-8">
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-primary panel-main">
-            <div class="panel-body">
-
-              <% if @topic.parent_id == 0 %>
-              <%= link_to t(:back_to_all_topics), topics_path %>
-              <% else %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary panel-main">
+          <div class="panel-heading">
+            <% if @topic.parent_id == 0 %>
+              <%= link_to topics_path, class: 'text-white' do %>
+                <%= glyphicon 'chevron-left' %><%= t(:back_to_all_topics) %>
+              <% end %>
+            <% else %>
               <% if @topic.parent_topic.present? %>
-              <%= link_to "#{t(:back_to_parent_topic)}: #{@topic.parent_topic.title}", topic_path(@topic.parent_topic) %>
+                <%= link_to topic_path(@topic.parent_topic), class: 'text-white' do %>
+                  <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_parent_topic)}: #{@topic.parent_topic.title}" %>
+                <% end %>
               <% end %>
-              <% end %>
+            <% end %>
 
-              <% if @topic.starring_users.include? current_user %>
-              <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'pull-right need-reload' %>
-              <% else %>
-              <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'pull-right need-reload' %>
-              <% end %>
+            <% if @topic.starring_users.include? current_user %>
+              <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'text-white pull-right need-reload' %>
+            <% else %>
+              <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'text-white pull-right need-reload' %>
+            <% end %>
+          </div>
+          <div class="panel-body">
+            <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
+            <%= @topic.introduction_parsed.html_safe %>
 
-              <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
-              <%= @topic.introduction_parsed.html_safe %>
-
-              <% if current_user.is_admin %>
+            <% if current_user.is_admin %>
               <div class="text-right">
                 <p>
-                  <%= link_to t(:edit), edit_topic_path(@topic) %> |
-                  <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
+                <%= link_to t(:edit), edit_topic_path(@topic) %> |
+                <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
                 </p>
               </div>
-              <% end %>
-            </div>
-            <%= render 'index', topics: @sub_topics %>
+            <% end %>
           </div>
+          <%= render 'index', topics: @sub_topics %>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
 
-            <div class="panel-body text-right">
-              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
-                <%= glyphicon 'pencil' %><%= t(:new_post) %>
-              </a>
-            </div>
+          <div class="panel-body text-right">
+            <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+              <%= glyphicon 'pencil' %><%= t(:new_post) %>
+            </a>
+          </div>
 
-            <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
+          <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
                 <%= f.hidden_field :topic_id %>
                 <div class="form-group">
                   <%= f.text_field :title, class: 'form-control', id: 'inputTitle', placeholder: t("title") %>
@@ -62,46 +66,46 @@
                 <div class="form-group text-right">
                   <%= f.submit t("submit"), class: "btn btn-sm btn-default" %>
                 </div>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="list-group">
-              <% if @posts.length != 0 %>
-
-              <% @posts.each do |post| %>
-              <%= link_to post, class: 'list-group-item' do %>
-              <h4 class="list-group-item-heading">
-                <span><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></span>
-                <% if post.topic != @topic %>
-                <span class="label label-default pull-right"><%= post.topic.title %></span>
-                <% end %>
-              </h4>
-              <p class="list-group-item-text text-right"><small><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></p>
-              <p class="list-group-item-text"><%= post.content_plain %></p>
-              <% end %>
-              <% end %>
-
-              <% else %>
-
-              <li class="list-group-item text-center"><%= t(:no_posts) %></li>
-
               <% end %>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <%= will_paginate @posts %>
+          <div class="list-group">
+            <% if @posts.length != 0 %>
+
+              <% @posts.each do |post| %>
+                <%= link_to post, class: 'list-group-item' do %>
+                  <h4 class="list-group-item-heading">
+                    <span><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></span>
+                    <% if post.topic != @topic %>
+                      <span class="label label-default pull-right"><%= post.topic.title %></span>
+                    <% end %>
+                  </h4>
+                  <p class="list-group-item-text text-right"><small><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></p>
+                  <p class="list-group-item-text"><%= post.content_plain %></p>
+                <% end %>
+              <% end %>
+
+            <% else %>
+
+              <li class="list-group-item text-center"><%= t(:no_posts) %></li>
+
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <%= render 'shared/chatbox' %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @posts %>
+      </div>
     </div>
-
   </div>
+
+  <div class="col-md-4">
+    <%= render 'shared/chatbox' %>
+  </div>
+
+</div>
 </div>
