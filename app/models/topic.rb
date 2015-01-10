@@ -20,6 +20,21 @@ class Topic < ActiveRecord::Base
     Post.where(topic_id: self.sub_topic_ids | [ self.id ])
   end
 
+  # Posts count after a time
+  def posts_count_unvisited(user)
+    topic_user = TopicUser.find_by(user: user, topic: self)
+    if topic_user.present? and topic_user.visited_at.present?
+      self.posts.where("created_at > ?", topic_user.visited_at).count
+    else
+      self.posts.count
+    end
+  end
+
+  # Mark User as Visited
+  def mark_visited(user)
+    TopicUser.find_or_create_by(topic: self, user: user).update(visited_at: Time.current)
+  end
+
   # Shortcut for Markdown parsed introduction
 
   def introduction_parsed

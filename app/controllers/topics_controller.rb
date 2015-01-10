@@ -25,6 +25,9 @@ class TopicsController < ApplicationController
     @new_post   = Post.new
     @new_post.topic = @topic
 
+    # Update visited_at
+    @topic.mark_visited current_user
+
     # Render
     respond_with(@topic)
   end

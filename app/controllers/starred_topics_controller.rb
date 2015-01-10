@@ -9,7 +9,7 @@ class StarredTopicsController < ApplicationController
     topic = Topic.find_by_id(params[:id])
     if topic
       TopicUser.find_or_create_by(topic: topic, user: current_user)
-      .update(is_starred: true)
+      .update(is_starred: true, visited_at: Time.current)
 
       if request.xhr?
         render nothing: true
