@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110134009) do
+ActiveRecord::Schema.define(version: 20150110143326) do
 
   create_table "messages", force: true do |t|
     t.integer  "chattable_id"
@@ -48,12 +48,13 @@ ActiveRecord::Schema.define(version: 20150110134009) do
   add_index "topic_users", ["topic_id", "user_id"], name: "index_topic_users_on_topic_id_and_user_id", unique: true
 
   create_table "topics", force: true do |t|
-    t.integer  "parent_id",    default: 0,   null: false
-    t.string   "title",                      null: false
-    t.text     "introduction",               null: false
-    t.integer  "rank",         default: 100, null: false
+    t.integer  "parent_id",         default: 0,   null: false
+    t.string   "title",                           null: false
+    t.text     "introduction",                    null: false
+    t.integer  "rank",              default: 100, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "all_sub_topic_ids"
   end
 
   create_table "users", force: true do |t|

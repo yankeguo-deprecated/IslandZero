@@ -15,9 +15,37 @@ class Topic < ActiveRecord::Base
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
 
+  # Before save
+  before_save do
+    self.update_all_sub_topic_ids
+    true
+  end
+
   # Posts within this topic and subtopics
   def all_posts
-    Post.where(topic_id: self.sub_topic_ids | [ self.id ])
+    Post.where(topic_id: self.all_sub_topic_ids_array | [ self.id ])
+  end
+
+  def all_sub_topic_ids_array
+    (self.all_sub_topic_ids || "").split(",").map { |id| id.to_i }
+  end
+
+  # Update all sub topic through recursive
+  def update_all_sub_topic_ids
+    ids = []
+    Topic.find_all_sub_topic_ids self.id, ids
+    self.all_sub_topic_ids = ids.compact.uniq.join(",")
+  end
+
+  def self.find_all_sub_topic_ids(id, store)
+    topic = Topic.find_by_id id
+    if topic.present?
+      ids = topic.sub_topic_ids
+      store.concat(ids)
+      ids.each do |sid|
+        Topic.find_all_sub_topic_ids sid, store
+      end
+    end
   end
 
   # Posts count after a time
