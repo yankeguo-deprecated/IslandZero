@@ -6,7 +6,7 @@
       <%= topic.title %> 
       <small class="text-muted pull-right text-right"><%= topic.posts_count_unvisited current_user %>/<%= topic.all_posts.count %></small>
     </h4>
-  <p class="list-group-item-text"><%= topic.introduction_plain %></p>
+  <p class="list-group-item-text text-muted"><%= topic.introduction_plain.truncate(100) %></p>
   <% end %>
   <% end %>
 </div>
