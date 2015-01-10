@@ -51,10 +51,18 @@ class TopicsController < ApplicationController
   end
 
   def update
+    old_parent = @topic.parent_topic
+
     @topic.update(topic_params)
 
     # Update parent all_sub_topic_ids
     @topic.update_all_parents_with_sub_topic_ids
+
+    # Update old parent if necessary
+    if old_parent.present? and old_parent.id != @topic.parent_id
+      old_parent.update_all_sub_topic_ids
+      old_parent.update_all_parents_with_sub_topic_ids
+    end
 
     respond_with(@topic)
   end
