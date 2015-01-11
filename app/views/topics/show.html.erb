@@ -80,8 +80,8 @@
                     <% if post.topic != @topic %>
                       <span class="label label-default pull-right"><%= post.topic.title %></span>
                     <% end %>
+                    <p class="list-group-item-text text-right pull-right"><small class="text-primary"><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></p>
                   </h4>
-                  <p class="list-group-item-text text-right"><small><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></p>
                   <p class="list-group-item-text text-muted"><%= post.content_plain.truncate(100) %></p>
                 <% end %>
               <% end %>
