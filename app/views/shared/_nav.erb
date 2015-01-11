@@ -9,6 +9,9 @@
       <%= link_to t(:islandzero), topics_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <%= li_link t('all_topics'), topics_path %>
+      </ul>
       <%= form_tag search_path, class: "navbar-form navbar-left", role: "search" do %>
       <div class="form-group">
         <%= text_field_tag :keyword, params[:keyword], class: 'form-control', placeholder: t(:search_topic) %>
