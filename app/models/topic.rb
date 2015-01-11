@@ -17,7 +17,7 @@ class Topic < ActiveRecord::Base
 
   # Posts within this topic and subtopics
   def all_posts
-    Post.where(topic_id: self.all_sub_topic_ids_array | [ self.id ])
+    Post.where(topic_id: (self.all_sub_topic_ids_array | [ self.id ]), parent_id: 0)
   end
 
   def all_sub_topic_ids_array
