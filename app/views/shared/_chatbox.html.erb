@@ -3,6 +3,9 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-success panel-main">
+      <div class="panel-heading">
+        Chatbox
+      </div>
       <div class="panel-body">
         <%= form_for @new_message, remote: true, html: { id: 'chatroom-send-form' } do |f| %>
         <%= f.hidden_field :chattable_type %>
