@@ -44,12 +44,12 @@ class Topic < ActiveRecord::Base
     topic = Topic.find_by_id id
     if topic.present?
       ids = topic.sub_topic_ids
-      store.concat(ids)
       ids.each do |sid|
         unless store.include?(sid)
           Topic.find_all_sub_topic_ids sid, store
         end
       end
+      store.concat(ids)
     end
   end
 
