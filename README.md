@@ -58,8 +58,6 @@ To solve this issue, drop the auto-created database and recreate with rake.
 
 ## Development
 
-From commit `f2bf2e32976f476cea466890b06096e0abdbd460` onward, all commits made by me will be signed with GPG key `YANKE Guo <me@yanke.io> 8C4D9C36` (unless I forget to), you can retrieve it from `hkp://keys.gnupg.net`.
-
 Feel free to fork or open issues.
 
 ## LICENSE
