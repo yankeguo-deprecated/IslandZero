@@ -34,7 +34,7 @@ class Topic < ActiveRecord::Base
 
   def update_all_parents_with_sub_topic_ids
     parent = self.parent_topic
-    while parent != nil do
+    while parent.present? and parent.id != self.id do
       parent.update_all_sub_topic_ids
       parent = parent.parent_topic
     end
@@ -46,6 +46,7 @@ class Topic < ActiveRecord::Base
       ids = topic.sub_topic_ids
       store.concat(ids)
       ids.each do |sid|
+        return if sid == topic.id
         Topic.find_all_sub_topic_ids sid, store
       end
     end
