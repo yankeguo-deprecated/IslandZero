@@ -60,7 +60,7 @@
 
               <% @sub_posts.each do |post| %>
               <li class="list-group-item">
-                <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></h4>
+                <h4 class="list-group-item-heading"><small class="text-muted"><%= "##{post.id}" %>&nbsp;&nbsp;<%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></small></h4>
                 <p class="text-right">
                   <% if current_user.is_admin || post.user == current_user %>
                   <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
