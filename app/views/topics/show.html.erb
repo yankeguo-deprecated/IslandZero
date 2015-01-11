@@ -79,12 +79,13 @@
                     <span><small class="text-muted"><%= "##{post.id}" %></small> <%= post.title %></span>
                     <p class="list-group-item-text text-right pull-right">
                     <span class="text-primary">
-                      <% if post.topic != @topic %>
-                        <span class="label label-default"><%= post.topic.title %></span>
-                      <% end %>
                       <small class="text-primary">
                         <%= time_ago_in_words post.created_at %> | <%= post.user.nickname %>
                       </small>
+
+                      <% if post.topic != @topic %>
+                        &nbsp;<span class="label label-default"><%= post.topic.title %></span>
+                      <% end %>
                     </span>
                     </p>
                   </h4>
