@@ -14,11 +14,14 @@ class Event < ActiveRecord::Base
   def self.create_for_new_post(post)
     topic = post.topic
     return if topic.nil?
+    ouser_created = false
     topic.starring_users.each do |u|
+      ouser_created = true if u.id == post.user_id
       u.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id)
     end
-    return if topic.user.nil?
-    topic.user.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id)
+    unless ouser_created
+      post.user.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id)
+    end
   end
 
   def self.create_for_new_sub_post(sub_post)

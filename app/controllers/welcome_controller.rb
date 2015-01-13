@@ -3,7 +3,11 @@ class WelcomeController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to timeline_path
+      if current_user.events.count == 0
+        redirect_to topics_path
+      else
+        redirect_to timeline_path
+      end
     end
   end
 
