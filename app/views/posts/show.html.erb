@@ -59,7 +59,7 @@
               <% if @sub_posts.length != 0 %>
 
               <% @sub_posts.each do |post| %>
-              <li class="list-group-item">
+                <li class="list-group-item" id="sub_post_<%= post.id %>">
                 <h4 class="list-group-item-heading">
                   <small class="text-muted">
                     <%= "##{post.id}" %><span class="pull-right text-primary"><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></span></small></h4>

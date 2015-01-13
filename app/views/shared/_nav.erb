@@ -6,18 +6,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to t(:islandzero), topics_path, class: "navbar-brand" %>
+      <%= link_to t(:islandzero), root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav navbar-left">
-        <%= li_link t('all_topics'), topics_path %>
-      </ul>
       <%= form_tag search_path, class: "navbar-form navbar-left", role: "search" do %>
       <div class="form-group">
         <%= text_field_tag :keyword, params[:keyword], class: 'form-control', placeholder: t(:search_topic) %>
       </div>
       <button type="submit" class="btn btn-info"><%= glyphicon :search %></button>
       <% end %>
+      <ul class="nav navbar-nav navbar-left">
+        <%= li_link t('activites'), timeline_path %>
+        <%= li_link t('all_topics'), topics_path %>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.nickname %><b class="caret"></b></a>

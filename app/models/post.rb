@@ -16,6 +16,15 @@ class Post < ActiveRecord::Base
   has_many    :events, inverse_of: :post, dependent: :delete_all
   has_many    :events_as_sub, inverse_of: :post,class_name: :Event, foreign_key: :sub_post_id, dependent: :delete_all
 
+  after_create do
+    if self.parent_post.present?
+      Event.create_for_new_sub_post self
+    else
+      Event.create_for_new_post self
+    end
+    true
+  end
+
   # Shortcut for Markdown parsed introduction
 
   def content_parsed

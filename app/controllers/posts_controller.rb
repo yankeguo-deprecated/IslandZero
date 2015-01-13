@@ -12,6 +12,24 @@ class PostsController < ApplicationController
   end
 
   def show
+    # Jump if not a top_post
+    if @post.parent_post.present?
+      redirect_to post_path(@post.parent_post, jump_sub_post: @post.id)
+      return
+    end
+
+    # Jump if specified
+    if params[:jump_sub_post].present?
+      sid = params[:jump_sub_post].to_i
+      sub_post = Post.find_by_id sid
+      if sub_post.present?
+        pos = @post.sub_posts.where("id <= ?", sub_post.id).count
+        page= (pos.to_f / WillPaginate.per_page.to_f).ceil
+        redirect_to post_path(@post, page: page, anchor: "sub_post_#{sid}")
+        return
+      end
+    end
+
     # Prepare a Message
     @chattable = @post
     @new_message = Message.new
@@ -65,8 +83,8 @@ class PostsController < ApplicationController
       end
     end
 
-    @post = current_user.posts.new(post_params)
-    @post.save
+    @post = current_user.posts.create(post_params)
+
     if request.xhr?
       render nothing: true
     else

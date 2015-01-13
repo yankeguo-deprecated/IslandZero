@@ -34,13 +34,13 @@ class Event < ActiveRecord::Base
       user = User.find_by_id uid
       if user.present?
         if user.id == sub_post.id
-          user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post_id)
+          user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post.id)
         else
           last = user.events.last
           if last.event_type == Event::Type::NewSubPost and last.post_id == post.id
             last.update(count: last.count + 1)
           else
-            user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post_id)
+            user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post.id)
           end
         end
       end

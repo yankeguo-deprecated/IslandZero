@@ -1,4 +1,7 @@
 zh-CN:
+  activites: '动态'
+  you: '你'
+  no_activities: '没有活动'
   in_topic: '在主题'
   _after_in: '中'
   create_a_post: '创建了一个帖子'

@@ -1,4 +1,7 @@
 en:
+  activites: 'Activites'
+  you: 'you'
+  no_activities: 'No Activities'
   in_topic: 'In topic'
   _after_in: ''
   create_a_post: 'create a post'

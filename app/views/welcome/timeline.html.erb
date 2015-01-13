@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-main">
           <ul class="list-group">
             <% if @events.count == 0 %>
               <li class="list-group-item text-center"><%= t(:no_activities) %></li>
@@ -22,7 +22,7 @@
                     <%= link_to event.topic.title, topic_path(event.topic) %>
                     <%= t('_after_in') %>
                     , 
-                    <%= "#{event.post.user.nickname}(#{event.post.user.id})" %> 
+                    <%= user_or_me event.post.user %> 
                     <%= t(:create_a_post) %> 
                     <%= link_to event.post.title, post_path(event.post) %>
                     .
@@ -39,7 +39,7 @@
                       <%= link_to event.post.title, post_path(event.post) %>
                       <%= t('_after_in') %>
                       ,
-                      <%= "#{event.sub_post.user.nickname}(#{event.sub_post.user.id})" %> 
+                      <%= user_or_me event.sub_post.user %> 
                       <%= t(:create_a_sub_post) %>
                       <%= link_to truncate(event.sub_post.content, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
                       .
@@ -56,7 +56,7 @@
                         <%= link_to event.post.title, post_path(event.post) %>
                         <%= t('_after_in') %>
                         ,
-                        <%= "#{event.sub_post.user.nickname}(#{event.sub_post.user.id})" %> 
+                        <%= user_or_me event.sub_post.user %> 
                         <%= t(:create_a_sub_post) %>
                         <%= link_to truncate(event.sub_post.content, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
                         .
