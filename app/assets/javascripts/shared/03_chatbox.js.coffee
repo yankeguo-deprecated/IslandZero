@@ -23,6 +23,7 @@ Chatbox.setupFormSend = (form)->
     inputEle.attr('disabled', true)
   form.on 'ajax:success', (data, status, xhr)->
     inputEle.val("")
+    inputEle.focus()
   form.on 'ajax:error', (event, xhr, error)->
     alert xhr.responseText
   form.on 'ajax:complete', ->
