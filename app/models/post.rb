@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
 
+  # events
+  has_many    :events, inverse_of: :post, dependent: :delete_all
+  has_many    :events_as_sub, inverse_of: :post,class_name: :Event, foreign_key: :sub_post_id, dependent: :delete_all
+
   # Shortcut for Markdown parsed introduction
 
   def content_parsed

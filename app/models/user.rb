@@ -19,7 +19,11 @@ class User < ActiveRecord::Base
   # Has many relations with Topic
   has_many    :topic_users, inverse_of: :user
 
+  # Topics
   has_many    :topics, through: :topic_users
+
+  # Event
+  has_many    :events, inverse_of: :user, dependent: :delete_all
 
   # Helpers for stare
   def starred_topics

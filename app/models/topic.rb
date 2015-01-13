@@ -14,6 +14,9 @@ class Topic < ActiveRecord::Base
 
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
+  
+  # has many events
+  has_many    :events, inverse_of: :topic, dependent: :delete_all
 
   # Posts within this topic and subtopics
   def all_posts
