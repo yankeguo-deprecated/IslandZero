@@ -23,6 +23,16 @@ class Topic < ActiveRecord::Base
     Post.where(topic_id: (self.all_sub_topic_ids_array | [ self.id ]), parent_id: 0)
   end
 
+  def each_parent(*args)
+    parent_history = [ self.id ]
+    parent = self.parent_topic
+    while parent.present? and !parent_history.include?(parent.id) do
+      yield parent
+      parent_history << parent.id
+      parent = parent.parent_topic
+    end
+  end
+
   def all_sub_topic_ids_array
     (self.all_sub_topic_ids || "").split(",").map { |id| id.to_i }
   end
@@ -36,23 +46,19 @@ class Topic < ActiveRecord::Base
   end
 
   def update_all_parents_with_sub_topic_ids
-    parent = self.parent_topic
-    while parent.present? and parent.id != self.id do
+    self.each_parent do |parent|
       parent.update_all_sub_topic_ids
-      parent = parent.parent_topic
     end
   end
 
   def self.find_all_sub_topic_ids(id, store)
     topic = Topic.find_by_id id
     if topic.present?
-      ids = topic.sub_topic_ids
-      ids.each do |sid|
-        unless store.include?(sid)
-          Topic.find_all_sub_topic_ids sid, store
-        end
-      end
+      ids = topic.sub_topic_ids - store
       store.concat(ids)
+      ids.each do |sid|
+        Topic.find_all_sub_topic_ids sid, store
+      end
     end
   end
 
