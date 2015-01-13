@@ -1,0 +1,99 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @events %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <ul class="list-group">
+            <% if @events.count == 0 %>
+              <li class="list-group-item text-center"><%= t(:no_activities) %></li>
+            <% else %>
+              <% @events.each do |event| %>
+                <li class="list-group-item">
+                  <% if event.event_type == Event::Type::NewPost and event.topic.present? and event.post.present? %>
+                    <%= t(:in_topic) %> 
+                    <%= link_to event.topic.title, topic_path(event.topic) %>
+                    <%= t('_after_in') %>
+                    , 
+                    <%= "#{event.post.user.nickname}(#{event.post.user.id})" %> 
+                    <%= t(:create_a_post) %> 
+                    <%= link_to event.post.title, post_path(event.post) %>
+                    .
+                  <% end %>
+
+                  <% if event.event_type == Event::Type::NewSubPost and event.topic.present? and event.post.present? and event.sub_post.present? %>
+                    <% if event.post.user_id == current_user.id %>
+
+                      <%= t(:in_topic) %> 
+                      <%= link_to event.topic.title, topic_path(event.topic) %>
+                      <%= t('_after_in') %>
+                      , 
+                      <%= t(:in_your_post) %> 
+                      <%= link_to event.post.title, post_path(event.post) %>
+                      <%= t('_after_in') %>
+                      ,
+                      <%= "#{event.sub_post.user.nickname}(#{event.sub_post.user.id})" %> 
+                      <%= t(:create_a_sub_post) %>
+                      <%= link_to truncate(event.sub_post.content, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
+                      .
+
+                    <% else %>
+
+                      <% if event.count > 1 %>
+
+                        <%= t(:in_topic) %> 
+                        <%= link_to event.topic.title, topic_path(event.topic) %>
+                        <%= t('_after_in') %>
+                        , 
+                        <%= t(:in_post) %> 
+                        <%= link_to event.post.title, post_path(event.post) %>
+                        <%= t('_after_in') %>
+                        ,
+                        <%= "#{event.sub_post.user.nickname}(#{event.sub_post.user.id})" %> 
+                        <%= t(:create_a_sub_post) %>
+                        <%= link_to truncate(event.sub_post.content, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
+                        .
+
+                      <% else %>
+
+                        <%= t(:in_topic) %> 
+                        <%= link_to event.topic.title, topic_path(event.topic) %>
+                        <%= t('_after_in') %>
+                        , 
+                        <%= t(:in_post) %> 
+                        <%= link_to event.post.title, post_path(event.post) %>
+                        <%= t('_after_in') %>
+                        ,
+                        <%= t('multiple_sub_posts_created', count: event.count) %>
+                        .
+                        
+                      <% end %>
+
+                    <% end %>
+                  <% end %>
+
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @events %>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</div>

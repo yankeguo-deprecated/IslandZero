@@ -1,4 +1,11 @@
 en:
+  in_topic: 'In topic'
+  _after_in: ''
+  create_a_post: 'create a post'
+  in_your_post: 'in your post'
+  in_post: 'in post'
+  create_a_sub_post: 'create a reply'
+  multiple_sub_posts_created: '%{count} replies are created'
   resend_unlock_email: 'Resend unlock email'
   resend_confirmation_email: 'Resend confirmation email'
   forgot_your_password: 'Forgot your password?'

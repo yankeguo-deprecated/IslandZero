@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Root
   root 'welcome#index'
 
+  get  'timeline' => 'welcome#timeline'
+
   # Devise
   devise_for :users , controllers: {
     registrations: 'users/registrations'

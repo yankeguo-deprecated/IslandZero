@@ -1,4 +1,11 @@
 zh-CN:
+  in_topic: '在主题'
+  _after_in: '中'
+  create_a_post: '创建了一个帖子'
+  in_your_post: '在你的帖子'
+  in_post: '在帖子'
+  create_a_sub_post: '创建了一个回复'
+  multiple_sub_posts_created: '有%{count}个回复'
   resend_unlock_email: '重发解锁邮件'
   resend_confirmation_email: '重发验证邮件'
   forgot_your_password: '忘记密码?'
