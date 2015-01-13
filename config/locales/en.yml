@@ -1,4 +1,8 @@
 en:
+  from_your_post:  'From your post'
+  from_post:  'From post'
+  from_topic: 'From topic'
+  topic: 'Topic'
   activites: 'Activites'
   you: 'you'
   no_activities: 'No Activities'
