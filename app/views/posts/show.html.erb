@@ -62,7 +62,12 @@
                 <li class="list-group-item" id="sub_post_<%= post.id %>">
                 <h4 class="list-group-item-heading">
                   <small class="text-muted">
-                    <%= "##{post.id}" %><span class="pull-right text-primary"><%= time_ago_in_words post.created_at %> | <%= post.user.nickname %></span></small></h4>
+                    <%= "##{post.id}" %>&nbsp;
+                    <span class="text-primary">
+                      <%= post.user.nickname %>&nbsp; | &nbsp;<%= time_ago_in_words post.created_at %>
+                    </span>
+                  </small>
+                </h4>
                 <p class="text-right">
                   <% if current_user.is_admin || post.user == current_user %>
                   <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
