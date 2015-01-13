@@ -14,13 +14,12 @@
 ActiveRecord::Schema.define(version: 20150113123013) do
 
   create_table "events", force: true do |t|
-    t.integer  "user_id",                     null: false
-    t.string   "event_type",                  null: false
-    t.integer  "count",       default: 1,     null: false
-    t.integer  "topic_id",    default: 0,     null: false
-    t.integer  "post_id",     default: 0,     null: false
-    t.integer  "sub_post_id", default: 0,     null: false
-    t.boolean  "has_read",    default: false, null: false
+    t.integer  "user_id",                 null: false
+    t.string   "event_type",              null: false
+    t.integer  "count",       default: 1, null: false
+    t.integer  "topic_id",    default: 0, null: false
+    t.integer  "post_id",     default: 0, null: false
+    t.integer  "sub_post_id", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

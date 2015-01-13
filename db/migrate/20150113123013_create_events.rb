@@ -7,7 +7,6 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :topic_id,    index: true, null: false, default: 0
       t.integer :post_id,     index: true, null: false, default: 0
       t.integer :sub_post_id, index: true, null: false, default: 0
-      t.boolean :has_read,    index: true, null: false, default: false
 
       t.timestamps
     end
