@@ -23,11 +23,15 @@ class Topic < ActiveRecord::Base
     Post.where(topic_id: (self.all_sub_topic_ids_array | [ self.id ]), parent_id: 0)
   end
 
-  def each_parent(*args)
-    parent_history = [ self.id ]
+  def each_parent(with_self = false, &block)
+    parent_history = []
+    if with_self
+      block.call(self) 
+      parent_history << self.id
+    end
     parent = self.parent_topic
     while parent.present? and !parent_history.include?(parent.id) do
-      yield parent
+      block.call(parent)
       parent_history << parent.id
       parent = parent.parent_topic
     end
