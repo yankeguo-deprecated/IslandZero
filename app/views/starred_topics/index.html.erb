@@ -1,28 +1,31 @@
 <div class="container">
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-8">
+  <div class="col-md-8">
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default panel-main">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default panel-main">
+          <div class="panel-body">
+            <%= t :starred_topics %>
+          </div>
 
-            <% if @starred_topics.empty? %>
+          <% if @starred_topics.empty? %>
 
             <div class="list-group">
               <li class="list-group-item text-center"><%= t :no_starred_topics %></li>
             </div>
 
-            <% else %>
+          <% else %>
 
             <%= render 'topics/index', topics: @starred_topics %>
 
-            <% end %>
+          <% end %>
 
-          </div>
         </div>
       </div>
-
     </div>
+
   </div>
+</div>
 </div>
