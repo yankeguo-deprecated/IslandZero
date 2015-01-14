@@ -63,7 +63,7 @@ class PostsController < ApplicationController
     .clean_basic(:content)
     .clean_strict(:title)
 
-    if post_params[:content].blank?
+    if post_params[:content].blank? and post_params[:title].blank?
       redirect_to :back, flash: { alert: 'Content Missing' }
       return
     end
