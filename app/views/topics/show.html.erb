@@ -58,13 +58,13 @@
               <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
                 <%= f.hidden_field :topic_id %>
                 <div class="form-group">
-                  <%= f.text_field :title, class: 'form-control', id: 'inputTitle', placeholder: t("title") %>
+                  <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
                 </div>
                 <div class="form-group">
-                  <%= f.text_area :content, class: 'form-control', id: 'inputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
+                  <%= f.text_area :content, class: 'form-control', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
                 </div>
                 <div class="form-group text-right">
-                  <%= f.submit t("submit"), class: "btn btn-sm btn-default" %>
+                  <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>
                 </div>
               <% end %>
             </div>
