@@ -1,32 +1,35 @@
-<% messages = @chattable.messages.order("id DESC").first(50) %>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-success panel-main">
-      <div class="panel-heading">
-        Chatbox
-      </div>
-      <div class="panel-body">
-        <%= form_for @new_message, remote: true, html: { id: 'chatroom-send-form' } do |f| %>
-        <%= f.hidden_field :chattable_type %>
-        <%= f.hidden_field :chattable_id %>
-        <div class="row">
-          <div class="col-md-8">
-            <div class="form-group">
-              <%= f.text_field :content, class: 'form-control', id: 'input-content' %>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <%= f.submit t(:send), class: 'btn btn-default' %>
-          </div>
+<% if @chattable.present? %>
+  <% messages = @chattable.messages.order("id DESC").first(50) %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-success panel-main">
+        <div class="panel-heading">
+          Chatbox
         </div>
+        <% if @new_message.present? %>
+          <div class="panel-body">
+            <%= form_for @new_message, remote: true, html: { id: 'chatroom-send-form' } do |f| %>
+              <%= f.hidden_field :chattable_type %>
+              <%= f.hidden_field :chattable_id %>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <%= f.text_field :content, class: 'form-control', id: 'input-content' %>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <%= f.submit t(:send), class: 'btn btn-default' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <div class="panel-body" id="chatroom-content">
-        <% messages.each do |msg| %>
-        <%= render partial: 'shared/chatitem', locals: { msg: msg } %>
-        <% end %>
+        <div class="panel-body" id="chatroom-content">
+          <% messages.each do |msg| %>
+            <%= render partial: 'shared/chatitem', locals: { msg: msg } %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -19,17 +19,19 @@
               <% end %>
             <% end %>
 
-            <% if @topic.starring_users.include? current_user %>
-              <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'text-white pull-right need-reload' %>
-            <% else %>
-              <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'text-white pull-right need-reload' %>
+            <% if user_signed_in? %>
+              <% if @topic.starring_users.include? current_user %>
+                <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'text-white pull-right need-reload' %>
+              <% else %>
+                <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'text-white pull-right need-reload' %>
+              <% end %>
             <% end %>
           </div>
           <div class="panel-body">
             <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
             <%= @topic.introduction_parsed.html_safe %>
 
-            <% if current_user.is_admin %>
+            <% if user_signed_in? and current_user.is_admin %>
               <div class="text-right">
                 <p>
                 <%= link_to t(:edit), edit_topic_path(@topic) %> |
@@ -47,28 +49,30 @@
       <div class="col-md-12">
         <div class="panel panel-default">
 
-          <div class="panel-body text-right">
-            <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
-              <%= glyphicon 'pencil' %><%= t(:new_post) %>
-            </a>
-          </div>
-
-          <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
-                <%= f.hidden_field :topic_id %>
-                <div class="form-group">
-                  <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
-                </div>
-                <div class="form-group">
-                  <%= f.text_area :content, class: 'form-control', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
-                </div>
-                <div class="form-group text-right">
-                  <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>
-                </div>
-              <% end %>
+          <% if @new_post.present? %>
+            <div class="panel-body text-right">
+              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+                <%= glyphicon 'pencil' %><%= t(:new_post) %>
+              </a>
             </div>
-          </div>
+
+            <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
+                  <%= f.hidden_field :topic_id %>
+                  <div class="form-group">
+                    <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_area :content, class: 'form-control', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
+                  </div>
+                  <div class="form-group text-right">
+                    <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
 
           <div class="list-group">
             <% if @posts.length != 0 %>

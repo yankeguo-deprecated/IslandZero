@@ -20,19 +20,23 @@ class TopicsController < ApplicationController
   def show
     # Setup message
     @chattable = @topic
-    @new_message= Message.new
-    @new_message.chattable = @topic
+    if user_signed_in?
+      @new_message= Message.new(chattable: @topic)
+    end
 
     # Reveal Objects
     @posts  = @topic.all_posts.order("id DESC").paginate(:page => params[:page])
     @sub_topics = @topic.sub_topics.order(:rank)
 
     # Form for tricks
-    @new_post   = Post.new
-    @new_post.topic = @topic
+    if user_signed_in?
+      @new_post   = Post.new(topic: @topic)
+    end
 
     # Update visited_at
-    @topic.mark_visited current_user
+    if user_signed_in?
+      @topic.mark_visited current_user
+    end
 
     # Render
     respond_with(@topic)
