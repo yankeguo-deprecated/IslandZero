@@ -29,4 +29,10 @@ class User < ActiveRecord::Base
   def starred_topics
     self.topics.where("topic_users.is_starred" => true)
   end
+
+  # Super Admin is defined as id == 1
+  def is_super_admin
+    self.id == 1
+  end
+
 end
