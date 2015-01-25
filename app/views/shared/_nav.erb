@@ -9,17 +9,21 @@
     <%= link_to t(:islandzero), root_path, class: "navbar-brand" %>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <%= form_tag search_path, class: "navbar-form navbar-left", role: "search" do %>
-      <div class="form-group">
-        <%= text_field_tag :keyword, params[:keyword], class: 'form-control', placeholder: t(:search_topic) %>
-      </div>
-      <button type="submit" class="btn btn-info"><%= glyphicon :search %></button>
+    <% if user_signed_in? or IslandZero.open_to_public %>
+      <%= form_tag search_path, class: "navbar-form navbar-left", role: "search" do %>
+        <div class="form-group">
+          <%= text_field_tag :keyword, params[:keyword], class: 'form-control', placeholder: t(:search_topic) %>
+        </div>
+        <button type="submit" class="btn btn-info"><%= glyphicon :search %></button>
+      <% end %>
     <% end %>
     <ul class="nav navbar-nav navbar-left">
       <% if user_signed_in? %>
         <%= li_link t('activites'), timeline_path %>
       <% end %>
-      <%= li_link t('all_topics'), topics_path %>
+      <% if user_signed_in? or IslandZero.open_to_public %>
+        <%= li_link t('all_topics'), topics_path %>
+      <% end %>
       <% if user_signed_in? %>
         <%= li_link t('starred_topics'), starred_topics_path %>
       <% end %>

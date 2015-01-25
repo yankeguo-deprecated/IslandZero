@@ -7,19 +7,16 @@
         <div class="col-md-12">
           <div class="panel panel-default panel-main">
 
-
             <div class="panel-body">
               <span>
                 <%= t(:all_topics) %>
               </span>
-              <% if current_user.is_admin %>
+              <% if user_signed_in? and current_user.is_admin %>
               <span class="pull-right">
                 <%= link_to t(:new_topic), new_topic_path %>
               </span>
               <% end %>
-
             </div>
-
 
             <%= render 'index', topics: @topics %>
 

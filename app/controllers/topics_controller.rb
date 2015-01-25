@@ -1,5 +1,11 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
+
+  if IslandZero.open_to_public
+    before_action :authenticate_user!,  except: [:index, :show]
+  else
+    before_action :authenticate_user!
+  end
+
   before_action :authenticate_admin!, only: [:edit, :update, :new, :create]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 

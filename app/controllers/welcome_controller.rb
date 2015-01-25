@@ -8,6 +8,10 @@ class WelcomeController < ApplicationController
       else
         redirect_to timeline_path
       end
+    else
+      if IslandZero.open_to_public
+        redirect_to topics_path
+      end
     end
   end
 
