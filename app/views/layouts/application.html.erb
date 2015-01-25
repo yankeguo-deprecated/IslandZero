@@ -1,64 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= content_for(:page_title) %> <%= t(:islandzero) %></title>
-  <meta name="viewport" content="width=device-width,user-scalable=no" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <script type="text/javascript" src="/faye/client.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= favicon_link_tag '/favicon.ico' %>
-  <%= csrf_meta_tags %>
-  <!-- GA Head -->
-  <%= render 'shared/ga_head' %>
-</head>
-<body>
+  <head>
+    <title><%= content_for(:page_title) %> <%= t(:islandzero) %></title>
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <script type="text/javascript" src="/faye/client.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= csrf_meta_tags %>
+    <!-- GA Head -->
+    <%= render 'shared/ga_head' %>
+  </head>
+  <body>
 
-  <!-- Navigation Bar -->
-  <% if user_signed_in? %>
-  <%= render 'shared/nav' %>
-  <% else %>
-  <%= render 'shared/nav_not_logined' %>
-  <% end %>
+    <!-- Navigation Bar -->
+    <%= render 'shared/nav' %>
 
-  <!-- Alerts -->
-  <% if flash.alert.present? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="alert alert-warning alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <%= flash.alert %>
+    <!-- Alerts -->
+    <% if flash.alert.present? %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <%= flash.alert %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
 
-  <% if flash.notice.present? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <%= flash.notice %>
+    <% if flash.notice.present? %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-info alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <%= flash.notice %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
 
-  <!-- Content -->
-  <%= yield %>
+    <!-- Content -->
+    <%= yield %>
 
-  <!-- Footer -->
-  <%= render 'shared/footer' %>
+    <!-- Footer -->
+    <%= render 'shared/footer' %>
 
-  <% if @new_message %>
-  <%= chatroom_meta_for @new_message %>
-  <% end %>
+    <% if @new_message %>
+      <%= chatroom_meta_for @new_message %>
+    <% end %>
 
-  <!-- GA Page View -->
-  <%= render 'shared/ga_page_view' %>
+    <!-- GA Page View -->
+    <%= render 'shared/ga_page_view' %>
 
-</body>
+  </body>
 </html>
