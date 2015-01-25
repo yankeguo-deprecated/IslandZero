@@ -6,10 +6,9 @@
       <small class="text-muted"><%= "##{topic.id}" %></small> 
       <small class="text-muted pull-right text-right">
         <% if user_signed_in? %>
-          <%= topic.posts_count_unvisited current_user %>/<%= topic.all_posts.count %>
-        <% else %>
-          <%= topic.all_posts.count %>
+         <%= t(:not_read_posts) %><%= topic.posts_count_unvisited current_user %>/
         <% end %>
+        <%= t(:all_posts) %><%= topic.all_posts.count %>
       </small>
     </h4>
     <p class="list-group-item-text text-muted"><%= topic.introduction_plain.truncate(100) %></p>

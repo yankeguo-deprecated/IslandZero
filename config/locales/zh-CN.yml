@@ -1,4 +1,6 @@
 zh-CN:
+  not_read_posts: '未读帖子'
+  all_posts: '全部帖子'
   from_your_post:  '来自你的帖子'
   from_post:  '来自帖子'
   from_topic: '来自主题'

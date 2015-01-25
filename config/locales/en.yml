@@ -1,4 +1,6 @@
 en:
+  not_read_posts: 'unread posts'
+  all_posts: 'all posts'
   from_your_post:  'From your post'
   from_post:  'From post'
   from_topic: 'From topic'
