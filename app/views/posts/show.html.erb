@@ -1,39 +1,39 @@
 <div class="container">
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-8">
+  <div class="col-md-8">
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-info panel-main">
-            <div class="panel-heading">
-              <%= link_to topic_path(@topic), class: 'text-white' do %>
-                <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_topic)}: #{@topic.title}" %>
-              <% end %>
-            </div>
-            <div class="panel-body">
-              <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-primary pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-info panel-main">
+          <div class="panel-heading">
+            <%= link_to topic_path(@topic), class: 'text-white' do %>
+              <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_topic)}: #{@topic.title}" %>
+            <% end %>
+          </div>
+          <div class="panel-body">
+            <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-primary pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>
 
-              <% if current_user.is_admin || @post.user == current_user %>
+            <% if user_signed_in? and ( current_user.is_admin or @post.user == current_user ) %>
               <p class="text-right">
-                <%= link_to t(:delete), @post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
-                |
-                <%= link_to t(:edit), edit_post_path(@post) %>
+              <%= link_to t(:delete), @post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
+              |
+              <%= link_to t(:edit), edit_post_path(@post) %>
               </p>
-              <% end %>
-
-              <p>
-                <%= @post.content_parsed.html_safe %>
-              </p>
-            </div>
+            <% end %>
+            <p>
+            <%= @post.content_parsed.html_safe %>
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
 
+          <% if @new_post.present? %>
             <div class="panel-body text-right">
               <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
                 <%= glyphicon 'pencil' %><%= t(:new_reply) %>
@@ -43,63 +43,60 @@
             <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <%= form_for @new_post, remote: true, html: { class: 'need-reload' } do |f| %>
-                <%= f.hidden_field :topic_id %>
-                <%= f.hidden_field :parent_id %>
-                <div class="form-group">
-                  <%= f.text_area :content, class: 'form-control', id: 'newSubPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
-                </div>
-                <div class="form-group text-right">
-                  <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newSubPostSubmit' %>
-                </div>
+                  <%= f.hidden_field :topic_id %>
+                  <%= f.hidden_field :parent_id %>
+                  <div class="form-group">
+                    <%= f.text_area :content, class: 'form-control', id: 'newSubPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
+                  </div>
+                  <div class="form-group text-right">
+                    <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newSubPostSubmit' %>
+                  </div>
                 <% end %>
               </div>
             </div>
+          <% end %>
 
-            <ul class="list-group">
-              <% if @sub_posts.length != 0 %>
-
+          <ul class="list-group">
+            <% if @sub_posts.length != 0 %>
               <% @sub_posts.each do |post| %>
                 <li class="list-group-item" id="sub_post_<%= post.id %>">
-                <h4 class="list-group-item-heading">
-                  <small class="text-muted">
-                    <%= "##{post.id}" %>&nbsp;
-                    <span class="text-primary">
-                      <%= post.user.nickname %>&nbsp; | &nbsp;<%= time_ago_in_words post.created_at %>
-                    </span>
-                  </small>
-                </h4>
-                <p class="text-right">
-                  <% if current_user.is_admin || post.user == current_user %>
-                  <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
-                  |
-                  <%= link_to t(:edit), edit_post_path(post) %>
+                  <h4 class="list-group-item-heading">
+                    <small class="text-muted">
+                      <%= "##{post.id}" %>&nbsp;
+                      <span class="text-primary">
+                        <%= post.user.nickname %>&nbsp; | &nbsp;<%= time_ago_in_words post.created_at %>
+                      </span>
+                    </small>
+                  </h4>
+                  <p class="text-right">
+                  <% if user_signed_in? and ( current_user.is_admin or post.user == current_user ) %>
+                    <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
+                    |
+                    <%= link_to t(:edit), edit_post_path(post) %>
                   <% end %>
-                </p>
-                <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>
-              </li>
+                  </p>
+                  <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>
+                </li>
               <% end %>
-
-              <% else %>
-
+            <% else %>
               <li class="list-group-item text-center"><%= t(:no_replies) %></li>
-
-              <% end %>
-            </ul>
-          </div>
+            <% end %>
+          </ul>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <%= will_paginate @sub_posts %>
-        </div>
-      </div>
-
     </div>
 
-    <div class="col-md-4">
-      <%= render 'shared/chatbox' %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @sub_posts %>
+      </div>
     </div>
 
   </div>
+
+  <div class="col-md-4">
+    <%= render 'shared/chatbox' %>
+  </div>
+
+</div>
 </div>

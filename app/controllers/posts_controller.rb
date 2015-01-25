@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+
+  if IslandZero.open_to_public
+    before_action :authenticate_user!, except: [:show]
+  else
+    before_action :authenticate_user!
+  end
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :check_permission, only: [:edit, :update, :destroy]
 
   respond_to :html
-
-  def index
-    params[:parent_id] = 0 if params[:parent_id].nil?
-    @posts = Post.where(params.permit(:parent_id, :topic_id))
-    respond_with(@posts)
-  end
 
   def show
     # Jump if not a top_post
@@ -32,13 +32,14 @@ class PostsController < ApplicationController
 
     # Prepare a Message
     @chattable = @post
-    @new_message = Message.new
-    @new_message.chattable = @chattable
+    if user_signed_in?
+      @new_message = Message.new(chattable: @chattable)
+    end
 
     # Prepare a sub-post
-    @new_post = Post.new
-    @new_post.topic = @post.topic
-    @new_post.parent_post = @post
+    if user_signed_in?
+      @new_post = Post.new(topic: @post.topic, parent_post: @post)
+    end
 
     # Reveal sub-posts
     @sub_posts = @post.sub_posts.order("id DESC").paginate(:page => params[:page])

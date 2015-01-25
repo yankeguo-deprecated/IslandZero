@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   # Resource
-  resources :posts
+  resources :posts,  except: [:index]
   resources :topics, except: [:destroy]
   resources :messages
   resources :starred_topics, only: [:index, :destroy, :create]
