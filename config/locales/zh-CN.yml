@@ -1,4 +1,8 @@
 zh-CN:
+  no_chat_content: '没有聊天内容'
+  login_to_create_reply: '登陆即可回复'
+  login_to_create_post: '登陆即可发帖'
+  login_to_chat: '登陆即可参与聊天'
   not_read_posts: '未读帖子'
   all_posts: '全部帖子'
   from_your_post:  '来自你的帖子'

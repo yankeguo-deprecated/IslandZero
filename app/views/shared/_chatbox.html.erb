@@ -23,6 +23,12 @@
               </div>
             <% end %>
           </div>
+        <% else %>
+          <% if !user_signed_in? %>
+            <div class="panel-body text-center text-muted">
+              <%= t(:login_to_chat) %>
+            </div>
+          <% end %>
         <% end %>
         <div class="panel-body" id="chatroom-content">
           <% messages.each do |msg| %>

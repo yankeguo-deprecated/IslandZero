@@ -72,6 +72,12 @@
                 <% end %>
               </div>
             </div>
+          <% else %>
+            <% if !user_signed_in? %>
+              <div class="panel-body text-center text-muted">
+                <%= t(:login_to_create_post) %>
+              </div>
+            <% end %>
           <% end %>
 
           <div class="list-group">

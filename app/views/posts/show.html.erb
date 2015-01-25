@@ -54,6 +54,12 @@
                 <% end %>
               </div>
             </div>
+          <% else %>
+            <% if !user_signed_in? %>
+              <div class="panel-body text-center text-muted">
+                <%= t(:login_to_create_reply) %>
+              </div>
+            <% end %>
           <% end %>
 
           <ul class="list-group">
