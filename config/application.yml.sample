@@ -58,3 +58,6 @@ GA_TRACK_ID: ''
 # PROD_SERVER_PASSWORD: ''
 # PROD_SERVER_PATH: ''
 #
+# 6. IslandZero Configurations
+#
+IZ_OPEN_TO_PUBLIC: 'false'

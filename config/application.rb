@@ -6,7 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Require extensions for early access
+require File.expand_path('../../lib/extensions', __FILE__)
+
 module IslandZero
+
+  def self.open_to_public
+    ENV['IZ_OPEN_TO_PUBLIC'].to_bool
+  end
+
   class Application < Rails::Application
     # Autoload lib fonder
     config.autoload_paths << Rails.root.join('lib')
