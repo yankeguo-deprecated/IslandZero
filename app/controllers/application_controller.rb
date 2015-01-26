@@ -12,6 +12,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_super_admin!
+    unless current_user.is_super_admin
+      flash.alert = t(:you_are_not_super_admin)
+      redirect_to :back
+    end
+  end
+
+  def redirect_back_or(options = {}, response_status = {})
+    if request.env["HTTP_REFERER"].present?
+      redirect_to :back
+    else
+      redirect_to options, response_status
+    end
+  end
+
   private
 
   def set_locale

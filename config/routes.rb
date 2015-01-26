@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   }
 
   # Resource
+  resources :users,  only:   [:index, :update]
   resources :posts,  except: [:index]
   resources :topics, except: [:destroy]
   resources :messages

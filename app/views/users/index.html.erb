@@ -1,0 +1,17 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default panel-main">
+      <ul class="list-group">
+        <% @users.each do |user| %>
+          <li class="list-group-item">
+            <%= user.id %>
+            </br>
+            <%= user.email %>
+            </br>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -27,6 +27,9 @@
       <% if user_signed_in? %>
         <%= li_link t('starred_topics'), starred_topics_path %>
       <% end %>
+      <% if user_signed_in? and current_user.is_super_admin %>
+        <%= li_link t('all_users'), users_path %>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
