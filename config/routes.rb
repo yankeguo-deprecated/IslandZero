@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   # Sidekiq Web UI
-  authenticate :user, lambda { |u| u.is_admin } do
+  authenticate :user, lambda { |u| u.is_super_admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
