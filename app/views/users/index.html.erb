@@ -1,17 +1,46 @@
 <div class="container">
 <div class="row">
   <div class="col-md-8">
-    <div class="panel panel-default panel-main">
-      <ul class="list-group">
-        <% @users.each do |user| %>
-          <li class="list-group-item">
-            <%= user.id %>
-            </br>
-            <%= user.email %>
-            </br>
-          </li>
-        <% end %>
-      </ul>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @users %>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="panel panel-default panel-main">
+        <ul class="list-group">
+          <% @users.each do |user| %>
+            <li class="list-group-item">
+              <p>
+              <strong class="text-muted"><%= user.id %></strong>
+              <strong><%= user.email %></strong>
+              </p>
+              <p>
+              <%= form_for user do |f| %>
+                <% if user.is_admin %>
+                  <% user.is_admin = false %>
+                  <%= f.hidden_field :is_admin %>
+                  <%= f.submit "Revoke Admin", class: 'btn btn-sm btn-warning' %>
+                <% else %>
+                  <% user.is_admin = true %>
+                  <%= f.hidden_field :is_admin %>
+                  <%= f.submit "Set Admin", class: 'btn btn-sm btn-success' %>
+                <% end %>
+              <% end %>
+              </p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @users %>
+      </div>
+    </div>
+
   </div>
 </div>
