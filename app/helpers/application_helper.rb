@@ -6,8 +6,8 @@ module ApplicationHelper
     end
   end
 
-  def chatroom_meta_for(msg)
-    tag :meta, name: 'chatroom-channel', content: "/chat/#{msg.chattable_type}/#{msg.chattable_id}"
+  def chatroom_meta_for(chattable)
+    tag :meta, name: 'chatroom-channel', content: "/chat/#{chattable.class.to_s}/#{chattable.id}"
   end
 
   def glyphicon(name)

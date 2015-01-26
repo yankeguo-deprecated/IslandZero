@@ -49,8 +49,8 @@
     <!-- Footer -->
     <%= render 'shared/footer' %>
 
-    <% if @new_message %>
-      <%= chatroom_meta_for @new_message %>
+    <% if @chattable %>
+      <%= chatroom_meta_for @chattable %>
     <% end %>
 
     <!-- GA Page View -->
