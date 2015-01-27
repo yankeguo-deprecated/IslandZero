@@ -94,8 +94,9 @@ ActiveRecord::Schema.define(version: 20150127032148) do
     t.boolean  "is_admin",               default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "oauth_provider"
-    t.string   "oauth_uid"
+    t.string   "github_uid"
+    t.string   "twitter_uid"
+    t.string   "google_oauth2_uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -36,31 +36,21 @@ class User < ActiveRecord::Base
   end
 
   # OmniAuth Methods
-  def self.find_for_google_oauth2(auth)
-    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
-      user.email    = auth.info["email"]
-      user.password = Devise.friendly_token[0,20]
 
-      user.nickname = auth.info["name"]
+  def self.find_for_oauth(provider, auth, current_user = nil)
+    if current_user
+      current_user.update "#{provider}_uid" => auth.uid
+      current_user
+    else
+      User.find_or_create_by("#{provider}_uid" => auth.uid) do |user|
+        user.email    = auth.info["email"]  || ""
+        user.nickname = auth.info["name"]   || "#{provider}#{auth.uid}"
+      end
     end
   end
 
-  def self.find_for_github(auth)
-    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
-      user.email    = auth.info["email"]
-      user.password = Devise.friendly_token[0,20]
-
-      user.nickname = auth.info["name"]
-    end
-  end
-
-  def self.find_for_twitter(auth)
-    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
-      user.email    = "#{auth.provider}-#{auth.uid}@island0.com"
-      user.password = Devise.friendly_token[0, 20]
-
-      user.nickname = auth.info["name"]
-    end
+  def has_oauth?
+    self.twitter_uid.present? or self.github_uid.present? or google_oauth2_uid.present?
   end
 
 end
