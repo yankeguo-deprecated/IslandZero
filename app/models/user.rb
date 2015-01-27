@@ -42,10 +42,12 @@ class User < ActiveRecord::Base
       current_user.update "#{provider}_uid" => auth.uid
       current_user
     else
-      User.find_or_create_by("#{provider}_uid" => auth.uid) do |user|
+      ouser = User.find_or_create_by("#{provider}_uid" => auth.uid) do |user|
         user.email    = auth.info["email"]  || ""
         user.nickname = auth.info["name"]   || "#{provider}#{auth.uid}"
       end
+      ouser.confirm!
+      ouser
     end
   end
 
