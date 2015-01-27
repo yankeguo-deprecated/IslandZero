@@ -2,6 +2,7 @@
 #
 # 1. Rails
 #
+FULL_HOST: 'https://www.island0.com'
 TIMEZONE: 'Beijing'
 #
 # Secure key base is for production only
