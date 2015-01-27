@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113123013) do
+ActiveRecord::Schema.define(version: 20150127004704) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id",                 null: false
@@ -37,13 +37,15 @@ ActiveRecord::Schema.define(version: 20150113123013) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "posts", force: true do |t|
-    t.integer  "topic_id",               null: false
-    t.integer  "user_id",                null: false
-    t.integer  "parent_id",  default: 0, null: false
+    t.integer  "topic_id",                   null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "parent_id",      default: 0, null: false
     t.string   "title"
-    t.text     "content",                null: false
+    t.text     "content",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content_parsed"
+    t.text     "content_plain"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
@@ -59,13 +61,15 @@ ActiveRecord::Schema.define(version: 20150113123013) do
   add_index "topic_users", ["topic_id", "user_id"], name: "index_topic_users_on_topic_id_and_user_id", unique: true
 
   create_table "topics", force: true do |t|
-    t.integer  "parent_id",         default: 0,   null: false
-    t.string   "title",                           null: false
-    t.text     "introduction",                    null: false
-    t.integer  "rank",              default: 100, null: false
+    t.integer  "parent_id",           default: 0,   null: false
+    t.string   "title",                             null: false
+    t.text     "introduction",                      null: false
+    t.integer  "rank",                default: 100, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "all_sub_topic_ids"
+    t.text     "introduction_parsed"
+    t.text     "introduction_plain"
   end
 
   create_table "users", force: true do |t|

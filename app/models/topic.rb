@@ -14,9 +14,16 @@ class Topic < ActiveRecord::Base
 
   # chattable
   has_many    :messages, inverse_of: :chattable, as: :chattable
-  
+
   # has many events
   has_many    :events, inverse_of: :topic, dependent: :delete_all
+
+  before_save do
+    # update introduction_parsed and plain
+    self.introduction_parsed = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(self.introduction || "")
+    self.introduction_plain  = Sanitize.clean(self.introduction_parsed, Sanitize::Config::STRICT)
+    true
+  end
 
   # Posts within this topic and subtopics
   def all_posts
@@ -79,17 +86,6 @@ class Topic < ActiveRecord::Base
   # Mark User as Visited
   def mark_visited(user)
     TopicUser.find_or_create_by(topic: self, user: user).update(visited_at: Time.current)
-  end
-
-  # Shortcut for Markdown parsed introduction
-
-  def introduction_parsed
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
-    .render(self.introduction || "")
-  end
-
-  def introduction_plain
-    Sanitize.clean(self.introduction_parsed, Sanitize::Config::STRICT)
   end
 
   # Helpers for stare

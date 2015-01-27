@@ -25,14 +25,11 @@ class Post < ActiveRecord::Base
     true
   end
 
-  # Shortcut for Markdown parsed introduction
-
-  def content_parsed
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
-    .render(self.content || "")
+  before_save do
+    # Update parsed and plain content
+    self.content_parsed = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(self.content || "")
+    self.content_plain  = Sanitize.clean(self.content_parsed, Sanitize::Config::STRICT)
+    true
   end
 
-  def content_plain
-    Sanitize.clean(self.content_parsed, Sanitize::Config::STRICT)
-  end
 end
