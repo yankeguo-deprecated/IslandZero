@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :timeoutable, :async
+    :recoverable, :rememberable, :trackable, :validatable,
+    :confirmable, :lockable, :timeoutable, :async, :omniauthable, :omniauth_providers => [ :google_oauth2, :twitter, :github ]
 
   before_save do
     self.is_admin = true if User.count == 0
@@ -33,6 +33,34 @@ class User < ActiveRecord::Base
   # Super Admin is defined as id == 1
   def is_super_admin
     self.id == 1
+  end
+
+  # OmniAuth Methods
+  def self.find_for_google_oauth2(auth)
+    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
+      user.email    = auth.info["email"]
+      user.password = Devise.friendly_token[0,20]
+
+      user.nickname = auth.info["name"]
+    end
+  end
+
+  def self.find_for_github(auth)
+    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
+      user.email    = auth.info["email"]
+      user.password = Devise.friendly_token[0,20]
+
+      user.nickname = auth.info["name"]
+    end
+  end
+
+  def self.find_for_twitter(auth)
+    User.find_or_create_by(oauth_provider: auth.provider, oauth_uid: auth.uid) do |user|
+      user.email    = "#{auth.provider}-#{auth.uid}@island0.com"
+      user.password = Devise.friendly_token[0, 20]
+
+      user.nickname = auth.info["name"]
+    end
   end
 
 end

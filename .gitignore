@@ -28,3 +28,5 @@
 Gemfile.lock
 
 /fig.yml
+
+/vendor/bundle

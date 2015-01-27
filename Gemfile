@@ -45,6 +45,12 @@ gem "figaro",   '~> 1.0.0'
 
 gem 'newrelic_rpm'
 
+# Devise-Omniauth
+
+gem "omniauth-github"
+gem "omniauth-twitter",       "~> 1.1.0"
+gem "omniauth-google-oauth2", "~> 0.2.6"
+
 # Environment specified
 
 group :production do

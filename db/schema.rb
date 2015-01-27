@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127004704) do
+ActiveRecord::Schema.define(version: 20150127032148) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id",                 null: false
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20150127004704) do
     t.boolean  "is_admin",               default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "oauth_provider"
+    t.string   "oauth_uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

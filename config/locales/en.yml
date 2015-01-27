@@ -1,4 +1,5 @@
 en:
+  duplicated_email: 'Duplicated email, please use another account, or login directly'
   all_users: 'All Users'
   no_chat_content: 'No chat content'
   login_to_create_reply: 'Login to create reply'
