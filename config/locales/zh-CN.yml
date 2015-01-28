@@ -1,4 +1,7 @@
 zh-CN:
+  current_waiting_confirmation_for: '正在验证新邮件地址'
+  we_need_your_current_password: '输入当前密码以修改密码'
+  leave_blank_if_donnot_change: '留白以保持密码不变'
   duplicated_email: '邮箱地址已经被占用，请使用另一个账户，或者直接登录'
   all_users: '全部用户'
   no_chat_content: '没有聊天内容'

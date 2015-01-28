@@ -1,4 +1,7 @@
 en:
+  current_waiting_confirmation_for: 'Currently waiting confirmation'
+  we_need_your_current_password: 'we need your current password to change password'
+  leave_blank_if_donnot_change: "leave blank if you don't want to change it"
   duplicated_email: 'Duplicated email, please use another account, or login directly'
   all_users: 'All Users'
   no_chat_content: 'No chat content'
