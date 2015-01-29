@@ -48,13 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
      devise_parameter_sanitizer.for(:account_update) << :nickname
   end
 
-  def update_resource(resource, params)
-    if params[:password].present?
-      resource.update_with_password(params)
-    else
-      resource.update_without_password(params)
-    end
-  end
+  #def update_resource(resource, params)
+  #  super
+  #end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
