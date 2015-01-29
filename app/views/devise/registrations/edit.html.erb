@@ -25,7 +25,7 @@
             <div><%= t(:current_waiting_confirmation_for) %>: <%= resource.unconfirmed_email %></div>
           <% end %>
 
-          <% unless current_user.is_email_fake %>
+          <% unless current_user.is_password_fake %>
 
             <div class="form-group">
               <%= f.label :password %> <i>(<%= t :leave_blank_if_donnot_change %>)</i><br />
