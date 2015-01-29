@@ -25,20 +25,24 @@
             <div><%= t(:current_waiting_confirmation_for) %>: <%= resource.unconfirmed_email %></div>
           <% end %>
 
-          <div class="form-group">
-            <%= f.label :password %> <i>(<%= t :leave_blank_if_donnot_change %>)</i><br />
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-          </div>
+          <% unless current_user.is_email_fake %>
 
-          <div class="form-group">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-          </div>
+            <div class="form-group">
+              <%= f.label :password %> <i>(<%= t :leave_blank_if_donnot_change %>)</i><br />
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+            </div>
 
-          <div class="form-group">
-            <%= f.label :current_password %> <i>(<%= t :we_need_your_current_password %>)</i><br />
-            <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-          </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :current_password %> <i>(<%= t :we_need_your_current_password %>)</i><br />
+              <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+            </div>
+
+          <% end %>
 
           <div class="form-group text-center">
             <%= f.submit t(:update), class: 'btn btn-primary' %>
