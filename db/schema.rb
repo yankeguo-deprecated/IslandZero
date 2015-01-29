@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127032148) do
+ActiveRecord::Schema.define(version: 20150129141137) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id",                 null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20150127032148) do
     t.string   "github_uid"
     t.string   "twitter_uid"
     t.string   "google_oauth2_uid"
+    t.boolean  "is_email_fake",          default: false, null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
