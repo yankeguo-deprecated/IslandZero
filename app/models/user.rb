@@ -46,9 +46,10 @@ class User < ActiveRecord::Base
     else
       ouser = User.find_or_create_by("#{provider}_uid" => auth.uid) do |user|
         user.email    = "fake-#{provider}-#{auth.uid}@#{ENV['DOMAIN_NAME']}"
-        user.is_email_fake = true
-        user.nickname = auth.info["name"] || "#{provider}#{auth.uid}"
         user.password = SecureRandom.hex(10)
+        user.is_email_fake    = true
+        user.is_password_fake = true
+        user.nickname = auth.info["name"] || "#{provider}#{auth.uid}"
       end
       ouser.confirm!
       ouser
