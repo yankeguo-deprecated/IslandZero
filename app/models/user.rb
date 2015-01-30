@@ -41,8 +41,13 @@ class User < ActiveRecord::Base
 
   def self.find_for_oauth(provider, auth, current_user = nil)
     if current_user
-      current_user.update "#{provider}_uid" => auth.uid
-      current_user
+      exists = User.find_by("#{provider}_uid" => auth.uid).present?
+      if exists.present?
+        exists
+      else
+        current_user.update "#{provider}_uid" => auth.uid
+        current_user
+      end
     else
       ouser = User.find_or_create_by("#{provider}_uid" => auth.uid) do |user|
         user.email    = "fake-#{provider}-#{auth.uid}@#{ENV['DOMAIN_NAME']}"
