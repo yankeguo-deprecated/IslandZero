@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
   end
 
   # Posts
-  has_many :posts, inverse_of: :user
+  has_many :posts, inverse_of: :user, dependent: :destroy
 
   # Messages
-  has_many :messages, inverse_of: :user
+  has_many :messages, inverse_of: :user, dependent: :delete_all
 
   # Has many relations with Topic
-  has_many    :topic_users, inverse_of: :user
+  has_many    :topic_users, inverse_of: :user, dependent: :delete_all
 
   # Topics
   has_many    :topics, through: :topic_users

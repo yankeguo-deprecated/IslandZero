@@ -30,3 +30,5 @@ Gemfile.lock
 /fig.yml
 
 /vendor/bundle
+
+.DS_Store

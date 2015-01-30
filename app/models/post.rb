@@ -6,11 +6,11 @@ class Post < ActiveRecord::Base
   belongs_to :user,  inverse_of: :posts
 
   # Self joins
-  has_many    :sub_posts,    class_name: 'Post', foreign_key: 'parent_id', inverse_of: :parent_post
+  has_many    :sub_posts,    class_name: 'Post', foreign_key: 'parent_id', inverse_of: :parent_post, dependent: :destroy
   belongs_to  :parent_post,  class_name: 'Post', foreign_key: 'parent_id', inverse_of: :sub_posts
 
   # chattable
-  has_many    :messages, inverse_of: :chattable, as: :chattable
+  has_many    :messages, inverse_of: :chattable, as: :chattable, dependent: :delete_all
 
   # events
   has_many    :events, inverse_of: :post, dependent: :delete_all
