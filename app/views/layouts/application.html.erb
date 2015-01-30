@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:page_title) %> <%= t(:islandzero) %></title>
+    <% if content_for(:page_title).present? %>
+      <title><%= content_for(:page_title) %> - <%= t(:islandzero) %></title>
+    <% else %>
+      <title><%= t(:islandzero) %></title>
+    <% end %>
     <meta name="viewport" content="width=device-width,user-scalable=no" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <script type="text/javascript" src="/faye/client.js"></script>
