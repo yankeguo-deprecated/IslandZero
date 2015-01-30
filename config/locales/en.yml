@@ -1,4 +1,7 @@
 en:
+  link: 'Link'
+  linked: 'Linked'
+  3rd_party_accounts: '3rd Party Accounts'
   personal_info: 'Personal Info'
   secure_info: 'Secure Info'
   reset_password_send_due_to_fake: 'Reset password instructions has been sent'

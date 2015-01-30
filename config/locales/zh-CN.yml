@@ -1,4 +1,7 @@
 zh-CN:
+  link: '连接'
+  linked: '已连接'
+  3rd_party_accounts: '第三方账户'
   personal_info: '个人信息'
   secure_info: '安全信息'
   reset_password_send_due_to_fake: '修改密码邮件已经发送，请注意查收'
