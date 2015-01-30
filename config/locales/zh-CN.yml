@@ -1,4 +1,5 @@
 zh-CN:
+  reset_password_send_due_to_fake: '修改密码邮件已经发送，请注意查收'
   current_waiting_confirmation_for: '正在验证新邮件地址'
   we_need_your_current_password: '输入当前密码以修改密码'
   leave_blank_if_donnot_change: '留白以保持密码不变'

@@ -8,6 +8,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       resource.update(is_email_fake: false)
       #and send update password instructions if password is fake
       if resource.try(:is_password_fake)
+        flash.alert = t :reset_password_send_due_to_fake
         resource.send_reset_password_instructions
       end
     end
