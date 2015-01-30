@@ -6,7 +6,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to t(:islandzero), root_path, class: "navbar-brand" %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "iz_logo_white.png", height: '26' %>
+    <% end %>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <% if user_signed_in? or IslandZero.open_to_public %>
