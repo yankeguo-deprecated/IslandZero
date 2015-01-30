@@ -84,6 +84,23 @@ zh-CN:
   register: '注册'
   public_chat: '匿名聊天'
   islandzero_introduction: '这里是零島。'
+  devise:
+    mailer:
+      confirmation_instructions:
+        action: "确认我的帐户"
+        greeting: "欢迎来到零度岛屿 %{recipient}!"
+        instruction: "您可以通过下面的链接确认您的帐户的电子邮件:"
+      reset_password_instructions:
+        action: "更改我的密码"
+        greeting: "你好 %{recipient}!"
+        instruction: "有人要求更改密码的链接，并通过下面的链接，你可以做到这一点。"
+        instruction_2: "如果你没有要求，请忽略此电子邮件。"
+        instruction_3: "您的密码将不会改变，直到你访问上面的链接，并创建一个新的。"
+      unlock_instructions:
+        action: "帐户解锁"
+        greeting: "你好 %{recipient}!"
+        instruction: "点击下面的链接到您的帐户解锁:"
+        message: "您的帐户已被锁定由于过量的不成功的登录尝试。"
   attributes:
     current_password: '当前密码'
     password_confirmation: '重复密码'

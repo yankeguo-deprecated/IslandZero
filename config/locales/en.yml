@@ -83,6 +83,23 @@ en:
   login: 'Login'
   register: 'Register'
   islandzero_introduction: 'Welcome to IslandZero'
+  devise:
+    mailer:
+      confirmation_instructions:
+        action: "Confirm my account"
+        greeting: "Welcome to IslandZero %{recipient}!"
+        instruction: "You can confirm your account email through the link below:"
+      reset_password_instructions:
+        action: "Change my password"
+        greeting: "Hello %{recipient}!"
+        instruction: "Someone has requested a link to change your password, and you can do this through the link below."
+        instruction_2: "If you didn't request this, please ignore this email."
+        instruction_3: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        action: "Unlock my account"
+        greeting: "Hello %{recipient}!"
+        instruction: "Click the link below to unlock your account:"
+        message: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
   attributes:
     current_password: 'Current Password'
     password_confirmation: 'Repeat'
