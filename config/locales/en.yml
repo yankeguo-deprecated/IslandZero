@@ -1,4 +1,6 @@
 en:
+  send_me_reset_pass: 'Send me reset password instructions'
+  signin_with: 'Signin with %{provider}'
   link: 'Link'
   linked: 'Linked'
   3rd_party_accounts: '3rd Party Accounts'
