@@ -1,4 +1,8 @@
 en:
+  new_password: 'New password'
+  confirm_new_password: 'Confirm new password'
+  change_password: 'Change password'
+  change_your_password: 'Change your password'
   send_me_reset_pass: 'Send me reset password instructions'
   signin_with: 'Signin with %{provider}'
   link: 'Link'

@@ -1,4 +1,8 @@
 zh-CN:
+  new_password: '新密码'
+  confirm_new_password: '确认密码'
+  change_password: '修改密码'
+  change_your_password: '修改密码'
   send_me_reset_pass: '发送重置密码邮件'
   signin_with: '使用 %{provider} 登陆'
   link: '连接'
