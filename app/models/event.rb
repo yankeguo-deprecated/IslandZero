@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
     return if topic.nil?
     user_history = []
     topic.each_parent true do |pt|
-      pt.starring_users.each do |u|
+      pt.all_starring_users.each do |u|
         unless user_history.include? u.id
           u.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id)
           user_history << u.id

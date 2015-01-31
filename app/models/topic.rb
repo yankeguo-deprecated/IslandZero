@@ -92,4 +92,12 @@ class Topic < ActiveRecord::Base
   def starring_users
     self.users.where("topic_users.is_starred" => true)
   end
+
+  def all_starring_users
+    users = []
+    self.each_parent true do |topic|
+      users |= topic.starring_users
+    end
+    users
+  end
 end
