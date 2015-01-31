@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     registrations:       "users/registrations",
     omniauth_callbacks:  "users/omniauth_callbacks"
   }
+  # More Devise
+  devise_scope :user do
+    post "users/revoke_oauth" => "users/registrations#revoke_oauth"
+  end
 
   # Resource
   resources :users,  only:   [:index, :update]

@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
+  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy, :revoke_oauth]
+
 
   # GET /resource/sign_up
   # def new
@@ -39,6 +41,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  # POST /resource/revoke_oauth?provider=[provider]
+  # Revoke the oauth from user
+  def revoke_oauth
+    provider = params[:provider].to_s.to_sym
+    if resource.oauth_count == 1 and resource.is_email_fake
+      flash.alert = t(:cannot_revoke_oauth_while_email_is_fake)
+    else
+      if resource_class.omniauth_providers.include?(provider) and resource.has_oauth?(provider)
+        resource.revoke_oauth provider
+      end
+    end
+    render nothing: true
+  end
 
   protected
 

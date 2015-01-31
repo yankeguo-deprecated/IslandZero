@@ -1,4 +1,7 @@
 zh-CN:
+  cannot_revoke_oauth_while_email_is_fake: '提供正确的邮件地址之前不能取消OAuth授权'
+  unlink: '断开连接'
+  confirm_to_unlink: '确认断开连接?'
   new_password: '新密码'
   confirm_new_password: '确认密码'
   change_password: '修改密码'

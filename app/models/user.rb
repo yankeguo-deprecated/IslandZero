@@ -61,8 +61,24 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_oauth?
-    self.twitter_uid.present? or self.github_uid.present? or google_oauth2_uid.present?
+  def revoke_oauth(provider)
+    self.update("#{provider}_uid" => nil)
+  end
+
+  def has_oauth?(pvd = nil)
+    if pvd.nil?
+      self.class.omniauth_providers.any? do |provider|
+        self.send(:"#{provider}_uid").present?
+      end
+    else
+      self.send(:"#{pvd}_uid").present?
+    end
+  end
+
+  def oauth_count
+    self.class.omniauth_providers.count do |provider|
+      self.send(:"#{provider}_uid").present?
+    end
   end
 
 end
