@@ -2,7 +2,7 @@
 
 Site    [https://is0.org](https://is0.org)
 
-Github (Main Repo)  [https://github.com/yanke-guo/IslandZero](https://github.com/yanke-guo/IslandZero)
+Github (Main Repo)  [https://github.com/IslandZero/IslandZero](https://github.com/IslandZero/IslandZero)
 
 Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/IslandZero](https://gitcafe.com/yanke_guo/IslandZero)
 
