@@ -20,7 +20,7 @@ IslandZero use `Figaro` for configuration.
 
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it.
 
-It is suggested to move parameters to `config/application.yml`, thus `Capistrano` will handle it well.
+It is suggested to move all parameters to `config/application.yml`, `Capistrano` will handle it well.
 
 ## Run
 
@@ -32,10 +32,11 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 - Install `docker`.
 - Install `fig`.
 - Create `/data/mysql`, `/data/redis`, `/data/uploads` for persistence.
-- Download `fig.yml` at the root of this repo.
-- Put configurations to `fig.yml`, see `config/application.yml.sample` for detail.
+- Pull this repo to a folder
+- Copy `fig.sample.yml` to `fig.yml` then edit it with `MySQL` user and password.
+- Copy `config/application.sample.yml` to `config/application.yml` and edit it.
 - `fig up -d` to start, wait a bit more time after command finished.
-- Newly install:
+- For newly installed only:
   - `fig run web rake db:drop` drop the auto-created database due to known issue, see below.
   - `fig run web rake db:create` create an new database.
 - `fig run web rake db:migrate` to migrate db to latest schema.
