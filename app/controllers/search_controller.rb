@@ -7,7 +7,7 @@ class SearchController < ApplicationController
       return
     end
     keyword = "%#{params[:keyword]}%"
-    @topics = Topic.where("title LIKE ? OR introduction LIKE ?", keyword, keyword)
+    @topics = Topic.where("title LIKE ? OR introduction LIKE ?", keyword, keyword).where("id != parent_id")
   end
 
 end
