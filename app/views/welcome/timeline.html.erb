@@ -63,7 +63,7 @@
 
                       <%= user_or_me event.sub_post.user %> 
                       <%= t(:create_a_sub_post) %>
-                      <%= link_to truncate(event.sub_post.content, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
+                      <%= link_to truncate(event.sub_post.content_plain, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
                       .
 
                     <% else %>
