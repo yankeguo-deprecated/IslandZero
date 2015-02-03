@@ -25,6 +25,9 @@ class Topic < ActiveRecord::Base
     true
   end
 
+  # Mount uploader
+  mount_uploader :icon, IconUploader
+
   # Posts within this topic and subtopics
   def all_posts
     Post.where(topic_id: (self.all_sub_topic_ids_array | [ self.id ]), parent_id: 0)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129151744) do
+ActiveRecord::Schema.define(version: 20150203184055) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id",                 null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150129151744) do
     t.text     "all_sub_topic_ids"
     t.text     "introduction_parsed"
     t.text     "introduction_plain"
+    t.string   "icon"
   end
 
   create_table "users", force: true do |t|
