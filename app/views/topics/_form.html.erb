@@ -2,11 +2,10 @@
   <% if @topic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
-
       <ul>
-      <% @topic.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @topic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -14,6 +13,11 @@
   <div class="form-group">
     <%= f.label t(:title) %><br>
     <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label t(:icon) %>
+    <%= image_tag @topic.icon_url, size: '64', class: 'thumbnail' %>
+    <%= f.file_field :icon, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label t(:parent_id) %><br>

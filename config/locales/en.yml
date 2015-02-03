@@ -1,4 +1,5 @@
 en:
+  icon: 'Icon'
   cannot_revoke_oauth_while_email_is_fake: 'Cannot revoke OAuth before a valid email is provided'
   unlink: 'Unlink'
   confirm_to_unlink: 'Confirm to unlink?'
