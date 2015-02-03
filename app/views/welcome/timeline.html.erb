@@ -21,6 +21,9 @@
             <% else %>
               <% @events.each do |event| %>
                 <li class="list-group-item">
+                  <% if event.topic.present? %>
+                    <%= image_tag event.topic.icon_url, size: '32' %>
+                  <% end %>
 
                   <span class="text-muted text-right pull-right">
                     <small><%= time_ago_in_words event.created_at %></small>
