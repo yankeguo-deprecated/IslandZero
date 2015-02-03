@@ -17,9 +17,11 @@ web:
   build: .
   command: bundle exec thin start -e production -C config/docker/thin.yml
   environment:
-    # Configs gos here, mysql and redis will be automatically handled.
+    # Configs my gos here or config/application.yml, mysql and redis will be automatically handled.
   ports:
     - "3000:3000"
+  volumes:
+        - /data/uploads/:/usr/src/app/public/uploads/
   links:
     - mysql
     - redis
@@ -27,7 +29,9 @@ worker:
   build: .
   command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
   environment:
-    # Configs gos here, mysql and redis will be automatically handled.
+    # Configs my gos here or config/application.yml, mysql and redis will be automatically handled.
+  volumes:
+    - /data/uploads/:/usr/src/app/public/uploads/
   links:
     - mysql
     - redis

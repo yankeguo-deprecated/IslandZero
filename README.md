@@ -29,7 +29,7 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 
 - Install `docker`.
 - Install `fig`.
-- Create `/data/mysql` for persistence.
+- Create `/data/mysql`, `/data/redis`, `/data/uploads` for persistence.
 - Download `fig.yml` at the root of this repo.
 - Put configurations to `fig.yml`, see `config/application.yml.sample` for detail.
 - `fig up -d` to start, wait a bit more time after command finished.
@@ -39,7 +39,7 @@ It is suggested to move parameters to `config/application.yml`, thus `Capistrano
 - `fig run web rake db:migrate` to migrate db to latest schema.
 - Setup `nginx` to proxy 3000 to 80.
 
-## Deploy Via `Capistrano` (Not suggested, docker is better lol)
+## Deploy Via `Capistrano` (Legacy, May have bugs, Not suggested)
 
 -  Install `ruby`, `mysql`, `redis` in your remote server and start them.
 -  Copy `config/application.yml.sample` to `config/application.yml`, then edit it, don't forget to add a server.
