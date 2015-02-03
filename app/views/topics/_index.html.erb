@@ -2,8 +2,9 @@
 <% topics.each do |topic| %>
   <%= link_to topic, class: 'list-group-item' do %>
     <h4 class="list-group-item-heading">
+      <%= image_tag topic.icon_url, size: '32' %>
       <%= topic.title %> 
-      <small class="text-muted"><%= "##{topic.id}" %></small> 
+      <!--<small class="text-muted"><%= "##{topic.id}" %></small>-->
       <small class="text-muted pull-right text-right">
         <% if user_signed_in? %>
          <%= t(:not_read_posts) %><%= topic.posts_count_unvisited current_user %>/

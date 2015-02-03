@@ -30,7 +30,12 @@
             <% end %>
           </div>
           <div class="panel-body">
-            <h3><small class="text-muted">#<%= @topic.id %></small> <%= @topic.title %></h3><br/>
+            <h3>
+              <%= image_tag @topic.icon_url , size: '64' %>
+              <!--<small class="text-muted">#<%= @topic.id %></small>--> 
+              <%= @topic.title %>
+            </h3>
+            <br/>
             <%= @topic.introduction_parsed.html_safe %>
 
             <% if user_signed_in? and current_user.is_admin %>
