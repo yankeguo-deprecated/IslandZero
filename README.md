@@ -1,6 +1,8 @@
 # IslandZero
 
-Site    [https://is0.org](https://is0.org)
+Site    [https://www.island0.com](https://www.island0.com)
+
+Forum   [https://www.island0.com/topics/1](https://www.island0.com/topics/1)
 
 Github (Main Repo)  [https://github.com/IslandZero/IslandZero](https://github.com/IslandZero/IslandZero)
 
