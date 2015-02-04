@@ -89,9 +89,9 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.js do
           if @post.parent_post.present?
-            render js: "Turbolinks.visit('#{url_for(action: :show, id: @post.parent_id, jump_sub_post: @post.id )}')"
+            redirect_js action: :show, id: @post.parent_id, jump_sub_post: @post.id
           else
-            render js: "Turbolinks.visit('#{url_for(action: :show, id: @post.id)}')"
+            redirect_js action: :show, id: @post.id
           end
         end
         format.html do

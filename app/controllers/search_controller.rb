@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   def search
     if params[:keyword].blank?
       flash.alert = t(:keyword_should_not_be_empty)
-      redirect_to :back
+      redirect_back
       return
     end
     keyword = "%#{params[:keyword]}%"

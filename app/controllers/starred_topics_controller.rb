@@ -14,7 +14,7 @@ class StarredTopicsController < ApplicationController
       if request.xhr?
         render nothing: true
       else
-        redirect_to :back
+        redirect_back
       end
     else
       render plain: 'Topic not found'
@@ -28,7 +28,7 @@ class StarredTopicsController < ApplicationController
     if request.xhr?
       render nothing: true
     else
-      redirect_to :back
+      redirect_back
     end
   end
 

@@ -1,4 +1,5 @@
 en:
+  you_are_not_super_admin: 'You are note super admin'
   suggest_new_topic: 'Suggest a new topic'
   icon: 'Icon'
   cannot_revoke_oauth_while_email_is_fake: 'Cannot revoke OAuth before a valid email is provided'

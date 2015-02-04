@@ -1,4 +1,5 @@
 zh-CN:
+  you_are_not_super_admin: '你不是超级管理员'
   suggest_new_topic: '建议新主题'
   icon: '图标'
   cannot_revoke_oauth_while_email_is_fake: '提供正确的邮件地址之前不能取消OAuth授权'
