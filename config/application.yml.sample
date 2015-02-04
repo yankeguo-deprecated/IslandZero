@@ -63,6 +63,8 @@ GA_TRACK_ID: ''
 # 6. IslandZero Configurations
 #
 IZ_OPEN_TO_PUBLIC: 'false'
+IZ_TOPIC_ABOUT: '1'
+IZ_TOPIC_SUGGEST: '7'
 #
 # 7. OAuth
 #
