@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  REGEXP_AT = /@(.+?)\((\d+\))/im
+
   # Belongs to Topic
   belongs_to :topic, inverse_of: :posts
 

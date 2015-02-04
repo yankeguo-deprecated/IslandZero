@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     end
 
     # Reveal sub-posts
-    @sub_posts = @post.sub_posts.order("id DESC").paginate(:page => params[:page])
+    @sub_posts = @post.sub_posts.order("id ASC").paginate(:page => params[:page])
 
     # Reveal Topic
     @topic = @post.topic
@@ -86,12 +86,23 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.create(post_params)
 
-    if request.xhr?
-      render nothing: true
-    else
-      flash.notice = "Post created."
-      redirect_to :back
-    end
+      respond_to do |format|
+        format.js do
+          if @post.parent_post.present?
+            render js: "Turbolinks.visit('#{url_for(action: :show, id: @post.parent_id, jump_sub_post: @post.id )}')"
+          else
+            render js: "Turbolinks.visit('#{url_for(action: :show, id: @post.id)}')"
+          end
+        end
+        format.html do
+          if @post.parent_post.present?
+            redirect_to action: :show, id: @post.parent_id, jump_sub_post: @post.id 
+          else
+            redirect_to action: :show, id: @post.id
+          end
+        end
+      end
+    
   end
 
   def update
