@@ -75,7 +75,7 @@
               <% @sub_posts.each_with_index do |post, index| %>
                 <li class="list-group-item" id="sub_post_<%= post.id %>">
                   <h4 class="list-group-item-heading">
-                    <small class="text-muted">
+                    <small class="text-info">
                       <%= "##{@sub_posts.offset + index + 1}" %>&nbsp;
                       <span class="text-primary">
                         <%= post.user.nickname %>&nbsp; | &nbsp;<%= time_ago_in_words post.created_at %>
