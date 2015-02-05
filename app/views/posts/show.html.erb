@@ -87,6 +87,10 @@
                     <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
                     |
                     <%= link_to t(:edit), edit_post_path(post) %>
+                    |
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <%= link_to t(:reply), "#", "class" => 'reply-link', "data-user-id" => post.user_id, "data-user-nickname" => post.user.try(:nickname) %>
                   <% end %>
                   </p>
                   <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>

@@ -10,3 +10,7 @@ updateNewSubPostButton = ()->
 $(document).on 'page:change', ()->
   updateNewSubPostButton()
   $("#newSubPostInputContent").keyup updateNewSubPostButton
+  $("a.reply-link").click (e)->
+    e.preventDefault()
+    $("#collapseNewPost").collapse("show")
+    $("#newSubPostInputContent").append("@#{$(this).attr("data-user-nickname")}(#{$(this).attr("data-user-id")})\n").focus()
