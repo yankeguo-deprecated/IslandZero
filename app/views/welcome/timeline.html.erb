@@ -39,10 +39,56 @@
                     <br/>
                   <% end %>
 
+                  <% if event.event_type == Event::Type::Mention %>
+                    <% if event.post.present? and event.sub_post.present? %>
+                      <span class="<%= "text-info" if event.post.user_id == current_user.id %>">
+                        <small>
+                          <% if event.post.user_id == current_user.id %>
+                            <%= t(:from_your_post) %>
+                          <% else %>
+                            <%= t(:from_post) %>
+                          <% end %>
+                          "
+                          <%= link_to event.post.title, post_path(event.post) %>
+                          "
+                        </small>
+                        <br/>
+                      </span>
+
+                      <%= t(:from_reply) %>
+                      "
+                      <%= link_to truncate(event.sub_post.content_plain, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>"
+                      </br>
+                      <%= user_or_me event.sub_post.user %>
+                      <%= t(:mentioned_you) %>
+                      .
+                    <% else %>
+                      <% if event.post.present? %>
+                        <span class="<%= "text-info" if event.post.user_id == current_user.id %>">
+                          <small>
+                            <% if event.post.user_id == current_user.id %>
+                              <%= t(:from_your_post) %>
+                            <% else %>
+                              <%= t(:from_post) %>
+                            <% end %>
+                            "
+                            <%= link_to event.post.title, post_path(event.post) %>
+                            "
+                          </small>
+                          <br/>
+                        </span>
+                      <% end %>
+                      <%= user_or_me event.post.user %>
+                      <%= t(:mentioned_you) %>
+                    <% end %>
+                  <% end %>
+
                   <% if event.event_type == Event::Type::NewPost and event.post.present? %>
                     <%= user_or_me event.post.user %> 
                     <%= t(:create_a_post) %> 
+                    "
                     <%= link_to event.post.title, post_path(event.post) %>
+                    "
                     .
                   <% end %>
 
@@ -54,7 +100,9 @@
                         <% else %>
                           <%= t(:from_post) %>
                         <% end %>
+                        "
                         <%= link_to event.post.title, post_path(event.post) %>
+                        "
                       </small>
                       <br/>
                     </span>
@@ -63,7 +111,9 @@
 
                       <%= user_or_me event.sub_post.user %> 
                       <%= t(:create_a_sub_post) %>
+                      "
                       <%= link_to truncate(event.sub_post.content_plain, length: 50), post_path(event.post, jump_sub_post: event.sub_post.id) %>
+                      "
                       .
 
                     <% else %>

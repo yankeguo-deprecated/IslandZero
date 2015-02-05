@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  REGEXP_AT = /@(.+?)\((\d+\))/im
+  REGEXP_MENTION = /@(.+?)\((\d+)\)/im
 
   # Belongs to Topic
   belongs_to :topic, inverse_of: :posts
@@ -32,6 +32,18 @@ class Post < ActiveRecord::Base
     self.content_parsed = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(self.content || "")
     self.content_plain  = Sanitize.clean(self.content_parsed, Sanitize::Config::STRICT)
     true
+  end
+
+  after_save do
+    Event.create_for_mention(self)
+    true
+  end
+
+  def users_mentioned
+    users = (self.content || "").scan(REGEXP_MENTION).map do |arr|
+      User.find_by_id(arr[1])
+    end
+    users.compact.uniq
   end
 
 end

@@ -4,12 +4,39 @@ class Event < ActiveRecord::Base
     NewPost     = "new_post"
     # topic_id, post_id, sub_post_id
     NewSubPost  = "new_sub_post"
+    # topic_id, post_id, sub_post_id = 0
+    Mention     = "mention"
   end
 
   belongs_to :user, inverse_of: :events
   belongs_to :topic,inverse_of: :events
   belongs_to :post, inverse_of: :events
   belongs_to :sub_post, class_name: :Post, inverse_of: :events
+
+  def self.create_for_mention(post)
+    topic = post.topic
+    return if topic.nil?
+    if post.parent_post.present?
+      Event.where(event_type: Event::Type::Mention, sub_post_id: post.id).delete_all
+      post.users_mentioned.each do |user|
+        unless user.id == post.user_id
+          user.events.create(event_type: Event::Type::Mention, 
+                             topic_id: topic.id, 
+                             post_id: post.parent_id, 
+                             sub_post_id: post.id)
+        end
+      end
+    else
+      Event.where(event_type: Event::Type::Mention, post_id: post.id).delete_all
+      post.users_mentioned.each do |user|
+        unless user.id == post.user_id
+          user.events.create(event_type: Event::Type::Mention, 
+                             topic_id: topic.id, 
+                             post_id: post.id)
+        end
+      end
+    end
+  end
 
   def self.create_for_new_post(post)
     topic = post.topic
@@ -39,7 +66,7 @@ class Event < ActiveRecord::Base
     uids.compact.uniq.each do |uid|
       user = User.find_by_id uid
       if user.present?
-        if user.id == sub_post.id
+        if user.id == sub_post.user_id
           user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post.id)
         else
           last = user.events.last

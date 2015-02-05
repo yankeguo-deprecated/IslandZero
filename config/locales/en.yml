@@ -1,4 +1,6 @@
 en:
+  from_reply: 'From reply'
+  mentioned_you: 'Mentioned you'
   you_are_not_super_admin: 'You are note super admin'
   suggest_new_topic: 'Suggest a new topic'
   icon: 'Icon'

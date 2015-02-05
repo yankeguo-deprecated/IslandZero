@@ -1,4 +1,6 @@
 zh-CN:
+  from_reply: '来自回复'
+  mentioned_you: '提到了你'
   you_are_not_super_admin: '你不是超级管理员'
   suggest_new_topic: '建议新主题'
   icon: '图标'
