@@ -1,10 +1,9 @@
 require 'securerandom'
 
 class User < ActiveRecord::Base
-  # :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    :confirmable, :lockable, :timeoutable, :async, :omniauthable, :omniauth_providers => [ :google_oauth2, :twitter, :github ]
+    :confirmable, :lockable, :timeoutable, :async, :omniauthable, :omniauth_providers => Devise.omniauth_providers 
 
   before_save do
     self.is_admin = true if User.count == 0

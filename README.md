@@ -27,14 +27,27 @@ It is suggested to move all parameters to `config/application.yml`, `Capistrano`
 -  Thin     (see `config/thin/production.yml`)
 -  Sidekiq  (see `config/sidekiq.yml`)
 
-## Deploy via `Docker`
+## Deploy via `Docker`, build by yourself
 
 - Install `docker`.
 - Install `fig`.
 - Create `/data/mysql`, `/data/redis`, `/data/uploads` for persistence.
 - Pull this repo to a folder
-- Copy `fig.sample.yml` to `fig.yml` then edit it with `MySQL` user and password.
+- Copy `fig.sample.self_build.yml` to `fig.yml` then edit it with `MySQL` user and password.
 - Copy `config/application.sample.yml` to `config/application.yml` and edit it.
+- `fig up -d` to start, wait a bit more time after command finished.
+- For newly installed only:
+  - `fig run web rake db:drop` drop the auto-created database due to known issue, see below.
+  - `fig run web rake db:create` create an new database.
+- `fig run web rake db:migrate` to migrate db to latest schema.
+- Setup `nginx` to proxy 3000 to 80.
+
+## Deploy via `Docker`, from image
+
+- Install `docker`.
+- Install `fig`.
+- Create `/data/mysql`, `/data/redis`, `/data/uploads` for persistence.
+- Download `fig.sample.from_repo.yml` to `fig.yml` then edit it with `MySQL` user, password and other parameters from `config/application.sample.yml`.
 - `fig up -d` to start, wait a bit more time after command finished.
 - For newly installed only:
   - `fig run web rake db:drop` drop the auto-created database due to known issue, see below.

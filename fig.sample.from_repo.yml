@@ -1,0 +1,37 @@
+mysql:
+  image: mysql:5.6.21
+  environment:
+    # Change default values for better security, remember to use the same root password once mysql container created.
+    MYSQL_DATABASE: islandzero
+    MYSQL_USER: islandzero
+    MYSQL_ROOT_PASSWORD: islandzero
+    MYSQL_PASSWORD: islandzero
+  volumes:
+    - /data/mysql/:/var/lib/mysql
+redis:
+  image: redis:2.8.17
+  command: redis-server --appendonly yes
+  volumes:
+    - /data/redis/:/data
+web:
+  image: yanke/islandzero:latest
+  command: bundle exec thin start -e production -C config/docker/thin.yml
+  environment:
+    # Put cofigurations here same as config/application.yml
+  ports:
+    - "3000:3000"
+  volumes:
+        - /data/uploads/:/usr/src/app/public/uploads/
+  links:
+    - mysql
+    - redis
+worker:
+  image: yanke/islandzero:latest
+  command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
+  environment:
+    # Put cofigurations here same as config/application.yml, same as web
+  volumes:
+    - /data/uploads/:/usr/src/app/public/uploads/
+  links:
+    - mysql
+    - redis

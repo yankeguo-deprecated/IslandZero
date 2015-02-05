@@ -5,6 +5,7 @@
 FULL_HOST: 'https://www.island0.com'
 DOMAIN_NAME: 'island0.com'
 TIMEZONE: 'Beijing'
+FORCE_SSL: 'false'
 #
 # Secure key base is for production only
 #
