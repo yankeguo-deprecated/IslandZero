@@ -57,6 +57,10 @@
       <%= chatroom_meta_for @chattable %>
     <% end %>
 
+    <% if current_user %>
+      <%= user_meta_for current_user %>
+    <% end %>
+
     <!-- GA Page View -->
     <%= render 'shared/ga_page_view' %>
 

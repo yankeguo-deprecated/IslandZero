@@ -13,27 +13,29 @@ class Event < ActiveRecord::Base
   belongs_to :post, inverse_of: :events
   belongs_to :sub_post, class_name: :Post, inverse_of: :events
 
+  def self.notify(bool = true)
+    if bool
+      RealtimeNotifyController.publish "/users/#{self.user_id}/events", self.as_json
+    end
+  end
+
   def self.create_for_mention(post)
     topic = post.topic
     return if topic.nil?
     if post.parent_post.present?
       Event.where(event_type: Event::Type::Mention, sub_post_id: post.id).delete_all
       post.users_mentioned.each do |user|
-        unless user.id == post.user_id
-          user.events.create(event_type: Event::Type::Mention, 
-                             topic_id: topic.id, 
-                             post_id: post.parent_id, 
-                             sub_post_id: post.id)
-        end
+        user.events.create(event_type: Event::Type::Mention, 
+                           topic_id: topic.id, 
+                           post_id: post.parent_id, 
+                           sub_post_id: post.id).notify(user.id != post.user_id)
       end
     else
       Event.where(event_type: Event::Type::Mention, post_id: post.id).delete_all
       post.users_mentioned.each do |user|
-        unless user.id == post.user_id
-          user.events.create(event_type: Event::Type::Mention, 
-                             topic_id: topic.id, 
-                             post_id: post.id)
-        end
+        user.events.create(event_type: Event::Type::Mention, 
+                           topic_id: topic.id, 
+                           post_id: post.id).notify(user.id != post.user_id)
       end
     end
   end
@@ -45,7 +47,7 @@ class Event < ActiveRecord::Base
     topic.each_parent true do |pt|
       pt.all_starring_users.each do |u|
         unless user_history.include? u.id
-          u.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id)
+          u.events.create(event_type: Event::Type::NewPost, topic_id: topic.id, post_id: post.id).notify(post.user_id != u.id)
           user_history << u.id
         end
       end
@@ -67,7 +69,7 @@ class Event < ActiveRecord::Base
       user = User.find_by_id uid
       if user.present?
         if user.id == sub_post.user_id
-          user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post.id)
+          user.events.create(event_type: Event::Type::NewSubPost, topic_id: topic.id, post_id: post.id, sub_post_id: sub_post.id).notify
         else
           last = user.events.last
           if last.present? and last.event_type == Event::Type::NewSubPost and last.post_id == post.id

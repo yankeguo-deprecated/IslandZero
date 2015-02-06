@@ -21,7 +21,11 @@
     <% end %>
     <ul class="nav navbar-nav navbar-left">
       <% if user_signed_in? %>
-        <%= li_link t('activites'), timeline_path %>
+        <%= content_tag(:li, class: ('active' if current_page?(timeline_path)) ) do %>
+          <%= link_to timeline_path do %>
+            <%= t('activites') %>&nbsp;<span id="events-badge" class="badge">40</span>
+          <% end %>
+        <% end %>
       <% end %>
       <% if user_signed_in? or IslandZero.open_to_public %>
         <%= li_link t('all_topics'), topics_path %>

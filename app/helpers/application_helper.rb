@@ -10,6 +10,10 @@ module ApplicationHelper
     tag :meta, name: 'chatroom-channel', content: "/chat/#{chattable.class.to_s}/#{chattable.id}"
   end
 
+  def user_meta_for(user)
+    tag :meta, name: 'current-user-id', content: "#{user.id}"
+  end
+
   def glyphicon(name)
     tag :span, class: "glyphicon glyphicon-#{name}", 'aria-hidden' => "true"
   end
