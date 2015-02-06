@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   belongs_to :post, inverse_of: :events
   belongs_to :sub_post, class_name: :Post, inverse_of: :events
 
-  def self.notify(bool = true)
+  def notify(bool = true)
     if bool
       RealtimeNotifyController.publish "/users/#{self.user_id}/events", self.as_json
     end
