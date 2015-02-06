@@ -3,6 +3,13 @@
   <div class="col-md-8">
 
     <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @events %>
+      </div>
+    </div>
+
+
+    <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default panel-main">
           <div class="panel-body">
@@ -10,11 +17,6 @@
               <%= t :activites %>
             </span>
           </div>
-          <% if will_paginate(@events).present? %>
-            <div class="panel-body">
-              <%= will_paginate(@events) %>
-            </div>
-          <% end %>
           <ul class="list-group">
             <% if @events.count == 0 %>
               <li class="list-group-item text-center"><%= t(:no_activities) %></li>
@@ -129,13 +131,14 @@
             <% end %>
           </ul>
 
-          <% if will_paginate(@events).present? %>
-            <div class="panel-body">
-              <%= will_paginate(@events) %>
-            </div>
-          <% end %>
-
         </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= will_paginate @events %>
       </div>
     </div>
 
