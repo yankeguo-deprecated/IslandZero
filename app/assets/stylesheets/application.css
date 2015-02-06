@@ -12,6 +12,7 @@
  *
  *= require bootstrap
  *= require bootstrap-markdown
+ *= require jquery.atwho
  *= require_tree ./shared
  *= require_tree .
  *= require_self

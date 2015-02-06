@@ -17,5 +17,6 @@
 //= require markdown
 //= require bootstrap-markdown
 //= require bootstrap-markdown.zh
+//= require jquery.atwho
 //= require_tree ./shared
 //= require_tree .

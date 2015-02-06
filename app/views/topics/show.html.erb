@@ -72,7 +72,7 @@
                     <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
                   </div>
                   <div class="form-group">
-                    <%= f.text_area :content, class: 'form-control', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
+                    <%= f.text_area :content, class: 'form-control with-at-support', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
                   </div>
                   <div class="form-group text-right">
                     <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>

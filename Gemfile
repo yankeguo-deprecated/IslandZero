@@ -18,6 +18,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'redcarpet',     '~> 3.2.1'
 gem 'mailgun_rails', '~> 0.6.4'
 gem 'carrierwave',   '~> 0.10.0'
+gem 'jquery-atwho-rails', '~> 1.0.1'
 
 # Redis
 

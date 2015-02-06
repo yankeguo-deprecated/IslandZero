@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   end
 
   # Resource
-  resources :users,  only:   [:index, :update]
+  resources :users,  only:   [:index, :update] do
+    get "mention_query", on: :collection
+  end
   resources :posts,  except: [:index]
   resources :topics, except: [:destroy]
   resources :messages
