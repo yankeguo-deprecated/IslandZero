@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def glyphicon(name)
-    tag :span, class: "glyphicon glyphicon-#{name}", 'aria-hidden' => "true"
+    "<span class=\"glyphicon glyphicon-#{name}\" aria-hidden=\"true\"></span>".html_safe
   end
 
 end
