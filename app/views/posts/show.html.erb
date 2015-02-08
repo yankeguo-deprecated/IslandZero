@@ -81,18 +81,20 @@
                         <%= post.user.nickname %>&nbsp; | &nbsp;<%= time_ago_in_words post.created_at %>
                       </span>
                     </small>
+                    <span class="text-right pull-right">
+                      <small>
+                        <% if user_signed_in? and ( current_user.is_admin or post.user == current_user ) %>
+                          <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
+                          |
+                          <%= link_to t(:edit), edit_post_path(post) %>
+                          |
+                        <% end %>
+                        <% if user_signed_in? %>
+                          <%= link_to t(:reply), "#", "class" => 'reply-link', "data-user-id" => post.user_id, "data-user-nickname" => post.user.try(:nickname) %>
+                        <% end %>
+                      </small>
+                    </span>
                   </h4>
-                  <p class="text-right">
-                  <% if user_signed_in? and ( current_user.is_admin or post.user == current_user ) %>
-                    <%= link_to t(:delete), post, method: 'delete', data: { confirm: t(:confirm_to_delete) } %>
-                    |
-                    <%= link_to t(:edit), edit_post_path(post) %>
-                    |
-                  <% end %>
-                  <% if user_signed_in? %>
-                    <%= link_to t(:reply), "#", "class" => 'reply-link', "data-user-id" => post.user_id, "data-user-nickname" => post.user.try(:nickname) %>
-                  <% end %>
-                  </p>
                   <p class="list-group-item-text"><%= post.content_parsed.html_safe %></p>
                 </li>
               <% end %>

@@ -94,19 +94,24 @@
                 <% @posts.each do |post| %>
                   <%= link_to post, class: 'list-group-item' do %>
                     <h4 class="list-group-item-heading">
-                      <span><%= post.title %></span>
+                      <span>
+                        <%= post.title %>
+                      </span>
                       <% if post.topic != @topic %>
-                        &nbsp;<small><span class="label label-default"><%= post.topic.title %></span></small>
+                        <span class="label label-default pull-right"><%= post.topic.title %></span>
                       <% end %>
-                      <p class="list-group-item-text text-right pull-right">
-                      <span class="text-primary">
-                        <small class="text-primary">
-                          <%= time_ago_in_words post.created_at %> | <%= post.user.nickname %>
+                      <br/>
+                      <span class="list-group-item-text text-muted">
+                        <small>
+                          <%= glyphicon :comment %> <%= post.sub_posts.count %> |
+                          <%= post.user.nickname %> |
+                          <%= time_ago_in_words post.created_at %>
                         </small>
                       </span>
-                      </p>
                     </h4>
-                    <p class="list-group-item-text text-muted"><%= post.content_plain.truncate(100) %></p>
+                    <p class="list-group-item-text">
+                    <%= post.content_plain.truncate(100) %>
+                    </p>
                   <% end %>
                 <% end %>
 
