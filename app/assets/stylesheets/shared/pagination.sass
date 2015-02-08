@@ -1,18 +1,20 @@
 .pagination
   width: 100%
-  background: #f1f1f1
-  border: 1px solid #e5e5e5
+  background: white
+  border: 1px solid #ecf0f1
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
   text-align: center
   padding: 1em
   cursor: default
   a, span
     padding: 0.2em 0.3em
   .disabled
-    color: #aaaaaa
+    color: #b4bcc2
   .current
+    color: white
     font-style: normal
     font-weight: bold
-    background-color: darken(#f1f1f1, 20)
+    background-color: #18bc9c
     display: inline-block
     width: 1.4em
     height: 1.4em
@@ -20,9 +22,8 @@
     -moz-border-radius: 1em
     -webkit-border-radius: 1em
     border-radius: 1em
-    text-shadow: rgba(white, .8) 1px 1px 1px
   a
     text-decoration: none
-    color: black
+    color: #18bc9c
     &:hover, &:focus
       text-decoration: underline
