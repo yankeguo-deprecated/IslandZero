@@ -54,6 +54,12 @@
       </div>
 
       <div class="row">
+        <div class="col-md-12 text-center">
+          <%= will_paginate @posts %>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-md-12">
           <div class="panel panel-default">
 
@@ -119,7 +125,7 @@
               <% end %>
             </div>
 
-            <% if @new_post.present? and @posts.count > 5 %>
+            <% if @new_post.present? and @posts.length > 5 %>
               <div class="panel-body text-right">
                 <a id="alt-new-post" href="#">
                   <%= glyphicon 'pencil' %><%= t(:new_post) %>

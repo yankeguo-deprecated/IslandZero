@@ -103,7 +103,7 @@
             <% end %>
           </ul>
 
-          <% if @new_post.present? and @sub_posts.count > 3 %>
+          <% if @new_post.present? and @sub_posts.length > 3 %>
             <div class="panel-body text-right">
               <a id="alt-new-post" href="#">
                 <%= glyphicon 'pencil' %><%= t(:new_reply) %>

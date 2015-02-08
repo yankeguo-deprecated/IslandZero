@@ -22,4 +22,4 @@ $(document).on 'page:change', ()->
     $('html, body').animate({
       scrollTop: $("#linkNewPost").offset().top - 80
     }, 200)
-    $("#collapseNewPost").collapse('show')
+    $("#linkNewPost").click()
