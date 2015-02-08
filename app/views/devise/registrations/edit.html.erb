@@ -15,7 +15,7 @@
             <%= devise_error_messages! %>
 
             <div class="form-group">
-              <%= f.label :nickname %><br />
+              <%= f.label t(:nickname) %><br />
               <%= f.text_field :nickname, autofocus: true, class: 'form-control' %>
             </div>
 
@@ -28,29 +28,32 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="panel panel-primary panel-main">
-        <div class="panel-body text-center">
-          <h2><%= t '3rd_party_accounts' %></h2>
-        </div>
-        <ul class="list-group">
-          <% resource_class.omniauth_providers.each do |provider| %>
-            <li class="list-group-item"><%= provider.to_s.titleize %>
-            <span class="pull-right">
-              <% if resource.try(:"#{provider}_uid").present? %>
-                <%= t :linked %>&nbsp;
-                <% unless resource.oauth_count == 1 and resource.is_email_fake %>
-                  <%= link_to t(:unlink), users_revoke_oauth_path(provider: provider), data: { method: :post, remote: true, confirm: t(:confirm_to_unlink) }, class: 'need-reload text-danger' %>
+    <% unless resource_class.omniauth_providers.empty? %>
+      <div class="row">
+        <div class="panel panel-primary panel-main">
+          <div class="panel-body text-center">
+            <h2><%= t '3rd_party_accounts' %></h2>
+          </div>
+          <ul class="list-group">
+            <% resource_class.omniauth_providers.each do |provider| %>
+              <li class="list-group-item"><%= provider.to_s.titleize %>
+              <span class="pull-right">
+                <% if resource.try(:"#{provider}_uid").present? %>
+                  <%= t :linked %>&nbsp;
+                  <% unless resource.oauth_count == 1 and resource.is_email_fake %>
+                    <%= link_to t(:unlink), users_revoke_oauth_path(provider: provider), data: { method: :post, remote: true, confirm: t(:confirm_to_unlink) }, class: 'need-reload text-danger' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to t(:link), omniauth_authorize_path(resource_name, provider) %><br />
                 <% end %>
-              <% else %>
-                <%= link_to t(:link), omniauth_authorize_path(resource_name, provider) %><br />
-              <% end %>
-            </span>
-            </li>
-          <% end %>
-        </ul>
+              </span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
+    <% end %>
+
   </div>
 
   <div class="col-md-4">

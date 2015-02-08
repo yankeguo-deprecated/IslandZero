@@ -13,9 +13,8 @@
       <div class="col-md-12">
         <div class="panel panel-default panel-main">
           <div class="panel-body">
-            <span>
-              <%= t :activites %>
-            </span>
+            <%= glyphicon 'inbox' %>
+            <%= t :activites %>
           </div>
           <ul class="list-group">
             <% if @events.count == 0 %>

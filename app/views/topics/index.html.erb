@@ -11,16 +11,19 @@
 
             <div class="panel-body">
               <span>
+                <%= glyphicon 'list' %>
                 <%= t(:all_topics) %>
               </span>
-              <% if user_signed_in? and current_user.is_admin %>
-                <span class="pull-right">
-                  <%= link_to t(:new_topic), new_topic_path %>
-                </span>
-              <% else %>
-                <span class="pull-right">
-                  <%= link_to t(:suggest_new_topic), topic_path(ENV['IZ_TOPIC_SUGGEST']) %>
-                </span>
+              <% if user_signed_in? %>
+                <% if current_user.is_admin %>
+                  <span class="pull-right">
+                    <%= link_to t(:new_topic), new_topic_path %>
+                  </span>
+                <% else %>
+                  <span class="pull-right">
+                    <%= link_to t(:suggest_new_topic), topic_path(ENV['IZ_TOPIC_SUGGEST']) %>
+                  </span>
+                <% end %>
               <% end %>
             </div>
 
