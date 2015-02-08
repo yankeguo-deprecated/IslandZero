@@ -1,136 +1,144 @@
 <% content_for :page_title, @topic.title %>
 
 <div class="container">
-<div class="row">
+  <div class="row">
 
-  <div class="col-md-8">
+    <div class="col-md-8">
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-primary panel-main">
-          <div class="panel-heading">
-            <% if @topic.parent_id == 0 %>
-              <%= link_to topics_path, class: 'text-white' do %>
-                <%= glyphicon 'chevron-left' %><%= t(:back_to_all_topics) %>
-              <% end %>
-            <% else %>
-              <% if @topic.parent_topic.present? %>
-                <%= link_to topic_path(@topic.parent_topic), class: 'text-white' do %>
-                  <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_parent_topic)}: #{@topic.parent_topic.title}" %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-primary panel-main">
+            <div class="panel-heading">
+              <% if @topic.parent_id == 0 %>
+                <%= link_to topics_path, class: 'text-white' do %>
+                  <%= glyphicon 'chevron-left' %><%= t(:back_to_all_topics) %>
                 <% end %>
-              <% end %>
-            <% end %>
-
-            <% if user_signed_in? %>
-              <% if @topic.starring_users.include? current_user %>
-                <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'text-white pull-right need-reload' %>
               <% else %>
-                <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'text-white pull-right need-reload' %>
+                <% if @topic.parent_topic.present? %>
+                  <%= link_to topic_path(@topic.parent_topic), class: 'text-white' do %>
+                    <%= glyphicon 'chevron-left' %><%= "#{t(:back_to_parent_topic)}: #{@topic.parent_topic.title}" %>
+                  <% end %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-          <div class="panel-body">
-            <h3>
-              <%= image_tag @topic.icon_url , size: '64' %>
-              &nbsp;
-              <!--<small class="text-muted">#<%= @topic.id %></small>--> 
-              <%= @topic.title %>
-            </h3>
-            <br/>
-            <%= @topic.introduction_parsed.html_safe %>
 
-            <% if user_signed_in? and current_user.is_admin %>
-              <div class="text-right">
-                <p>
-                <%= link_to t(:edit), edit_topic_path(@topic) %> |
-                <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
-                </p>
-              </div>
-            <% end %>
+              <% if user_signed_in? %>
+                <% if @topic.starring_users.include? current_user %>
+                  <%= link_to t(:unstar), starred_topic_path(@topic.id), method: :delete, remote: true, class: 'text-white pull-right need-reload' %>
+                <% else %>
+                  <%= link_to t(:star), starred_topics_path(id: @topic.id), method: :post, remote: true, class: 'text-white pull-right need-reload' %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="panel-body">
+              <h3>
+                <%= image_tag @topic.icon_url , size: '64' %>
+                &nbsp;
+                <!--<small class="text-muted">#<%= @topic.id %></small>--> 
+                <%= @topic.title %>
+              </h3>
+              <br/>
+              <%= @topic.introduction_parsed.html_safe %>
+
+              <% if user_signed_in? and current_user.is_admin %>
+                <div class="text-right">
+                  <p>
+                  <%= link_to t(:edit), edit_topic_path(@topic) %> |
+                  <%= link_to t(:new_sub_topic), new_topic_path(parent_id: @topic.id) %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+            <%= render 'index', topics: @sub_topics %>
           </div>
-          <%= render 'index', topics: @sub_topics %>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
 
-          <% if @new_post.present? %>
-            <div class="panel-body text-right">
-              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
-                <%= glyphicon 'pencil' %><%= t(:new_post) %>
-              </a>
-            </div>
-
-            <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <%= form_for @new_post, remote: true do |f| %>
-                  <%= f.hidden_field :topic_id %>
-                  <div class="form-group">
-                    <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_area :content, class: 'form-control with-at-support', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
-                  </div>
-                  <div class="form-group text-right">
-                    <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>
-                  </div>
-                <% end %>
+            <% if @new_post.present? %>
+              <div class="panel-body text-right">
+                <a id="linkNewPost" data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+                  <%= glyphicon 'pencil' %><%= t(:new_post) %>
+                </a>
               </div>
-            </div>
-          <% else %>
-            <% if !user_signed_in? %>
-              <div class="panel-body text-center text-muted">
-                <%= t(:login_to_create_post) %>
+
+              <div id="collapseNewPost" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <%= form_for @new_post, remote: true do |f| %>
+                    <%= f.hidden_field :topic_id %>
+                    <div class="form-group">
+                      <%= f.text_field :title, class: 'form-control', id: 'newPostInputTitle', placeholder: t("title") %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.text_area :content, class: 'form-control with-at-support', id: 'newPostInputContent', placeholder: t("content"), 'data-provide' => "markdown" %>
+                    </div>
+                    <div class="form-group text-right">
+                      <%= f.submit t("submit"), class: "btn btn-sm btn-default", id: 'newPostSubmit' %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
-            <% end %>
-          <% end %>
-
-          <div class="list-group">
-            <% if @posts.length != 0 %>
-
-              <% @posts.each do |post| %>
-                <%= link_to post, class: 'list-group-item' do %>
-                  <h4 class="list-group-item-heading">
-                    <span><%= post.title %></span>
-                    <p class="list-group-item-text text-right pull-right">
-                    <span class="text-primary">
-                      <small class="text-primary">
-                        <%= time_ago_in_words post.created_at %> | <%= post.user.nickname %>
-                      </small>
-
-                      <% if post.topic != @topic %>
-                        &nbsp;<span class="label label-default"><%= post.topic.title %></span>
-                      <% end %>
-                    </span>
-                    </p>
-                  </h4>
-                  <p class="list-group-item-text text-muted"><%= post.content_plain.truncate(100) %></p>
-                <% end %>
-              <% end %>
-
             <% else %>
-
-              <li class="list-group-item text-center"><%= t(:no_posts) %></li>
-
+              <% if !user_signed_in? %>
+                <div class="panel-body text-center text-muted">
+                  <%= t(:login_to_create_post) %>
+                </div>
+              <% end %>
             <% end %>
+
+            <div class="list-group">
+              <% if @posts.length != 0 %>
+
+                <% @posts.each do |post| %>
+                  <%= link_to post, class: 'list-group-item' do %>
+                    <h4 class="list-group-item-heading">
+                      <span><%= post.title %></span>
+                      <% if post.topic != @topic %>
+                        &nbsp;<small><span class="label label-default"><%= post.topic.title %></span></small>
+                      <% end %>
+                      <p class="list-group-item-text text-right pull-right">
+                      <span class="text-primary">
+                        <small class="text-primary">
+                          <%= time_ago_in_words post.created_at %> | <%= post.user.nickname %>
+                        </small>
+                      </span>
+                      </p>
+                    </h4>
+                    <p class="list-group-item-text text-muted"><%= post.content_plain.truncate(100) %></p>
+                  <% end %>
+                <% end %>
+
+              <% else %>
+
+                <li class="list-group-item text-center"><%= t(:no_posts) %></li>
+
+              <% end %>
+            </div>
+
+            <% if @new_post.present? and @posts.count > 5 %>
+              <div class="panel-body text-right">
+                <a id="alt-new-post" href="#">
+                  <%= glyphicon 'pencil' %><%= t(:new_post) %>
+                </a>
+              </div>
+            <% end %>
+
           </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <%= will_paginate @posts %>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <%= will_paginate @posts %>
-      </div>
+    <div class="col-md-4">
+      <%= render 'shared/chatbox' %>
     </div>
-  </div>
 
-  <div class="col-md-4">
-    <%= render 'shared/chatbox' %>
   </div>
-
-</div>
 </div>

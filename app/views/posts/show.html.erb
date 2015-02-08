@@ -14,7 +14,7 @@
             <% end %>
           </div>
           <div class="panel-body">
-            <h4><small class="text-muted">#<%= @post.id %></small><%= @post.title %><small class="text-primary pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>
+            <h4><%= @post.title %><small class="text-primary pull-right"> <%= time_ago_in_words @post.created_at %> | <%= @post.user.nickname %></small></h4>
 
             <% if user_signed_in? and ( current_user.is_admin or @post.user == current_user ) %>
               <p class="text-right">
@@ -43,7 +43,7 @@
 
           <% if @new_post.present? %>
             <div class="panel-body text-right">
-              <a data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
+              <a id="linkNewPost" data-toggle="collapse" href="#collapseNewPost" aria-expanded="true" aria-controls="collapseNewPost">
                 <%= glyphicon 'pencil' %><%= t(:new_reply) %>
               </a>
             </div>
@@ -100,6 +100,15 @@
               <li class="list-group-item text-center"><%= t(:no_replies) %></li>
             <% end %>
           </ul>
+
+          <% if @new_post.present? and @sub_posts.count > 3 %>
+            <div class="panel-body text-right">
+              <a id="alt-new-post" href="#">
+                <%= glyphicon 'pencil' %><%= t(:new_reply) %>
+              </a>
+            </div>
+          <% end %>
+
         </div>
       </div>
     </div>

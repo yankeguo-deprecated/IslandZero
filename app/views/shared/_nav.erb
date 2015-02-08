@@ -21,35 +21,59 @@
     <% end %>
     <ul class="nav navbar-nav navbar-left">
       <% if user_signed_in? %>
-        <%= content_tag(:li, class: ('active' if current_page?(timeline_path)) ) do %>
-          <%= link_to timeline_path do %>
-            <%= t('activites') %>&nbsp;<span id="events-badge" class="badge"></span>
-          <% end %>
+        <%= li_link nil, timeline_path do %>
+          <%= glyphicon 'inbox' %>
+          <%= t('activites') %>&nbsp;<span id="events-badge" class="badge"></span>
         <% end %>
       <% end %>
       <% if user_signed_in? or IslandZero.open_to_public %>
-        <%= li_link t('all_topics'), topics_path %>
+        <%= li_link nil, topics_path do %>
+          <%= glyphicon 'list' %>
+          <%= t('all_topics') %>
+        <% end %>
       <% end %>
       <% if user_signed_in? %>
-        <%= li_link t('starred_topics'), starred_topics_path %>
+        <%= li_link nil, starred_topics_path do %>
+          <%= glyphicon 'star' %>
+          <%= t('starred_topics') %>
+        <% end %>
       <% end %>
       <% if user_signed_in? and current_user.is_super_admin %>
-        <%= li_link t('all_users'), users_path %>
+        <%= li_link nil, users_path do %>
+          <%= glyphicon 'user' %>
+          <%= t('all_users') %>
+        <% end %>
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.nickname %><b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= glyphicon :user %>&nbsp<%= current_user.nickname %><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%= link_to t(:profile), edit_user_registration_path %></li>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <%= glyphicon :home %>
+                <%= t(:profile) %>
+              <% end %>
+            </li>
             <li class="divider"></li>
-            <li><%= link_to t(:logout), destroy_user_session_path, { method: :delete } %></li>
+            <li>
+              <%= link_to destroy_user_session_path, { method: :delete } do %>
+                <%= glyphicon :off %>
+                <%= t(:logout) %>
+              <% end %>
+            </li>
           </ul>
         </li>
       <% else %>
-        <%= li_link t('login'), new_user_session_path %>
-        <%= li_link t('register'), new_user_registration_path %>
+        <%= li_link nil, new_user_session_path do %>
+          <%= glyphicon 'log-in' %>
+          <%= t('login') %>
+        <% end %>
+        <%= li_link nil, new_user_registration_path do %>
+          <%= glyphicon 'pencil' %>
+          <%= t('register') %>
+        <% end %>
       <% end %>
     </ul>
   </div>

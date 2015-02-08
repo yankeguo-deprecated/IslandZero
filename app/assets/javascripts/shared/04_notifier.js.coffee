@@ -6,7 +6,7 @@ Notifier.loadCount = ()->
     Notifier.count = 0
 
 Notifier.saveCount = ()->
-  $.cookie "unread-events-count", "#{Notifier.count}", { expires: 7 }
+  $.cookie "unread-events-count", "#{Notifier.count}", { expires: 7, path: '/' }
 
 Notifier.rebind = ()->
   Notifier.count = 0 unless Notifier.count?

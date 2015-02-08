@@ -8,7 +8,12 @@
       <!--<small class="text-muted"><%= "##{topic.id}" %></small>-->
       <small class="text-muted pull-right text-right">
         <% if user_signed_in? %>
-         <%= t(:not_read_posts) %><%= topic.posts_count_unvisited current_user %>/
+          <% count = topic.posts_count_unvisited current_user %>
+          <% if count != 0 %>
+            <span class="text-info">
+              <%= t(:not_read_posts) %><%= count %>/
+            </span>
+          <% end %>
         <% end %>
         <%= t(:all_posts) %><%= topic.all_posts.count %>
       </small>

@@ -23,6 +23,10 @@ body { padding-top: 60px; }
   color: white;
 }
 
+div.panel-body img {
+  max-width: 50%;
+}
+
 img {
   max-width: 100%;
 }
@@ -33,7 +37,6 @@ img {
 }
 
 span#events-badge {
-  background-color: red;
-  color: white;
-  font-size: 15px;
+  background-color: white;
+  color: #2C3E50;
 }

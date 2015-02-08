@@ -12,3 +12,14 @@ $(document).on 'page:change', ()->
   updateNewPostButton()
   $("#newPostInputContent").keyup updateNewPostButton
   $("#newPostInputTitle").keyup updateNewPostButton
+  $("#collapseNewPost").on "shown.bs.collapse", ()->
+    if $("#newPostInputTitle")[0]?
+      $("#newPostInputTitle").focus()
+    else
+      $("#newSubPostInputContent").focus()
+  $("#alt-new-post").click (e)->
+    e.preventDefault()
+    $('html, body').animate({
+      scrollTop: $("#linkNewPost").offset().top - 80
+    }, 200)
+    $("#collapseNewPost").collapse('show')
