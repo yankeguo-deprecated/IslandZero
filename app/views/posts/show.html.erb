@@ -32,12 +32,6 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12 text-center">
-        <%= will_paginate @sub_posts %>
-      </div>
-    </div>
-
-    <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
 
@@ -68,6 +62,13 @@
                 <%= t(:login_to_create_reply) %>
               </div>
             <% end %>
+          <% end %>
+
+          <% if @sub_posts.total_pages > 1 %>
+            <hr class="clean"/>
+            <div class="panel-body">
+              <%= will_paginate @sub_posts %>
+            </div>
           <% end %>
 
           <ul class="list-group">
@@ -103,7 +104,16 @@
             <% end %>
           </ul>
 
+          <% if @sub_posts.total_pages > 1 %>
+            <div class="panel-body">
+              <%= will_paginate @sub_posts %>
+            </div>
+          <% end %>
+
           <% if @new_post.present? and @sub_posts.length > 3 %>
+            <% if @sub_posts.total_pages > 1 %>
+              <hr class="clean"/>
+            <% end %>
             <div class="panel-body text-right">
               <a id="alt-new-post" href="#">
                 <%= glyphicon 'pencil' %><%= t(:new_reply) %>
@@ -112,12 +122,6 @@
           <% end %>
 
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <%= will_paginate @sub_posts %>
       </div>
     </div>
 

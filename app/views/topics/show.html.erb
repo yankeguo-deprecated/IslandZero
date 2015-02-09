@@ -54,12 +54,6 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12 text-center">
-          <%= will_paginate @posts %>
-        </div>
-      </div>
-
-      <div class="row">
         <div class="col-md-12">
           <div class="panel panel-default">
 
@@ -94,6 +88,13 @@
               <% end %>
             <% end %>
 
+            <% if @posts.total_pages > 1 %>
+              <hr class="clean" />
+              <div class="panel-body">
+                <%= will_paginate @posts %>
+              </div>
+            <% end %>
+
             <div class="list-group">
               <% if @posts.length != 0 %>
 
@@ -125,7 +126,16 @@
               <% end %>
             </div>
 
+            <% if @posts.total_pages > 1 %>
+              <div class="panel-body">
+                <%= will_paginate @posts %>
+              </div>
+            <% end %>
+
             <% if @new_post.present? and @posts.length > 5 %>
+              <% if @posts.total_pages > 1 %>
+                <hr class="clean" />
+              <% end %>
               <div class="panel-body text-right">
                 <a id="alt-new-post" href="#">
                   <%= glyphicon 'pencil' %><%= t(:new_post) %>
@@ -137,11 +147,6 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <%= will_paginate @posts %>
-        </div>
-      </div>
     </div>
 
     <div class="col-md-4">
