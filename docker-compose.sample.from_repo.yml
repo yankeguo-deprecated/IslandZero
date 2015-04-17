@@ -16,8 +16,7 @@ redis:
 web:
   image: yanke/islandzero:latest
   command: bundle exec thin start -e production -C config/docker/thin.yml
-  environment:
-    # Put cofigurations here same as config/application.yml
+  env_file: config.env
   ports:
     - "3000:3000"
   volumes:
@@ -28,8 +27,7 @@ web:
 worker:
   image: yanke/islandzero:latest
   command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
-  environment:
-    # Put cofigurations here same as config/application.yml, same as web
+  env_file: config.env
   volumes:
     - /data/uploads/:/usr/src/app/public/uploads/
   links:

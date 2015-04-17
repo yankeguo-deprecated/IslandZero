@@ -39,10 +39,6 @@ gem 'devise-async','~> 0.9.0'
 
 gem 'thin'
 
-# Configuration Manager
-
-gem "figaro",   '~> 1.0.0'
-
 # Monitor
 
 gem 'newrelic_rpm'

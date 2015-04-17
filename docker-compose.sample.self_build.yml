@@ -16,6 +16,7 @@ redis:
 web:
   build: .
   command: bundle exec thin start -e production -C config/docker/thin.yml
+  env_file: config.env
   ports:
     - "3000:3000"
   volumes:
@@ -26,6 +27,7 @@ web:
 worker:
   build: .
   command: bundle exec sidekiq -e production -C config/docker/sidekiq.yml
+  env_file: config.env
   volumes:
     - /data/uploads/:/usr/src/app/public/uploads/
   links:

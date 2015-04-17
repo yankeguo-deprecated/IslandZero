@@ -28,6 +28,9 @@
 Gemfile.lock
 
 /fig.yml
+/docker-compose.yml
+
+/config.env
 
 /vendor/bundle
 
