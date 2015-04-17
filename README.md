@@ -30,7 +30,7 @@ Gitcafe(Mirror Repo) [https://gitcafe.com/yanke_guo/IslandZero](https://gitcafe.
 
 - Create `/data/mysql`, `/data/redis`, `/data/uploads` for persistence.
 - Download `docker-compose.sample.from_repo.yml` to `docker-compose.yml` then edit it with `MySQL` user, password.
-- Copy `config.sample.env` to `config.env` and edit it.
+- Download `config.sample.env` to `config.env` and edit it.
 - `docker-compose up -d` to start, wait a bit more time after command finished.
 - For newly installed only:
   - `docker-compose run web rake db:drop` drop the auto-created database due to known issue, see below.
