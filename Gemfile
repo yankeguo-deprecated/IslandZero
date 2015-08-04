@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Rails
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.3'
 gem 'rails-i18n', '~> 4.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
