@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def chatroom_meta_for(chattable)
-    tag :meta, name: 'chatroom-channel', content: "/chat/#{chattable.class.to_s}/#{chattable.id}"
+    tag :meta, name: 'chatroom-channel', content: "/chat/#{chattable.class}/#{chattable.id}"
   end
 
   def user_meta_for(user)
